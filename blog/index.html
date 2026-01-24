@@ -41,10 +41,17 @@
       box-shadow: 0 10px 25px rgba(0,0,0,.35);
       z-index: 2;
     }
-    .featured-ribbon::before{
-      content:"⭐";
-      font-size:13px;
+    .featured-ribbon::before{ content:"⭐"; font-size:13px; line-height:1; }
+
+    /* título com ícone pequeno */
+    .title-ico{
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .title-ico .ico{
+      font-size:18px;
       line-height:1;
+      opacity:.95;
+      transform: translateY(1px);
     }
   </style>
 </head>
@@ -89,14 +96,20 @@
       <h2 class="section-title">Blog Multi Trader</h2>
       <p class="section-subtitle">Artigos, análises e projeções semanais do Ouro (XAUUSD)</p>
 
-      <div class="blog-grid">
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- =========================
+             VÍDEOS (vitrine - primeiro)
+             ========================= -->
 
         <!-- ✅ DESTAQUE (mais recente) -->
-        <article class="blog-card">
+        <article class="blog-card" data-type="video" data-order="1">
           <div class="featured-ribbon">Destaque da Semana</div>
 
           <div class="blog-date">Semana 26–30 de Janeiro</div>
-          <h3 class="blog-title">Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</h3>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</span>
+          </h3>
           <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
 
           <div class="blog-meta-row">
@@ -109,9 +122,11 @@
         </article>
 
         <!-- Projeção anterior -->
-        <article class="blog-card">
+        <article class="blog-card" data-type="video" data-order="2">
           <div class="blog-date">Semana 19–23 de Janeiro</div>
-          <h3 class="blog-title">Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</h3>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</span>
+          </h3>
           <p class="blog-excerpt">Revisão da semana e projeção com cenários, pontos importantes e direcionamento do ouro.</p>
 
           <div class="blog-meta-row">
@@ -123,10 +138,15 @@
           <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-19-23-jan/">Ver Projeção →</a>
         </article>
 
-        <!-- Artigos -->
-        <article class="blog-card">
+        <!-- =========================
+             ARTIGOS (depois)
+             ========================= -->
+
+        <article class="blog-card" data-type="leitura" data-order="10">
           <div class="blog-date">15 de Dezembro, 2023</div>
-          <h3 class="blog-title">Gestão de Risco: A Base do Trading Sustentável</h3>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">📄</span>Gestão de Risco: A Base do Trading Sustentável</span>
+          </h3>
           <p class="blog-excerpt">Princípios fundamentais de gestão de risco para proteger capital e ganhar consistência no longo prazo.</p>
 
           <div class="blog-meta-row">
@@ -138,9 +158,11 @@
           <a class="read-more" href="/clube-multi-trader-site/blog/gestao-risco/">Ler Artigo →</a>
         </article>
 
-        <article class="blog-card">
+        <article class="blog-card" data-type="leitura" data-order="11">
           <div class="blog-date">10 de Janeiro, 2024</div>
-          <h3 class="blog-title">Psicologia do Trading: Como Controlar Suas Emoções</h3>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">📄</span>Psicologia do Trading: Como Controlar Suas Emoções</span>
+          </h3>
           <p class="blog-excerpt">Como manter disciplina e evitar decisões impulsivas quando o mercado coloca pressão.</p>
 
           <div class="blog-meta-row">
@@ -152,9 +174,11 @@
           <a class="read-more" href="/clube-multi-trader-site/blog/psicologia-trading/">Ler Artigo →</a>
         </article>
 
-        <article class="blog-card">
+        <article class="blog-card" data-type="leitura" data-order="12">
           <div class="blog-date">15 de Janeiro, 2024</div>
-          <h3 class="blog-title">5 Erros Comuns que Destroem Contas de Trading</h3>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">📄</span>5 Erros Comuns que Destroem Contas de Trading</span>
+          </h3>
           <p class="blog-excerpt">Os erros mais comuns de iniciantes e como evitar para sobreviver e evoluir no jogo.</p>
 
           <div class="blog-meta-row">
@@ -181,5 +205,32 @@
   </footer>
 
   <script src="/clube-multi-trader-site/assets/main.js"></script>
+
+  <script>
+    // Ordenação automática: Vídeos primeiro, depois Artigos
+    (function sortBlogCards(){
+      const grid = document.getElementById('blogGrid');
+      if(!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll('.blog-card'));
+
+      // Regra: video antes de leitura; e dentro de cada tipo, pelo data-order (menor primeiro)
+      cards.sort((a,b)=>{
+        const ta = (a.dataset.type || '').toLowerCase();
+        const tb = (b.dataset.type || '').toLowerCase();
+
+        const pa = (ta === 'video') ? 0 : 1;
+        const pb = (tb === 'video') ? 0 : 1;
+        if (pa !== pb) return pa - pb;
+
+        const oa = parseInt(a.dataset.order || '999', 10);
+        const ob = parseInt(b.dataset.order || '999', 10);
+        return oa - ob;
+      });
+
+      cards.forEach(c => grid.appendChild(c));
+    })();
+  </script>
+
 </body>
 </html>
