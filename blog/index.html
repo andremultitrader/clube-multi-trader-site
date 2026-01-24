@@ -8,7 +8,47 @@
   <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+
+  <style>
+    /* Ajustes locais só para o Blog (sem mexer no CSS global) */
+    .blog-card{ position:relative; overflow:hidden; }
+    .blog-meta-row{
+      display:flex; flex-wrap:wrap; gap:8px;
+      align-items:center; margin: 10px 0 14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px;
+      font-size:12px; font-weight:700;
+      background: rgba(212,175,55,.12);
+      border: 1px solid rgba(212,175,55,.35);
+      color:#d4af37;
+      letter-spacing:.2px;
+    }
+    .badge.type-video{ background: rgba(86,255,214,.10); border-color: rgba(86,255,214,.25); color:#56ffd6; }
+    .badge.type-leitura{ background: rgba(140,170,255,.10); border-color: rgba(140,170,255,.25); color:#8caaff; }
+
+    .featured-ribbon{
+      position:absolute;
+      top:14px; right:14px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:12px; font-weight:800;
+      background: rgba(212,175,55,.16);
+      border: 1px solid rgba(212,175,55,.40);
+      color:#d4af37;
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+      z-index: 2;
+    }
+    .featured-ribbon::before{
+      content:"⭐";
+      font-size:13px;
+      line-height:1;
+    }
+  </style>
 </head>
+
 <body>
 
   <nav>
@@ -51,26 +91,20 @@
 
       <div class="blog-grid">
 
-        <!-- ✅ DESTAQUE DA SEMANA (mais recente) -->
-        <article class="blog-card" style="position:relative;">
-          <div style="
-            position:absolute; top:14px; right:14px;
-            padding:7px 10px; border-radius:999px;
-            font-size:12px; font-weight:700;
-            background:rgba(212,175,55,.14);
-            border:1px solid rgba(212,175,55,.35);
-            color:#d4af37;">
-            ⭐ Destaque da Semana
-          </div>
+        <!-- ✅ DESTAQUE (mais recente) -->
+        <article class="blog-card">
+          <div class="featured-ribbon">Destaque da Semana</div>
 
           <div class="blog-date">Semana 26–30 de Janeiro</div>
           <h3 class="blog-title">Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</h3>
           <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
-          <div class="blog-tags">
-            <span class="tag">XAUUSD</span>
-            <span class="tag">Projeção</span>
-            <span class="tag">Vídeo</span>
+
+          <div class="blog-meta-row">
+            <span class="badge">XAUUSD</span>
+            <span class="badge">Projeção</span>
+            <span class="badge type-video">▶ Vídeo</span>
           </div>
+
           <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-26-30-jan/">Ver Projeção →</a>
         </article>
 
@@ -79,10 +113,13 @@
           <div class="blog-date">Semana 19–23 de Janeiro</div>
           <h3 class="blog-title">Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</h3>
           <p class="blog-excerpt">Revisão da semana e projeção com cenários, pontos importantes e direcionamento do ouro.</p>
-          <div class="blog-tags">
-            <span class="tag">XAUUSD</span>
-            <span class="tag">Projeção</span>
+
+          <div class="blog-meta-row">
+            <span class="badge">XAUUSD</span>
+            <span class="badge">Projeção</span>
+            <span class="badge type-video">▶ Vídeo</span>
           </div>
+
           <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-19-23-jan/">Ver Projeção →</a>
         </article>
 
@@ -91,10 +128,13 @@
           <div class="blog-date">15 de Dezembro, 2023</div>
           <h3 class="blog-title">Gestão de Risco: A Base do Trading Sustentável</h3>
           <p class="blog-excerpt">Princípios fundamentais de gestão de risco para proteger capital e ganhar consistência no longo prazo.</p>
-          <div class="blog-tags">
-            <span class="tag">Gestão de Risco</span>
-            <span class="tag">Fundamentos</span>
+
+          <div class="blog-meta-row">
+            <span class="badge">Gestão de Risco</span>
+            <span class="badge">Fundamentos</span>
+            <span class="badge type-leitura">📄 Leitura</span>
           </div>
+
           <a class="read-more" href="/clube-multi-trader-site/blog/gestao-risco/">Ler Artigo →</a>
         </article>
 
@@ -102,10 +142,13 @@
           <div class="blog-date">10 de Janeiro, 2024</div>
           <h3 class="blog-title">Psicologia do Trading: Como Controlar Suas Emoções</h3>
           <p class="blog-excerpt">Como manter disciplina e evitar decisões impulsivas quando o mercado coloca pressão.</p>
-          <div class="blog-tags">
-            <span class="tag">Psicologia</span>
-            <span class="tag">Disciplina</span>
+
+          <div class="blog-meta-row">
+            <span class="badge">Psicologia</span>
+            <span class="badge">Disciplina</span>
+            <span class="badge type-leitura">📄 Leitura</span>
           </div>
+
           <a class="read-more" href="/clube-multi-trader-site/blog/psicologia-trading/">Ler Artigo →</a>
         </article>
 
@@ -113,10 +156,13 @@
           <div class="blog-date">15 de Janeiro, 2024</div>
           <h3 class="blog-title">5 Erros Comuns que Destroem Contas de Trading</h3>
           <p class="blog-excerpt">Os erros mais comuns de iniciantes e como evitar para sobreviver e evoluir no jogo.</p>
-          <div class="blog-tags">
-            <span class="tag">Gestão de Risco</span>
-            <span class="tag">Iniciantes</span>
+
+          <div class="blog-meta-row">
+            <span class="badge">Gestão de Risco</span>
+            <span class="badge">Iniciantes</span>
+            <span class="badge type-leitura">📄 Leitura</span>
           </div>
+
           <a class="read-more" href="/clube-multi-trader-site/blog/erros-comuns/">Ler Artigo →</a>
         </article>
 
