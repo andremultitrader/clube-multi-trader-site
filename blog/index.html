@@ -53,6 +53,33 @@
       opacity:.95;
       transform: translateY(1px);
     }
+
+    /* botão extra (youtube) alinhado com o read-more */
+    .actions-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 6px;
+    }
+    .btn-yt{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: inherit;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn-yt:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.16);
+    }
   </style>
 </head>
 
@@ -106,6 +133,26 @@
         <article class="blog-card" data-type="video" data-order="1">
           <div class="featured-ribbon">Destaque da Semana</div>
 
+          <div class="blog-date">Semana 02–06 de Fevereiro</div>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (02–06 Fev)</span>
+          </h3>
+          <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
+
+          <div class="blog-meta-row">
+            <span class="badge">XAUUSD</span>
+            <span class="badge">Projeção</span>
+            <span class="badge type-video">▶ Vídeo</span>
+          </div>
+
+          <div class="actions-row">
+            <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-02-06-fev/">Ver Projeção →</a>
+            <a class="btn-yt" href="https://youtu.be/JOX2Ci88k4Y" target="_blank" rel="noopener noreferrer">▶ Assistir no YouTube →</a>
+          </div>
+        </article>
+
+        <!-- Projeção anterior -->
+        <article class="blog-card" data-type="video" data-order="2">
           <div class="blog-date">Semana 26–30 de Janeiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</span>
@@ -121,8 +168,8 @@
           <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-26-30-jan/">Ver Projeção →</a>
         </article>
 
-        <!-- Projeção anterior -->
-        <article class="blog-card" data-type="video" data-order="2">
+        <!-- Projeção anterior (mais antiga) -->
+        <article class="blog-card" data-type="video" data-order="3">
           <div class="blog-date">Semana 19–23 de Janeiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</span>
