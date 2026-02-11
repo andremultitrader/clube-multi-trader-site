@@ -130,9 +130,32 @@
              ========================= -->
 
         <!-- ✅ DESTAQUE (mais recente) -->
-        <article class="blog-card" data-type="video" data-order="1">
+        <article class="blog-card" data-type="video" data-featured="true" data-order="0">
           <div class="featured-ribbon">Destaque da Semana</div>
 
+          <div class="blog-date">Lendo o Mercado</div>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">🎥</span>Lendo o mercado em 6 camadas</span>
+          </h3>
+          <p class="blog-excerpt">Aula em vídeo para você entender o mercado com clareza: contexto, estrutura, zonas, gatilhos e execução em camadas.</p>
+
+          <div class="blog-meta-row">
+            <span class="badge">Leitura de Mercado</span>
+            <span class="badge">Estrutura</span>
+            <span class="badge type-video">▶ Vídeo</span>
+          </div>
+
+          <div class="actions-row">
+            <!-- Se você quiser criar uma página no blog para esse vídeo, troque o href abaixo -->
+            <a class="read-more" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">Ver no YouTube →</a>
+            <a class="btn-yt" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">▶</span> Assistir no YouTube →
+            </a>
+          </div>
+        </article>
+
+        <!-- Projeção semanal (mantida) -->
+        <article class="blog-card" data-type="video" data-order="1">
           <div class="blog-date">Semana 09–13 de Fevereiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (09–13 Fev)</span>
@@ -147,7 +170,9 @@
 
           <div class="actions-row">
             <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-09-13-fev/">Ver Projeção →</a>
-            <a class="btn-yt" href="https://youtu.be/46nz09zVjU8" target="_blank" rel="noopener noreferrer">▶ Assistir no YouTube →</a>
+            <a class="btn-yt" href="https://youtu.be/46nz09zVjU8" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">▶</span> Assistir no YouTube →
+            </a>
           </div>
         </article>
 
@@ -167,7 +192,9 @@
 
           <div class="actions-row">
             <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-02-06-fev/">Ver Projeção →</a>
-            <a class="btn-yt" href="https://youtu.be/JOX2Ci88k4Y" target="_blank" rel="noopener noreferrer">▶ Assistir no YouTube →</a>
+            <a class="btn-yt" href="https://youtu.be/JOX2Ci88k4Y" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">▶</span> Assistir no YouTube →
+            </a>
           </div>
         </article>
 
@@ -274,15 +301,18 @@
   <script src="/clube-multi-trader-site/assets/main.js"></script>
 
   <script>
-    // Ordenação automática: Vídeos primeiro, depois Artigos
+    // Ordenação automática: Destaque primeiro (data-featured="true"), depois Vídeos, depois Artigos
     (function sortBlogCards(){
       const grid = document.getElementById('blogGrid');
       if(!grid) return;
 
       const cards = Array.from(grid.querySelectorAll('.blog-card'));
 
-      // Regra: video antes de leitura; e dentro de cada tipo, pelo data-order (menor primeiro)
       cards.sort((a,b)=>{
+        const fa = (a.dataset.featured === 'true') ? 0 : 1;
+        const fb = (b.dataset.featured === 'true') ? 0 : 1;
+        if (fa !== fb) return fa - fb;
+
         const ta = (a.dataset.type || '').toLowerCase();
         const tb = (b.dataset.type || '').toLowerCase();
 
