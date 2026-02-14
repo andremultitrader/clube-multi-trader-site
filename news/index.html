@@ -12,16 +12,28 @@
 
   <style>
     /* Ajustes locais só para a página News (sem mexer no CSS global) */
-    .news-hero { padding: 38px 0 10px; }
-    .news-hero .section-title { margin-bottom: 10px; }
-    .news-hero .section-subtitle { max-width: 920px; margin: 0 auto; }
+    .news-hero { padding: 26px 0 6px; }
+    .news-title {
+      font-family: Poppins, system-ui;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 10px;
+      letter-spacing: .2px;
+    }
+    .news-sub {
+      font-family: Montserrat, system-ui;
+      opacity: .86;
+      max-width: 920px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
     .news-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      margin-top: 18px;
+      margin-top: 14px;
     }
     .news-pill{
       font-family: Poppins, system-ui;
@@ -32,11 +44,24 @@
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06);
       backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    .news-actions{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .news-actions .cta-button{
+      min-width: 210px;
+      text-align:center;
     }
 
     .news-card { overflow: hidden; }
-    .news-card .card-title { display:flex; align-items:center; gap:10px; }
-    .news-card .card-description { margin-top: 6px; opacity: .9; }
+    .news-card .card-title { display:flex; align-items:center; gap:10px; margin-bottom: 8px; }
 
     .widget-wrap{
       height: 760px;
@@ -47,14 +72,58 @@
       box-shadow: 0 12px 30px rgba(0,0,0,.25);
     }
 
+    .fallback-box{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 14px;
+      margin-top: 14px;
+      font-family: Montserrat, system-ui;
+      font-size: 13px;
+      line-height: 1.55;
+      opacity: .9;
+    }
+    .fallback-box strong{ font-family: Poppins, system-ui; }
+    .fallback-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+    .mini-btn{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      color: inherit;
+      font-family: Poppins, system-ui;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* Mobile: título menor + botões em coluna e 100% */
     @media (max-width: 680px){
-      .widget-wrap{ height: 860px; }
+      .news-title{ font-size: 22px; }
+      .news-actions{
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 420px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .news-actions .cta-button{
+        width: 100%;
+        min-width: unset;
+      }
+      .widget-wrap{ height: 900px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV (mesmo padrão do index) -->
+  <!-- NAV -->
   <nav>
     <div class="nav-content">
       <div class="logo">⚜️ CLUBE MULTI TRADER</div>
@@ -85,18 +154,18 @@
     </div>
   </nav>
 
-  <!-- CLOCK (mesmo padrão do index) -->
+  <!-- CLOCK -->
   <div class="clock-container">
     <div class="clock-time" id="clock-time">00:00:00</div>
     <div class="clock-date" id="clock-date">Carregando...</div>
   </div>
 
-  <!-- HERO / TÍTULO DA PÁGINA -->
+  <!-- HERO -->
   <section class="news-hero">
     <div class="container" style="text-align:center;">
-      <h2 class="section-title">📰 News & Calendário Econômico</h2>
-      <p class="section-subtitle">
-        Aqui você acompanha as notícias que mais mexem com o preço — ideal pra evitar entrar “em cima” de High Impact.
+      <h1 class="news-title">📰 News & Calendário Econômico</h1>
+      <p class="news-sub">
+        Acompanhe os eventos que mais mexem com o preço e evite operar em cima de notícia.
         <br/>
         <strong>Filtro:</strong> EUA 🇺🇸 + Japão 🇯🇵 • <strong>Impacto:</strong> High • <strong>Horário:</strong> JST (Tokyo)
       </p>
@@ -107,9 +176,8 @@
         <span class="news-pill">🇺🇸 US + 🇯🇵 JP</span>
       </div>
 
-      <div style="margin-top:26px;">
+      <div class="news-actions">
         <a href="/clube-multi-trader-site/materiais/" class="cta-button">Ver Materiais</a>
-        <span style="display:inline-block;width:12px;"></span>
         <a href="/clube-multi-trader-site/blog/" class="cta-button">Ir para o Blog</a>
       </div>
     </div>
@@ -125,18 +193,19 @@
             Dica prática: evita abrir posição <strong>5–10 min antes</strong> de notícia High e espera o spread normalizar.
           </p>
 
-          <div style="margin-top:18px;">
+          <div style="margin-top:14px;">
             <div class="widget-wrap">
               <!-- TradingView Widget BEGIN -->
               <div class="tradingview-widget-container" style="height:100%; width:100%;">
                 <div class="tradingview-widget-container__widget" style="height:100%; width:100%;"></div>
 
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-economic-calendar.js" async>
+                <!-- Se ficar em branco, geralmente é Brave/AdBlock bloqueando o script -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-economic-calendar.js">
                 {
                   "colorTheme": "dark",
                   "isTransparent": true,
                   "width": "100%",
-                  "height": "100%",
+                  "height": "760",
                   "locale": "br",
                   "importanceFilter": "1",
                   "countryFilter": "us,jp"
@@ -145,14 +214,27 @@
               </div>
               <!-- TradingView Widget END -->
             </div>
-          </div>
 
+            <div class="fallback-box">
+              <strong>⚠️ Se o calendário não aparecer:</strong> no Brave/Chrome, desative o bloqueio (Brave Shields / AdBlock)
+              para o domínio do TradingView e recarregue a página.
+              <div class="fallback-actions">
+                <a class="mini-btn" href="https://www.tradingview.com/economic-calendar/" target="_blank" rel="noopener noreferrer">
+                  Abrir no TradingView ↗
+                </a>
+                <a class="mini-btn" href="/clube-multi-trader-site/contato/">
+                  Falar comigo
+                </a>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (mesmo padrão do index) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
