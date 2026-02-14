@@ -18,19 +18,19 @@
 
     .ticker-top{
       width: 100%;
-      margin-top: var(--nav-safe); /* DESKTOP: empurra pra baixo do menu */
+      margin-top: var(--nav-safe);
       border-top: 1px solid rgba(255,255,255,.10);
       border-bottom: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      overflow: visible; /* evita cortar conteúdo */
+      overflow: visible;
       box-shadow: 0 14px 40px rgba(0,0,0,.35);
     }
 
     .ticker-top .tradingview-widget-container{
       margin: 0 auto;
       max-width: 1200px;
-      padding: 14px 14px;   /* mais “altura” pra não cortar */
-      min-height: 58px;     /* garante espaço pro ticker */
+      padding: 14px 14px;
+      min-height: 58px;
       display: flex;
       align-items: center;
     }
@@ -47,9 +47,19 @@
         padding: 16px 10px;
         min-height: 66px;
       }
+
+      /* ====== AJUSTE DO LOGO NO MOBILE (não ficar “comido”) ====== */
+      nav .logo{
+        padding-left: 12px;  /* desloca um pouco pra direita */
+        padding-right: 8px;
+        max-width: calc(100% - 64px); /* reserva espaço pro botão do menu */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
-    /* Clock: some quando vazio (evita 00:00:00/Carregando aparecer) */
+    /* Clock: some quando vazio */
     .clock-time:empty,
     .clock-date:empty{ display:none; }
   </style>
@@ -110,7 +120,7 @@
     </div>
   </div>
 
-  <!-- CLOCK (sem placeholders) -->
+  <!-- CLOCK -->
   <div class="clock-container">
     <div class="clock-time" id="clock-time"></div>
     <div class="clock-date" id="clock-date"></div>
