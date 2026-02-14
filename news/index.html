@@ -3,129 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News • Clube Multi Trader</title>
+  <title>Calendário Econômico • Clube Multi Trader</title>
 
   <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
 
   <style>
-    /* Ajustes locais só para a página News (sem mexer no CSS global) */
-    .news-hero { padding: 26px 0 10px; }
+    /* Ajustes locais somente para a página Calendário (mantendo seu CSS global) */
 
-    .news-headbox{
+    .cal-hero { padding: 18px 0 6px; }
+
+    /* Cabeçalho no "mesmo tom" do site (sem ficar chamativo demais) */
+    .cal-header{
       max-width: 980px;
       margin: 0 auto;
-      padding: 18px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 14px 34px rgba(0,0,0,.25);
       text-align: center;
     }
-
-    .news-kicker{
+    .cal-kicker{
       font-family: Poppins, system-ui;
       font-weight: 700;
       font-size: 12px;
-      letter-spacing: .8px;
+      letter-spacing: .7px;
       text-transform: uppercase;
-      opacity: .9;
-      margin: 0 0 10px;
+      opacity: .85;
+      margin: 0 0 8px;
     }
-
-    .news-title {
-      font-family: "Playfair Display", serif;
-      font-size: 38px;
-      line-height: 1.05;
-      margin: 0 0 10px;
+    .cal-title{
+      font-family: Poppins, system-ui;
+      font-size: 28px;
+      line-height: 1.15;
+      margin: 0 0 8px;
       letter-spacing: .2px;
     }
-
-    .news-sub {
+    .cal-sub{
       font-family: Montserrat, system-ui;
-      opacity: .9;
-      max-width: 900px;
+      opacity: .86;
       margin: 0 auto;
+      max-width: 900px;
       line-height: 1.65;
       font-size: 14px;
     }
 
-    .news-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 14px;
-    }
-    .news-pill{
-      font-family: Poppins, system-ui;
-      font-weight: 600;
-      font-size: 12px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      backdrop-filter: blur(6px);
-      white-space: nowrap;
-    }
-
-    .news-actions{
+    .cal-actions{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:16px;
+      margin-top:14px;
     }
-    .news-actions .cta-button{
+    .cal-actions .cta-button{
       min-width: 210px;
       text-align:center;
     }
 
-    .news-tip{
-      margin-top: 14px;
+    /* Card premium (só na área do calendário) */
+    .cal-card{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      overflow: hidden;
+      position: relative;
+    }
+    .cal-card::before{
+      content:"";
+      position:absolute;
+      inset:-120px -80px auto -80px;
+      height: 220px;
+      background: radial-gradient(closest-side, rgba(255,255,255,.12), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+
+    .cal-card-head{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .cal-card-title{
+      margin: 0 0 6px;
+      font-family: Poppins, system-ui;
+      font-size: 15px;
+      letter-spacing: .2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .cal-card-desc{
+      margin: 0;
       font-family: Montserrat, system-ui;
       font-size: 13px;
-      opacity: .9;
+      opacity: .86;
+      line-height: 1.55;
     }
 
-    .news-card { overflow: hidden; }
-    .news-card .card-title { display:flex; align-items:center; gap:10px; margin-bottom: 8px; }
-
-    .widget-wrap{
+    /* Área do embed: moldura escura + cantos arredondados */
+    .cal-embed-wrap{
       height: 820px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      background: rgba(0,0,0,.28);
+      border-top: 1px solid rgba(255,255,255,.06);
+      position: relative;
     }
-    .te-iframe{
+    .cal-embed-wrap::after{
+      /* overlay leve pra "puxar" o embed pro seu tema */
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(1000px 320px at 50% 0%, rgba(0,0,0,.25), rgba(0,0,0,0));
+      pointer-events:none;
+      z-index:2;
+    }
+    .cal-iframe{
       width: 100%;
       height: 100%;
       border: 0;
       display:block;
+      position: relative;
+      z-index:1;
+      background: transparent;
     }
 
-    .fallback-box{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      border-radius: 14px;
-      padding: 14px 14px;
-      margin-top: 14px;
-      font-family: Montserrat, system-ui;
-      font-size: 13px;
-      line-height: 1.55;
-      opacity: .9;
-    }
-    .fallback-box strong{ font-family: Poppins, system-ui; }
-    .fallback-actions{
+    .cal-footnote{
+      padding: 12px 16px 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:10px;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Montserrat, system-ui;
+      font-size: 12px;
+      opacity: .86;
     }
     .mini-btn{
       display:inline-block;
@@ -141,20 +149,20 @@
     }
 
     @media (max-width: 680px){
-      .news-title{ font-size: 26px; }
-      .news-headbox{ padding: 16px 14px; border-radius: 16px; }
-      .news-actions{
+      .cal-title{ font-size: 22px; }
+      .cal-actions{
         flex-direction: column;
         align-items: stretch;
         max-width: 420px;
         margin-left:auto;
         margin-right:auto;
       }
-      .news-actions .cta-button{
+      .cal-actions .cta-button{
         width: 100%;
         min-width: unset;
       }
-      .widget-wrap{ height: 980px; }
+      .cal-embed-wrap{ height: 980px; }
+      .cal-footnote{ justify-content: center; text-align:center; }
     }
   </style>
 </head>
@@ -170,7 +178,7 @@
         <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
         <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
         <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a data-nav="news" href="/clube-multi-trader-site/news/">News</a></li>
+        <li><a data-nav="calendario" href="/clube-multi-trader-site/calendario/">Calendário</a></li>
         <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
       </ul>
 
@@ -185,7 +193,7 @@
         <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
         <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
         <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/news/">News</a></li>
+        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
         <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
       </ul>
     </div>
@@ -198,31 +206,19 @@
   </div>
 
   <!-- HERO -->
-  <section class="news-hero">
+  <section class="cal-hero">
     <div class="container">
-      <div class="news-headbox">
-        <p class="news-kicker">Calendário Econômico • Notícias que movem o preço</p>
-
-        <h1 class="news-title">News & Calendário Econômico</h1>
-
-        <p class="news-sub">
-          Acompanhe os principais eventos do dia e evite operar “em cima” de notícia.
-          O calendário abaixo usa automaticamente o <strong>fuso do seu dispositivo</strong> (PC ou celular).
+      <div class="cal-header">
+        <p class="cal-kicker">planejamento • consistência • proteção</p>
+        <h1 class="cal-title">📅 Calendário Econômico</h1>
+        <p class="cal-sub">
+          Use o calendário para evitar operar em horários críticos e proteger seu capital.
+          O horário exibido é ajustado automaticamente pelo seu dispositivo (PC ou celular).
         </p>
 
-        <div class="news-badges">
-          <span class="news-pill">⏰ Fuso automático</span>
-          <span class="news-pill">📅 Eventos do dia</span>
-          <span class="news-pill">⚡ Gestão de risco</span>
-        </div>
-
-        <div class="news-actions">
+        <div class="cal-actions">
           <a href="/clube-multi-trader-site/materiais/" class="cta-button">Ver Materiais</a>
           <a href="/clube-multi-trader-site/blog/" class="cta-button">Ir para o Blog</a>
-        </div>
-
-        <div class="news-tip">
-          💡 Regra simples: <strong>não abrir operação 5–10 min antes</strong> e esperar o mercado estabilizar.
         </div>
       </div>
     </div>
@@ -232,36 +228,29 @@
   <section>
     <div class="container">
       <div class="cards-grid" style="grid-template-columns: 1fr;">
-        <div class="card news-card">
-          <h3 class="card-title">📌 Economic Calendar (Trading Economics)</h3>
-          <p class="card-description">
-            Use este calendário para se organizar e operar com mais consistência e proteção.
-          </p>
+        <div class="cal-card">
+          <div class="cal-card-head">
+            <h3 class="cal-card-title">⚡ Eventos do dia (Trading Economics)</h3>
+            <p class="cal-card-desc">
+              Regra simples: evite abrir posição <strong>5–10 min antes</strong> de notícia importante e espere o spread normalizar.
+            </p>
+          </div>
 
-          <div style="margin-top:14px;">
-            <div class="widget-wrap">
-              <iframe
-                class="te-iframe"
-                title="Trading Economics - Economic Calendar"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://tradingeconomics.com/calendar?embed=1">
-              </iframe>
-            </div>
+          <div class="cal-embed-wrap">
+            <iframe
+              class="cal-iframe"
+              title="Trading Economics - Economic Calendar"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://tradingeconomics.com/calendar?embed=1">
+            </iframe>
+          </div>
 
-            <div class="fallback-box">
-              <strong>Se não carregar:</strong> pode ser bloqueio de iframe por extensão (AdBlock) ou navegador.
-              Desative bloqueadores e recarregue.
-              <div class="fallback-actions">
-                <a class="mini-btn" href="https://tradingeconomics.com/calendar" target="_blank" rel="noopener noreferrer">
-                  Abrir no Trading Economics ↗
-                </a>
-                <a class="mini-btn" href="/clube-multi-trader-site/contato/">
-                  Falar comigo
-                </a>
-              </div>
-            </div>
-
+          <div class="cal-footnote">
+            <span>Se o iframe não carregar, abra direto no site do calendário.</span>
+            <a class="mini-btn" href="https://tradingeconomics.com/calendar" target="_blank" rel="noopener noreferrer">
+              Abrir calendário ↗
+            </a>
           </div>
         </div>
       </div>
