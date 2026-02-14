@@ -22,7 +22,7 @@
       border-top: 1px solid rgba(255,255,255,.10);
       border-bottom: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      overflow: visible;
+      overflow: hidden;
       box-shadow: 0 14px 40px rgba(0,0,0,.35);
     }
 
@@ -30,18 +30,24 @@
       margin: 0 auto;
       max-width: 1200px;
       padding: 14px 14px;
-      min-height: 58px;
+      min-height: 62px;
       display: flex;
       align-items: center;
     }
 
     .ticker-top .tradingview-widget-container__widget{ width: 100%; }
 
+    /* Força o widget ocupar toda a largura (ajuda no desktop) */
+    .tradingview-widget-container,
+    .tradingview-widget-container__widget{
+      width: 100% !important;
+    }
+
     @media (max-width: 680px){
       .ticker-top{ margin-top: var(--nav-safe-m); }
       .ticker-top .tradingview-widget-container{
         padding: 16px 10px;
-        min-height: 66px;
+        min-height: 70px;
       }
 
       /* Ajuste do logo no mobile */
@@ -61,16 +67,12 @@
 
     /* ====== AJUSTE DO HERO (subir um pouco) ====== */
     .hero{
-      padding-top: 36px !important;   /* diminui o espaço acima do badge */
+      padding-top: 32px !important;
       padding-bottom: 60px !important;
     }
-    .hero-content{
-      margin-top: 0 !important;
-    }
-
     @media (max-width: 680px){
       .hero{
-        padding-top: 22px !important;
+        padding-top: 18px !important;
         padding-bottom: 46px !important;
       }
     }
@@ -119,12 +121,13 @@
       {
         "symbols": [
           { "proName": "OANDA:XAUUSD", "title": "XAUUSD" },
-          { "proName": "TVC:DXY", "title": "DXY" },
-          { "proName": "OANDA:USDJPY", "title": "USDJPY" }
+          { "proName": "ICEUS:DXY", "title": "DXY" },
+          { "proName": "OANDA:USDJPY", "title": "USDJPY" },
+          { "proName": "COINBASE:BTCUSD", "title": "BTC" }
         ],
         "showSymbolLogo": true,
         "isTransparent": true,
-        "displayMode": "adaptive",
+        "displayMode": "compact",
         "colorTheme": "dark",
         "locale": "br"
       }
