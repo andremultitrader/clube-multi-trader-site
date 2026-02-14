@@ -3,125 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calendário Econômico • Clube Multi Trader</title>
+  <title>Clube Multi Trader</title>
 
   <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
-
-  <style>
-    /* Ajustes locais somente para a página Calendário (mantendo seu CSS global) */
-
-    /* HERO no mesmo estilo da Home */
-    .hero.cal-hero-fix { padding-top: 46px; }
-    .hero.cal-hero-fix .hero-title { font-size: 40px; }
-    .hero.cal-hero-fix .hero-subtitle { max-width: 900px; margin-left:auto; margin-right:auto; }
-    .hero.cal-hero-fix .hero-content { padding-top: 10px; }
-
-    @media (max-width: 680px){
-      .hero.cal-hero-fix { padding-top: 58px; }
-      .hero.cal-hero-fix .hero-title { font-size: 26px; }
-    }
-
-    /* Card premium (apenas na área do calendário) */
-    .cal-card{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-      overflow: hidden;
-      position: relative;
-    }
-    .cal-card::before{
-      content:"";
-      position:absolute;
-      inset:-120px -80px auto -80px;
-      height: 220px;
-      background: radial-gradient(closest-side, rgba(255,255,255,.12), rgba(255,255,255,0));
-      pointer-events:none;
-    }
-
-    .cal-card-head{
-      padding: 16px 16px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      position: relative;
-      z-index: 2;
-    }
-    .cal-card-title{
-      margin: 0 0 6px;
-      font-family: Poppins, system-ui;
-      font-size: 15px;
-      letter-spacing: .2px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .cal-card-desc{
-      margin: 0;
-      font-family: Montserrat, system-ui;
-      font-size: 13px;
-      opacity: .86;
-      line-height: 1.55;
-    }
-
-    /* Área do embed: moldura escura + overlay discreto */
-    .cal-embed-wrap{
-      height: 820px;
-      background: rgba(0,0,0,.28);
-      border-top: 1px solid rgba(255,255,255,.06);
-      position: relative;
-    }
-    .cal-embed-wrap::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(1000px 320px at 50% 0%, rgba(0,0,0,.25), rgba(0,0,0,0));
-      pointer-events:none;
-      z-index:2;
-    }
-    .cal-iframe{
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display:block;
-      position: relative;
-      z-index:1;
-      background: transparent;
-    }
-
-    .cal-footnote{
-      padding: 12px 16px 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content: space-between;
-      align-items: center;
-      font-family: Montserrat, system-ui;
-      font-size: 12px;
-      opacity: .86;
-      position: relative;
-      z-index: 2;
-    }
-    .mini-btn{
-      display:inline-block;
-      padding:10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      color: inherit;
-      font-family: Poppins, system-ui;
-      font-weight: 600;
-      font-size: 12px;
-    }
-
-    @media (max-width: 680px){
-      .cal-embed-wrap{ height: 980px; }
-      .cal-footnote{ justify-content: center; text-align:center; }
-    }
-  </style>
 </head>
 <body>
 
@@ -162,52 +49,48 @@
     <div class="clock-date" id="clock-date">Carregando...</div>
   </div>
 
-  <!-- HERO (igual ao estilo da Home) -->
-  <section class="hero cal-hero-fix">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-content">
-      <div class="hero-badge">📅</div>
-      <h1 class="hero-title">Calendário Econômico</h1>
-      <p class="hero-subtitle">
-        Use o calendário para evitar operar em horários críticos e proteger seu capital.
-        O horário exibido é ajustado automaticamente pelo seu dispositivo (PC ou celular).
-      </p>
-
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:14px;">
-        <a href="/clube-multi-trader-site/materiais/" class="cta-button">Ver Materiais</a>
-        <a href="/clube-multi-trader-site/blog/" class="cta-button">Ir para o Blog</a>
-      </div>
+      <div class="hero-badge">⚜️</div>
+      <h1 class="hero-title">Disciplina • Estrutura • Consistência</h1>
+      <p class="hero-subtitle">Transforme sua relação com o mercado através de métodos comprovados e mentalidade vencedora</p>
+      <a href="/clube-multi-trader-site/materiais/" class="cta-button">Acesse Materiais Gratuitos</a>
     </div>
   </section>
 
-  <!-- CONTEÚDO -->
+  <!-- SOBRE -->
   <section>
     <div class="container">
-      <div class="cards-grid" style="grid-template-columns: 1fr;">
-        <div class="cal-card">
-          <div class="cal-card-head">
-            <h3 class="cal-card-title">⚡ Eventos do dia (Trading Economics)</h3>
-            <p class="cal-card-desc">
-              Regra simples: evite abrir posição <strong>5–10 min antes</strong> de notícia importante e espere o spread normalizar.
-            </p>
-          </div>
+      <h2 class="section-title">Sobre o Clube Multi Trader</h2>
+      <p class="section-subtitle">
+        O Clube Multi Trader é uma comunidade dedicada a formar traders profissionais através de educação de qualidade,
+        suporte contínuo e estratégias testadas no mercado real. Nosso foco é construir bases sólidas para resultados
+        consistentes e sustentáveis.
+      </p>
 
-          <div class="cal-embed-wrap">
-            <iframe
-              class="cal-iframe"
-              title="Trading Economics - Economic Calendar"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://tradingeconomics.com/calendar?embed=1">
-            </iframe>
-          </div>
-
-          <div class="cal-footnote">
-            <span>Se o iframe não carregar, abra direto no site do calendário.</span>
-            <a class="mini-btn" href="https://tradingeconomics.com/calendar" target="_blank" rel="noopener noreferrer">
-              Abrir calendário ↗
-            </a>
-          </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3 class="card-title">Método</h3>
+          <p class="card-description">Processo claro, rotina e repetição do que funciona: menos achismo, mais execução.</p>
         </div>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3 class="card-title">Mentalidade</h3>
+          <p class="card-description">Disciplina, controle emocional e consistência para sobreviver e evoluir no mercado.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">Prática</h3>
+          <p class="card-description">Conteúdos e materiais para você aplicar, registrar e ajustar com base em dados reais.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="/clube-multi-trader-site/cursos/" class="cta-button">Ver Cursos</a>
+        <span style="display:inline-block;width:12px;"></span>
+        <a href="/clube-multi-trader-site/blog/" class="cta-button">Ver Blog</a>
       </div>
     </div>
   </section>
