@@ -35,24 +35,20 @@
       align-items: center;
     }
 
-    .ticker-top .tradingview-widget-container__widget{
-      width: 100%;
-    }
+    .ticker-top .tradingview-widget-container__widget{ width: 100%; }
 
     @media (max-width: 680px){
-      .ticker-top{
-        margin-top: var(--nav-safe-m);
-      }
+      .ticker-top{ margin-top: var(--nav-safe-m); }
       .ticker-top .tradingview-widget-container{
         padding: 16px 10px;
         min-height: 66px;
       }
 
-      /* ====== AJUSTE DO LOGO NO MOBILE (não ficar “comido”) ====== */
+      /* Ajuste do logo no mobile */
       nav .logo{
-        padding-left: 12px;  /* desloca um pouco pra direita */
+        padding-left: 12px;
         padding-right: 8px;
-        max-width: calc(100% - 64px); /* reserva espaço pro botão do menu */
+        max-width: calc(100% - 64px);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -62,6 +58,22 @@
     /* Clock: some quando vazio */
     .clock-time:empty,
     .clock-date:empty{ display:none; }
+
+    /* ====== AJUSTE DO HERO (subir um pouco) ====== */
+    .hero{
+      padding-top: 36px !important;   /* diminui o espaço acima do badge */
+      padding-bottom: 60px !important;
+    }
+    .hero-content{
+      margin-top: 0 !important;
+    }
+
+    @media (max-width: 680px){
+      .hero{
+        padding-top: 22px !important;
+        padding-bottom: 46px !important;
+      }
+    }
   </style>
 </head>
 
