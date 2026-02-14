@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News • Clube Multi Trader</title>
+
+  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+
+  <style>
+    /* Ajustes locais só para a página News (sem mexer no CSS global) */
+    .news-hero { padding: 38px 0 10px; }
+    .news-hero .section-title { margin-bottom: 10px; }
+    .news-hero .section-subtitle { max-width: 920px; margin: 0 auto; }
+
+    .news-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .news-pill{
+      font-family: Poppins, system-ui;
+      font-weight: 600;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .news-card { overflow: hidden; }
+    .news-card .card-title { display:flex; align-items:center; gap:10px; }
+    .news-card .card-description { margin-top: 6px; opacity: .9; }
+
+    .widget-wrap{
+      height: 760px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    @media (max-width: 680px){
+      .widget-wrap{ height: 860px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (mesmo padrão do index) -->
+  <nav>
+    <div class="nav-content">
+      <div class="logo">⚜️ CLUBE MULTI TRADER</div>
+
+      <ul class="nav-links">
+        <li><a data-nav="home" href="/clube-multi-trader-site/">Home</a></li>
+        <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
+        <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
+        <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
+        <li><a data-nav="news" href="/clube-multi-trader-site/news/">News</a></li>
+        <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="/clube-multi-trader-site/">Home</a></li>
+        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
+        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
+        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
+        <li><a href="/clube-multi-trader-site/news/">News</a></li>
+        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CLOCK (mesmo padrão do index) -->
+  <div class="clock-container">
+    <div class="clock-time" id="clock-time">00:00:00</div>
+    <div class="clock-date" id="clock-date">Carregando...</div>
+  </div>
+
+  <!-- HERO / TÍTULO DA PÁGINA -->
+  <section class="news-hero">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">📰 News & Calendário Econômico</h2>
+      <p class="section-subtitle">
+        Aqui você acompanha as notícias que mais mexem com o preço — ideal pra evitar entrar “em cima” de High Impact.
+        <br/>
+        <strong>Filtro:</strong> EUA 🇺🇸 + Japão 🇯🇵 • <strong>Impacto:</strong> High • <strong>Horário:</strong> JST (Tokyo)
+      </p>
+
+      <div class="news-badges">
+        <span class="news-pill">⏰ JST (Tokyo)</span>
+        <span class="news-pill">💥 High Impact</span>
+        <span class="news-pill">🇺🇸 US + 🇯🇵 JP</span>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a href="/clube-multi-trader-site/materiais/" class="cta-button">Ver Materiais</a>
+        <span style="display:inline-block;width:12px;"></span>
+        <a href="/clube-multi-trader-site/blog/" class="cta-button">Ir para o Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section>
+    <div class="container">
+      <div class="cards-grid" style="grid-template-columns: 1fr;">
+        <div class="card news-card">
+          <h3 class="card-title">📅 Economic Calendar (TradingView)</h3>
+          <p class="card-description">
+            Dica prática: evita abrir posição <strong>5–10 min antes</strong> de notícia High e espera o spread normalizar.
+          </p>
+
+          <div style="margin-top:18px;">
+            <div class="widget-wrap">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container" style="height:100%; width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:100%; width:100%;"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-economic-calendar.js" async>
+                {
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "width": "100%",
+                  "height": "100%",
+                  "locale": "br",
+                  "importanceFilter": "1",
+                  "countryFilter": "us,jp"
+                }
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (mesmo padrão do index) -->
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
+      <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
+         target="_blank" rel="noopener noreferrer" class="footer-link">
+        🔗 Acesse LiteFinance
+      </a>
+    </div>
+  </footer>
+
+  <script src="/clube-multi-trader-site/assets/main.js"></script>
+</body>
+</html>
