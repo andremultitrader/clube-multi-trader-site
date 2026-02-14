@@ -11,7 +11,7 @@
 
   <style>
     /* Ajustes locais (sem mexer no CSS global) */
-    .ticker-top {
+    .ticker-top{
       width: 100%;
       border-top: 1px solid rgba(255,255,255,.10);
       border-bottom: 1px solid rgba(255,255,255,.10);
@@ -19,15 +19,24 @@
       overflow: hidden;
       box-shadow: 0 14px 40px rgba(0,0,0,.35);
     }
-    .ticker-top .tradingview-widget-container {
+
+    /* Isso aqui evita a “linha mastigar” o conteúdo do ticker */
+    .ticker-top .tradingview-widget-container{
       margin: 0 auto;
       max-width: 1200px;
-      padding: 6px 14px;
+      padding: 10px 14px; /* aumentei o TOP pra descer o ticker */
     }
+
     @media (max-width: 680px){
-      .ticker-top .tradingview-widget-container {
-        padding: 6px 10px;
+      .ticker-top .tradingview-widget-container{
+        padding: 10px 10px;
       }
+    }
+
+    /* Clock: não mostrar nada vazio feio antes do JS preencher */
+    .clock-time:empty,
+    .clock-date:empty{
+      display: none;
     }
   </style>
 </head>
@@ -65,9 +74,8 @@
     </div>
   </nav>
 
-  <!-- TICKER TAPE (TradingView) - logo abaixo da linha do menu -->
+  <!-- TICKER (logo abaixo do menu) -->
   <div class="ticker-top">
-    <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
 
@@ -86,16 +94,15 @@
       }
       </script>
     </div>
-    <!-- TradingView Widget END -->
   </div>
 
-  <!-- CLOCK (somente a data/hora real; remove "Carregando..." visualmente) -->
+  <!-- CLOCK (sem placeholders) -->
   <div class="clock-container">
     <div class="clock-time" id="clock-time"></div>
     <div class="clock-date" id="clock-date"></div>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO (apenas 1 - sem duplicar) -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">⚜️</div>
