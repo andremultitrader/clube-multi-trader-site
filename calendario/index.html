@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
 
   <style>
-    /* Ajustes locais somente para esta página (sem mexer no CSS global) */
-
-    /* HERO mais seguro para não "sumir" em alguns layouts */
     .hero.cal-hero-fix { padding-top: 56px; }
     .hero.cal-hero-fix .hero-title { font-size: 40px; }
     .hero.cal-hero-fix .hero-subtitle { max-width: 980px; margin-left:auto; margin-right:auto; }
@@ -23,13 +20,11 @@
       flex-wrap:wrap;
       margin-top:16px;
     }
-
     @media (max-width: 680px){
       .hero.cal-hero-fix { padding-top: 66px; }
       .hero.cal-hero-fix .hero-title { font-size: 26px; }
     }
 
-    /* Chips de filtro */
     .cal-chips{
       display:flex;
       justify-content:center;
@@ -48,7 +43,6 @@
       white-space: nowrap;
     }
 
-    /* Card premium para o calendário */
     .cal-card{
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.14);
@@ -89,9 +83,8 @@
       line-height: 1.55;
     }
 
-    /* Área do embed */
     .cal-embed-wrap{
-      height: 900px;
+      height: 950px;
       background: rgba(0,0,0,.22);
       border-top: 1px solid rgba(255,255,255,.06);
       position: relative;
@@ -104,7 +97,6 @@
       background: transparent;
     }
 
-    /* Rodapé do card */
     .cal-footnote{
       padding: 12px 16px 16px;
       border-top: 1px solid rgba(255,255,255,.10);
@@ -133,7 +125,7 @@
     }
 
     @media (max-width: 680px){
-      .cal-embed-wrap{ height: 1050px; }
+      .cal-embed-wrap{ height: 1150px; }
       .cal-footnote{ justify-content: center; text-align:center; }
     }
   </style>
@@ -184,14 +176,14 @@
       <div class="hero-badge">📅</div>
       <h1 class="hero-title">Calendário Econômico (USD)</h1>
       <p class="hero-subtitle">
-        Aqui você acompanha os eventos que mais mexem com o <strong>ouro (XAUUSD)</strong>.
-        O horário do calendário se ajusta automaticamente pelo seu dispositivo (PC ou celular).
+        Use este calendário para evitar operar em horários críticos do <strong>XAUUSD</strong>.
+        O horário é ajustado automaticamente pelo seu dispositivo (PC ou celular).
       </p>
 
       <div class="cal-chips">
-        <span class="cal-chip">💵 Filtro: USD (EUA)</span>
-        <span class="cal-chip">🔥 Priorize: High Impact</span>
-        <span class="cal-chip">⏱️ Evite operar 5–10 min antes</span>
+        <span class="cal-chip">💵 Filtro: USD</span>
+        <span class="cal-chip">🔥 Foque: High Impact</span>
+        <span class="cal-chip">⏱️ Evite 5–10 min antes</span>
       </div>
 
       <div class="hero-actions">
@@ -207,28 +199,28 @@
       <div class="cards-grid" style="grid-template-columns: 1fr;">
         <div class="cal-card">
           <div class="cal-card-head">
-            <h3 class="cal-card-title">⚡ Eventos dos EUA (USD) • Trading Economics</h3>
+            <h3 class="cal-card-title">📌 Calendário Econômico • Investing</h3>
             <p class="cal-card-desc">
-              Dica prática: no próprio calendário, coloque <strong>Impact = High</strong> para focar nas notícias que realmente mexem no preço.
-              Se o spread estiver “abrindo”, espere normalizar antes de pensar em entrada.
+              Configure dentro do calendário: <strong>Currency = USD</strong> e <strong>Impact = High</strong>.
+              Assim você enxerga o que realmente mexe no ouro (CPI, NFP, FOMC, etc.).
             </p>
           </div>
 
           <div class="cal-embed-wrap">
-            <!-- USD-only na prática: calendário dos EUA -->
+            <!-- Observação: o Investing pode bloquear iframe em alguns navegadores/locais -->
             <iframe
               class="cal-iframe"
-              title="Calendário Econômico EUA (USD) - Trading Economics"
+              title="Calendário Econômico - Investing"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://tradingeconomics.com/united-states/calendar?embed=1">
+              src="https://www.investing.com/economic-calendar/">
             </iframe>
           </div>
 
           <div class="cal-footnote">
-            <span>Se não carregar no seu navegador, abra direto no calendário.</span>
-            <a class="mini-btn" href="https://tradingeconomics.com/united-states/calendar" target="_blank" rel="noopener noreferrer">
-              Abrir calendário ↗
+            <span>Se não carregar dentro do site (bloqueio de iframe), abra direto no Investing.</span>
+            <a class="mini-btn" href="https://www.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer">
+              Abrir no Investing ↗
             </a>
           </div>
         </div>
