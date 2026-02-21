@@ -27,6 +27,7 @@
     }
     .badge.type-video{ background: rgba(86,255,214,.10); border-color: rgba(86,255,214,.25); color:#56ffd6; }
     .badge.type-leitura{ background: rgba(140,170,255,.10); border-color: rgba(140,170,255,.25); color:#8caaff; }
+    .badge.type-imagem{ background: rgba(255,196,87,.10); border-color: rgba(255,196,87,.25); color:#ffc457; }
 
     .featured-ribbon{
       position:absolute;
@@ -54,7 +55,7 @@
       transform: translateY(1px);
     }
 
-    /* botão extra (youtube) alinhado com o read-more */
+    /* ações */
     .actions-row{
       display:flex;
       gap:12px;
@@ -79,6 +80,102 @@
       transform: translateY(-1px);
       background: rgba(255,255,255,.06);
       border-color: rgba(255,255,255,.16);
+    }
+
+    /* Thumbnail da projeção em imagem */
+    .blog-thumb{
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 8px 0 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      cursor: zoom-in;
+      position: relative;
+    }
+    .blog-thumb img{
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .25s ease;
+    }
+    .blog-thumb:hover img{
+      transform: scale(1.01);
+    }
+    .blog-thumb::after{
+      content: "🔍 Clique para ampliar";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(3px);
+    }
+
+    /* Modal / Lightbox */
+    .img-lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+    }
+    .img-lightbox.open{
+      display: flex;
+    }
+    .img-lightbox-content{
+      position: relative;
+      max-width: min(1100px, 95vw);
+      max-height: 90vh;
+      width: auto;
+    }
+    .img-lightbox-content img{
+      display: block;
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      border: 1px solid rgba(255,255,255,.12);
+      background: #111;
+    }
+    .img-lightbox-close{
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,.95);
+      color: #111;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    }
+    .img-lightbox-close:hover{
+      transform: scale(1.05);
+    }
+    .img-lightbox-hint{
+      position: absolute;
+      bottom: -34px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.8);
+      font-size: 12px;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -126,10 +223,10 @@
       <div class="blog-grid" id="blogGrid">
 
         <!-- =========================
-             VÍDEOS (vitrine - primeiro)
+             VÍDEOS / IMAGENS (vitrine - primeiro)
              ========================= -->
 
-        <!-- ✅ DESTAQUE (mais recente) -->
+        <!-- ✅ DESTAQUE -->
         <article class="blog-card" data-type="video" data-featured="true" data-order="0">
           <div class="featured-ribbon">Destaque da Semana</div>
 
@@ -146,7 +243,6 @@
           </div>
 
           <div class="actions-row">
-            <!-- Se você quiser criar uma página no blog para esse vídeo, troque o href abaixo -->
             <a class="read-more" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">Ver no YouTube →</a>
             <a class="btn-yt" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">
               <span aria-hidden="true">▶</span> Assistir no YouTube →
@@ -154,8 +250,47 @@
           </div>
         </article>
 
+        <!-- ✅ NOVA PROJEÇÃO 23–27 FEV (imagem + vídeo) -->
+        <article class="blog-card" data-type="imagem" data-order="1">
+          <div class="blog-date">Semana 23–27 de Fevereiro</div>
+          <h3 class="blog-title">
+            <span class="title-ico"><span class="ico">🖼️</span>Ouro (XAUUSD): Projeção Semanal (23–27 Fev)</span>
+          </h3>
+
+          <p class="blog-excerpt">
+            Projeção semanal do ouro com cenário, níveis importantes e direção provável. A imagem está disponível no card (clique para ampliar) e o vídeo completo já pode ser assistido no YouTube.
+          </p>
+
+          <!-- Imagem visível no card (clique para expandir) -->
+          <div class="blog-thumb open-lightbox"
+               role="button"
+               tabindex="0"
+               aria-label="Expandir imagem da projeção semanal"
+               data-full="https://drive.google.com/uc?export=view&id=12h-G7ibPJhFztqjqkvzrHIRHQKilJ2Vq">
+            <img
+              src="https://drive.google.com/thumbnail?id=12h-G7ibPJhFztqjqkvzrHIRHQKilJ2Vq&sz=w1600"
+              alt="Projeção semanal do Ouro XAUUSD de 23 a 27 de fevereiro"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="blog-meta-row">
+            <span class="badge">XAUUSD</span>
+            <span class="badge">Projeção</span>
+            <span class="badge type-imagem">🖼️ Imagem</span>
+            <span class="badge type-video">▶ Vídeo</span>
+          </div>
+
+          <div class="actions-row">
+            <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-23-27-fev/">Ver Projeção →</a>
+            <a class="btn-yt" href="https://youtu.be/KYikXB3iD3A" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">▶</span> Assistir no YouTube →
+            </a>
+          </div>
+        </article>
+
         <!-- Projeção semanal (mantida) -->
-        <article class="blog-card" data-type="video" data-order="1">
+        <article class="blog-card" data-type="video" data-order="2">
           <div class="blog-date">Semana 09–13 de Fevereiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (09–13 Fev)</span>
@@ -177,7 +312,7 @@
         </article>
 
         <!-- Projeção anterior -->
-        <article class="blog-card" data-type="video" data-order="2">
+        <article class="blog-card" data-type="video" data-order="3">
           <div class="blog-date">Semana 02–06 de Fevereiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (02–06 Fev)</span>
@@ -199,7 +334,7 @@
         </article>
 
         <!-- Projeção anterior -->
-        <article class="blog-card" data-type="video" data-order="3">
+        <article class="blog-card" data-type="video" data-order="4">
           <div class="blog-date">Semana 26–30 de Janeiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</span>
@@ -216,7 +351,7 @@
         </article>
 
         <!-- Projeção anterior (mais antiga) -->
-        <article class="blog-card" data-type="video" data-order="4">
+        <article class="blog-card" data-type="video" data-order="5">
           <div class="blog-date">Semana 19–23 de Janeiro</div>
           <h3 class="blog-title">
             <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</span>
@@ -298,10 +433,19 @@
     </div>
   </footer>
 
+  <!-- Lightbox / Modal da imagem -->
+  <div class="img-lightbox" id="imgLightbox" aria-hidden="true">
+    <div class="img-lightbox-content" role="dialog" aria-modal="true" aria-label="Imagem ampliada da projeção">
+      <button class="img-lightbox-close" id="imgLightboxClose" aria-label="Fechar imagem">×</button>
+      <img id="imgLightboxImage" src="" alt="Imagem ampliada" />
+      <div class="img-lightbox-hint">Clique fora da imagem ou pressione ESC para fechar</div>
+    </div>
+  </div>
+
   <script src="/clube-multi-trader-site/assets/main.js"></script>
 
   <script>
-    // Ordenação automática: Destaque primeiro (data-featured="true"), depois Vídeos, depois Artigos
+    // Ordenação automática: Destaque primeiro, depois Vídeos/Imagens, depois Artigos
     (function sortBlogCards(){
       const grid = document.getElementById('blogGrid');
       if(!grid) return;
@@ -316,8 +460,8 @@
         const ta = (a.dataset.type || '').toLowerCase();
         const tb = (b.dataset.type || '').toLowerCase();
 
-        const pa = (ta === 'video') ? 0 : 1;
-        const pb = (tb === 'video') ? 0 : 1;
+        const pa = (ta === 'video' || ta === 'imagem') ? 0 : 1;
+        const pb = (tb === 'video' || tb === 'imagem') ? 0 : 1;
         if (pa !== pb) return pa - pb;
 
         const oa = parseInt(a.dataset.order || '999', 10);
@@ -326,6 +470,62 @@
       });
 
       cards.forEach(c => grid.appendChild(c));
+    })();
+
+    // Lightbox / Expandir imagem ao clicar
+    (function imageLightbox(){
+      const lightbox = document.getElementById('imgLightbox');
+      const lightboxImg = document.getElementById('imgLightboxImage');
+      const closeBtn = document.getElementById('imgLightboxClose');
+      const triggers = document.querySelectorAll('.open-lightbox');
+
+      if(!lightbox || !lightboxImg || !closeBtn || !triggers.length) return;
+
+      function openLightbox(src, alt){
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || 'Imagem ampliada';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      triggers.forEach(el => {
+        el.addEventListener('click', () => {
+          const src = el.getAttribute('data-full');
+          const img = el.querySelector('img');
+          const alt = img ? img.alt : 'Imagem ampliada';
+          if(src) openLightbox(src, alt);
+        });
+
+        el.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            const src = el.getAttribute('data-full');
+            const img = el.querySelector('img');
+            const alt = img ? img.alt : 'Imagem ampliada';
+            if(src) openLightbox(src, alt);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape' && lightbox.classList.contains('open')){
+          closeLightbox();
+        }
+      });
     })();
   </script>
 
