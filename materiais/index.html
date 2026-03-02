@@ -8,6 +8,177 @@
   <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+
+  <style>
+    .materials-hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .materials-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #d4af37;
+      background: rgba(212, 175, 55, 0.08);
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .materials-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #ffffff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .materials-main-title span {
+      color: #d4af37;
+    }
+
+    .materials-main-subtitle {
+      max-width: 760px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.78);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .material-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(24,24,24,0.96), rgba(14,14,14,0.98));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 30px 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      overflow: hidden;
+    }
+
+    .material-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+      border-color: rgba(212,175,55,0.25);
+    }
+
+    .material-card.featured {
+      border: 1px solid rgba(212,175,55,0.28);
+      box-shadow: 0 14px 36px rgba(212,175,55,0.08), 0 10px 30px rgba(0,0,0,0.28);
+    }
+
+    .material-card.featured::before {
+      content: "DESTAQUE";
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #111;
+      background: #d4af37;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .material-icon {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+    }
+
+    .material-title {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .material-description {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .material-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+    }
+
+    .material-features li {
+      color: rgba(255,255,255,0.86);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .material-features li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #d4af37;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      text-decoration: none;
+      background: linear-gradient(135deg, #d4af37, #f1d16d);
+      color: #111;
+      font-weight: 700;
+      padding: 14px 18px;
+      border-radius: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(212,175,55,0.22);
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(212,175,55,0.28);
+    }
+
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .material-card {
+        padding: 24px 20px;
+      }
+
+      .materials-main-subtitle {
+        font-size: 0.98rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -44,39 +215,51 @@
     <div class="clock-date" id="clock-date">Carregando...</div>
   </div>
 
-  <section style="padding-top:140px;">
+  <section style="padding-top:140px; padding-bottom:80px;">
     <div class="container">
-      <h2 class="section-title">Materiais Gratuitos</h2>
-      <p class="section-subtitle">Baixe materiais e comece sua jornada com o pé direito</p>
+
+      <div class="materials-hero">
+        <div class="materials-badge">Materiais Gratuitos • Clube Multi Trader</div>
+        <h1 class="materials-main-title">Aprenda com mais clareza, <span>disciplina</span> e direção</h1>
+        <p class="materials-main-subtitle">
+          Explore materiais selecionados para fortalecer sua base no mercado financeiro.
+          Conteúdos pensados para ajudar traders iniciantes e intermediários a evoluírem com mais consciência,
+          leitura de contexto e profissionalismo.
+        </p>
+      </div>
 
       <div class="materials-grid">
 
-        <div class="material-card">
+        <div class="material-card featured">
           <div class="material-icon">📈</div>
           <h3 class="material-title">Guia Elliott Waves</h3>
           <p class="material-description">
-            Material prático para aprender a identificar o início das Ondas de Elliott e entender a construção das ondas 1, 2, 3, 4 e 5 no gráfico.
+            Um material prático para entender como identificar o início das Ondas de Elliott e reconhecer
+            a estrutura das ondas 1, 2, 3, 4 e 5 com mais segurança no gráfico.
           </p>
           <ul class="material-features">
             <li>Como identificar o início da onda 1</li>
-            <li>Como traçar a correção da onda 2</li>
-            <li>Como reconhecer a força da onda 3</li>
-            <li>Como projetar as ondas 4 e 5</li>
+            <li>Como reconhecer a correção da onda 2</li>
+            <li>Como validar a força da onda 3</li>
+            <li>Como interpretar a formação das ondas 4 e 5</li>
           </ul>
           <a href="https://docs.google.com/document/d/1MpdyKGkblOHJunoP-f2RkCvwHJisrtIgOSUgJyLM_zM/export?format=pdf"
              target="_blank" rel="noopener noreferrer" class="download-button">
-             Baixar PDF
+             📥 Baixar PDF
           </a>
         </div>
 
         <div class="material-card">
           <div class="material-icon">💼</div>
           <h3 class="material-title">Planilha de Controle de Trades</h3>
-          <p class="material-description">Organize operações e acompanhe desempenho com gestão profissional.</p>
+          <p class="material-description">
+            Organize suas operações com uma visão mais profissional, acompanhando entradas, saídas,
+            desempenho e gestão de risco ao longo do tempo.
+          </p>
           <ul class="material-features">
             <li>Controle de entrada e saída</li>
             <li>Lucros e perdas automáticos</li>
-            <li>Análise mensal</li>
+            <li>Análise mensal de desempenho</li>
             <li>Gestão de risco integrada</li>
           </ul>
           <div class="coming-soon">Em Breve</div>
@@ -85,10 +268,13 @@
         <div class="material-card">
           <div class="material-icon">🎯</div>
           <h3 class="material-title">Checklist do Trader Disciplinado</h3>
-          <p class="material-description">Checklist prático para antes, durante e depois da operação.</p>
+          <p class="material-description">
+            Um checklist direto e funcional para usar antes, durante e depois das operações,
+            ajudando você a manter consistência e controle emocional.
+          </p>
           <ul class="material-features">
             <li>Preparação pré-operação</li>
-            <li>Execução disciplinada</li>
+            <li>Execução com disciplina</li>
             <li>Gestão em tempo real</li>
             <li>Revisão pós-trade</li>
           </ul>
