@@ -1,200 +1,454 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cursos • Em breve (2026) • Clube Multi Trader</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
+  <title>Cursos • Clube Multi Trader</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="Cursos do Clube Multi Trader: aprenda a operar com método, gestão de risco, leitura de gráfico, disciplina e controle emocional."
+  />
 
-  <!-- Shared CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+
+  <style>
+    .page-hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 150px 24px 80px;
+      text-align: center;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(205,164,52,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .page-badge {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+
+    .page-subtitle {
+      font-size: clamp(16px, 2.4vw, 23px);
+      color: var(--text);
+      margin: 0 auto 30px;
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 850px;
+    }
+
+    .actions-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,.76);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: rgba(26,26,26,.68);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 38px;
+      backdrop-filter: blur(10px);
+      margin-top: 38px;
+      text-align: center;
+    }
+
+    .highlight-box strong {
+      color: var(--gold);
+    }
+
+    .lead-text {
+      font-size: clamp(20px, 3vw, 30px);
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      text-align: left;
+    }
+
+    .feature-list li {
+      background: rgba(26,26,26,.45);
+      border: 1px solid rgba(205,164,52,.14);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: rgba(255,255,255,.82);
+      line-height: 1.5;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 800;
+      margin-right: 8px;
+    }
+
+    .active-link {
+      color: var(--gold) !important;
+      font-weight: 700 !important;
+    }
+
+    @media(max-width:768px) {
+      .page-hero {
+        min-height: auto;
+        padding: 120px 20px 60px;
+      }
+
+      .page-badge {
+        font-size: 54px;
+      }
+
+      .highlight-box {
+        padding: 28px;
+      }
+
+      .actions-row {
+        flex-direction: column;
+      }
+
+      .actions-row a {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-content">
-      <a class="logo" href="/clube-multi-trader-site/">⚜️ CLUBE MULTI TRADER</a>
 
-      <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span class="menu-btn-bar"></span>
-        <span class="menu-btn-bar"></span>
-        <span class="menu-btn-bar"></span>
-      </button>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="/clube-multi-trader-site/" style="text-decoration:none;">
+        ⚜️ CLUBE MULTI TRADER
+      </a>
 
       <ul class="nav-links">
         <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/" class="active">Cursos</a></li>
+        <li><a class="active-link" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
         <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
         <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
+        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
         <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
       </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span>
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu" hidden>
-      <a href="/clube-multi-trader-site/">Início</a>
-      <a href="/clube-multi-trader-site/cursos/" class="active">Cursos</a>
-      <a href="/clube-multi-trader-site/materiais/">Materiais</a>
-      <a href="/clube-multi-trader-site/blog/">Blog</a>
-      <a href="/clube-multi-trader-site/contato/">Contato</a>
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="/clube-multi-trader-site/">Início</a></li>
+        <li><a class="active-link" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
+        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
+        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
+        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
+        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+      </ul>
     </div>
   </nav>
 
   <!-- CLOCK -->
   <div class="clock-container">
-    <div class="clock-time" id="clock-time">00:00:00</div>
-    <div class="clock-date" id="clock-date">Carregando...</div>
+    <div class="clock-time" id="clockTime">00:00:00</div>
+    <div class="clock-date" id="clockDate">Carregando...</div>
   </div>
 
-  <!-- PAGE HERO -->
-  <header class="page-hero" style="padding-top:160px;">
-    <div class="container">
-      <h1 class="page-title">Curso Completo • Em breve (2026)</h1>
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-badge">⚜️</div>
+
+      <h1 class="page-title">Cursos • Clube Multi Trader</h1>
 
       <p class="page-subtitle">
-        <strong>2026 vai ser o ano da virada.</strong><br>
-        Eu não abro turma só pra “ter turma”.<br>
-        Quando abrir, vai ser com estrutura completa e vagas limitadas.
+        <strong>Aprenda a operar com método, gestão e clareza.</strong><br>
+        Uma formação para quem quer sair do impulso, entender o mercado com simplicidade
+        e construir uma rotina mais profissional.
       </p>
 
-      <div class="actions-row" style="margin-top:16px;">
-        <a class="download-button" target="_blank" rel="noopener noreferrer"
-           href="https://docs.google.com/forms/d/e/1FAIpQLScIRKKOqXpA7_RwrTR-SerhYLs2A2VuvOjEX3TZPO11o22KWQ/viewform">
-          📝 Entrar na lista de espera
+      <div class="actions-row">
+        <a
+          class="cta-button"
+          href="mailto:clubemultitrader@gmail.com?subject=Interesse%20no%20Clube%20Multi%20Trader&body=Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20mais%20sobre%20o%20curso%20do%20Clube%20Multi%20Trader."
+        >
+          Quero saber mais sobre o curso
         </a>
 
-        <a class="read-more" href="/clube-multi-trader-site/blog/">
-          📚 Ver conteúdos gratuitos no Blog
+        <a class="read-more" href="/clube-multi-trader-site/materiais/">
+          Ver materiais gratuitos →
         </a>
       </div>
 
-      <p style="margin-top:14px; opacity:.78; font-size:14px;">
-        ✅ Deixe seu nome na lista e eu aviso primeiro quando as vagas abrirem.
+      <p class="hero-note">
+        ✅ Sem promessa milagrosa. Aqui o foco é base, processo, gestão e disciplina.
       </p>
     </div>
   </header>
 
   <!-- CONTENT -->
-  <main class="container" style="padding: 40px 24px 90px;">
+  <main>
+
+    <!-- SOBRE O CURSO -->
     <section>
-      <h2 class="section-title" style="margin-bottom: 12px;">Curso Completo (15 módulos)</h2>
-      <p class="section-subtitle" style="margin-bottom: 18px;">
-        Do básico à execução: abertura de conta, plataforma, operação e consistência — tudo no mesmo curso.
-      </p>
-      <p style="margin-bottom: 26px; opacity:.78;">
-        Inclui: <strong>abertura de conta</strong> • <strong>configuração de plataforma</strong> • <strong>setup e execução</strong> • <strong>gestão de risco</strong> • <strong>psicologia e consistência</strong>.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Formação Clube Multi Trader</h2>
 
-      <div class="cards-grid">
-        <!-- Fase 1 -->
-        <div class="card">
-          <div class="card-icon">🧩</div>
-          <h3 class="card-title">Fase 1 • Base + Abertura de Conta</h3>
-          <p class="card-description">
-            Você começa do zero: como o mercado funciona, tipos de conta, corretora, abertura de conta,
-            plataforma e configuração para operar com segurança.
-          </p>
-
-          <div class="blog-date" style="margin-top:18px;">Parte do curso completo • 15 módulos</div>
-
-          <div class="actions-row" style="margin-top:12px;">
-            <a class="read-more" target="_blank" rel="noopener noreferrer"
-               href="https://docs.google.com/forms/d/e/1FAIpQLScIRKKOqXpA7_RwrTR-SerhYLs2A2VuvOjEX3TZPO11o22KWQ/viewform">
-              📝 Lista de espera 2026 →
-            </a>
-          </div>
-        </div>
-
-        <!-- Fase 2 -->
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h3 class="card-title">Fase 2 • Operação na Prática</h3>
-          <p class="card-description">
-            Leitura de gráfico, execução, entradas e saídas, StopLoss/TakeProfit e gestão de risco —
-            com um passo a passo claro para operar com método (sem achismo).
-          </p>
-
-          <div class="blog-date" style="margin-top:18px;">Parte do curso completo • 15 módulos</div>
-
-          <div class="actions-row" style="margin-top:12px;">
-            <a class="read-more" target="_blank" rel="noopener noreferrer"
-               href="https://docs.google.com/forms/d/e/1FAIpQLScIRKKOqXpA7_RwrTR-SerhYLs2A2VuvOjEX3TZPO11o22KWQ/viewform">
-              📝 Lista de espera 2026 →
-            </a>
-          </div>
-        </div>
-
-        <!-- Fase 3 -->
-        <div class="card">
-          <div class="card-icon">🧠</div>
-          <h3 class="card-title">Fase 3 • Consistência + Psicologia</h3>
-          <p class="card-description">
-            Disciplina, controle emocional, plano de trade e diário de operações —
-            o que mantém você no jogo e evoluindo com constância.
-          </p>
-
-          <div class="blog-date" style="margin-top:18px;">Parte do curso completo • 15 módulos</div>
-
-          <div class="actions-row" style="margin-top:12px;">
-            <a class="read-more" target="_blank" rel="noopener noreferrer"
-               href="https://docs.google.com/forms/d/e/1FAIpQLScIRKKOqXpA7_RwrTR-SerhYLs2A2VuvOjEX3TZPO11o22KWQ/viewform">
-              📝 Lista de espera 2026 →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Extra box -->
-      <div class="post-card" style="margin-top:34px;">
-        <p class="lead" style="margin-bottom: 10px;">
-          Enquanto as turmas não abrem, você pode evoluir com os materiais gratuitos.
+        <p class="section-subtitle">
+          Um curso criado para quem deseja aprender a analisar o mercado com mais segurança,
+          respeitando tendência, regiões importantes, risco e controle emocional.
         </p>
-        <div class="actions-row" style="margin-top: 8px;">
-          <a class="download-button" href="/clube-multi-trader-site/materiais/">
-            📥 Acessar Materiais
-          </a>
-          <a class="read-more" href="/clube-multi-trader-site/blog/">
-            ✍️ Ler artigos do Blog →
-          </a>
+
+        <div class="highlight-box">
+          <p class="lead-text">
+            O objetivo não é prometer dinheiro fácil. O objetivo é ensinar processo,
+            disciplina e uma forma mais consciente de tomar decisões no mercado.
+          </p>
+
+          <p style="color:rgba(255,255,255,.78); line-height:1.8;">
+            Você vai aprender a construir uma base sólida para operar com mais clareza:
+            leitura de gráfico, suporte e resistência, candles, médias móveis,
+            rompimentos, retrações, gestão de risco, rotina e mentalidade.
+          </p>
+
+          <ul class="feature-list">
+            <li>Leitura simples e objetiva do gráfico</li>
+            <li>Identificação de tendência e regiões importantes</li>
+            <li>Uso de candles e médias móveis sem complicação</li>
+            <li>Planejamento antes da entrada</li>
+            <li>Controle de risco por operação</li>
+            <li>Disciplina para evitar entradas por impulso</li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- MÓDULOS -->
+    <section style="padding-top:40px;">
+      <div class="container">
+        <h2 class="section-title">O que você vai aprender</h2>
+
+        <p class="section-subtitle">
+          A formação foi pensada para construir uma base real, passo a passo,
+          sem excesso de informação e sem complicar o gráfico.
+        </p>
+
+        <div class="cards-grid">
+
+          <!-- Módulo 1 -->
+          <div class="card">
+            <div class="card-icon">📌</div>
+            <h3 class="card-title">Base do Mercado</h3>
+            <p class="card-description">
+              Entenda como o mercado se movimenta, o que influencia o preço e como começar
+              a olhar o gráfico com mais lógica e menos ansiedade.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Fundamento essencial</div>
+          </div>
+
+          <!-- Módulo 2 -->
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h3 class="card-title">Leitura de Gráfico</h3>
+            <p class="card-description">
+              Aprenda a identificar tendência, força do movimento, suporte, resistência
+              e regiões onde o preço pode reagir.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Análise simples e objetiva</div>
+          </div>
+
+          <!-- Módulo 3 -->
+          <div class="card">
+            <div class="card-icon">🕯️</div>
+            <h3 class="card-title">Candles e Médias</h3>
+            <p class="card-description">
+              Use candles e médias móveis como ferramentas de leitura, sem poluir o gráfico
+              e sem depender de achismo.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Clareza na decisão</div>
+          </div>
+
+          <!-- Módulo 4 -->
+          <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3 class="card-title">Entradas e Saídas</h3>
+            <p class="card-description">
+              Entenda rompimentos, retrações, pontos de entrada, Stop Loss, Take Profit
+              e como planejar a operação antes de clicar.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Execução com método</div>
+          </div>
+
+          <!-- Módulo 5 -->
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3 class="card-title">Gestão de Risco</h3>
+            <p class="card-description">
+              Aprenda a proteger sua conta, definir risco por operação, respeitar limite diário
+              e evitar exageros que destroem a consistência.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Proteção da conta</div>
+          </div>
+
+          <!-- Módulo 6 -->
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3 class="card-title">Psicologia e Rotina</h3>
+            <p class="card-description">
+              Desenvolva disciplina, checklist, diário de operações e controle emocional
+              para parar de operar no impulso.
+            </p>
+            <div class="blog-date" style="margin-top:18px;">Consistência no longo prazo</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FRASE FORTE -->
+    <section style="padding-top:40px;">
+      <div class="container">
+        <div class="highlight-box">
+          <p class="lead-text">
+            Trader consistente não é quem acerta tudo.
+            É quem sabe controlar risco, seguir um plano e continuar evoluindo.
+          </p>
+
+          <p style="color:rgba(255,255,255,.78); line-height:1.8; margin-bottom:24px;">
+            O Clube Multi Trader foi criado para formar uma base real:
+            leitura simples, rotina, gestão e mentalidade. Sem promessa de dinheiro fácil.
+          </p>
+
+          <div class="actions-row">
+            <a
+              class="download-button"
+              href="mailto:clubemultitrader@gmail.com?subject=Interesse%20no%20Clube%20Multi%20Trader&body=Ol%C3%A1%2C%20quero%20receber%20informa%C3%A7%C3%B5es%20sobre%20o%20curso%20do%20Clube%20Multi%20Trader."
+            >
+              Enviar e-mail para o Clube
+            </a>
+
+            <a class="read-more" href="/clube-multi-trader-site/blog/">
+              ✍️ Ler artigos do Blog →
+            </a>
+          </div>
+
+          <p style="margin-top:18px; color:rgba(255,255,255,.72); font-size:14px;">
+            E-mail: <a href="mailto:clubemultitrader@gmail.com" style="color:var(--gold); text-decoration:none;">clubemultitrader@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
-      <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
-         target="_blank" rel="noopener noreferrer" class="footer-link">
-        🔗 Acesse LiteFinance
-      </a>
-    </div>
+  <footer>
+    <p class="footer-text">
+      © 2021 Clube Multi Trader. Todos os direitos reservados.
+    </p>
+
+    <a
+      class="footer-link"
+      href="https://www.litefinance.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Acesse LiteFinance
+    </a>
   </footer>
 
-  <!-- Shared JS -->
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
-
-  <!-- Clock fallback -->
   <script>
+    const navToggle = document.getElementById("navToggle");
+    const navMobile = document.getElementById("navMobile");
+
+    if (navToggle && navMobile) {
+      navToggle.addEventListener("click", () => {
+        navMobile.classList.toggle("open");
+      });
+    }
+
     function updateClock() {
       const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const t = document.getElementById('clock-time');
-      const d = document.getElementById('clock-date');
-      if (t) t.textContent = `${hours}:${minutes}:${seconds}`;
-      if (d) d.textContent = now.toLocaleDateString('pt-BR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+      const time = now.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
+
+      const date = now.toLocaleDateString("pt-BR", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+
+      const clockTime = document.getElementById("clockTime");
+      const clockDate = document.getElementById("clockDate");
+
+      if (clockTime) clockTime.textContent = time;
+      if (clockDate) clockDate.textContent = date;
     }
+
     updateClock();
     setInterval(updateClock, 1000);
   </script>
+
 </body>
 </html>
+```
