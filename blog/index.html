@@ -3,179 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Blog • Clube Multi Trader</title>
 
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <meta name="description" content="Blog do Clube Multi Trader com conteúdos sobre mercado financeiro, análise técnica, gestão de risco, psicologia do trader, criptoativos e desenvolvimento operacional." />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/style.css?v=13" />
 
   <style>
-    /* Ajustes locais só para o Blog (sem mexer no CSS global) */
-    .blog-card{ position:relative; overflow:hidden; }
-    .blog-meta-row{
-      display:flex; flex-wrap:wrap; gap:8px;
-      align-items:center; margin: 10px 0 14px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:6px 10px; border-radius:999px;
-      font-size:12px; font-weight:700;
-      background: rgba(212,175,55,.12);
-      border: 1px solid rgba(212,175,55,.35);
-      color:#d4af37;
-      letter-spacing:.2px;
-    }
-    .badge.type-video{ background: rgba(86,255,214,.10); border-color: rgba(86,255,214,.25); color:#56ffd6; }
-    .badge.type-leitura{ background: rgba(140,170,255,.10); border-color: rgba(140,170,255,.25); color:#8caaff; }
-    .badge.type-imagem{ background: rgba(255,196,87,.10); border-color: rgba(255,196,87,.25); color:#ffc457; }
-
-    .featured-ribbon{
-      position:absolute;
-      top:14px; right:14px;
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:12px; font-weight:800;
-      background: rgba(212,175,55,.16);
-      border: 1px solid rgba(212,175,55,.40);
-      color:#d4af37;
-      box-shadow: 0 10px 25px rgba(0,0,0,.35);
-      z-index: 2;
-    }
-    .featured-ribbon::before{ content:"⭐"; font-size:13px; line-height:1; }
-
-    /* título com ícone pequeno */
-    .title-ico{
-      display:inline-flex; align-items:center; gap:10px;
-    }
-    .title-ico .ico{
-      font-size:18px;
-      line-height:1;
-      opacity:.95;
-      transform: translateY(1px);
+    .blog-hero {
+      text-align: center;
+      margin-bottom: 55px;
     }
 
-    /* ações */
-    .actions-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top: 6px;
+    .blog-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 999px;
+      color: #d4af37;
+      background: rgba(212,175,55,0.08);
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: 18px;
     }
-    .btn-yt{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 10px 14px;
-      border-radius: 12px;
+
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .blog-title span {
+      color: #d4af37;
+    }
+
+    .blog-subtitle {
+      max-width: 800px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.78);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .blog-highlight {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 60px;
+      padding: 34px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(212,175,55,.12), rgba(18,18,18,.98));
+      border: 1px solid rgba(212,175,55,.22);
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .highlight-tag {
+      color: #d4af37;
       font-weight: 700;
-      text-decoration: none;
+      letter-spacing: .8px;
+      font-size: .85rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .highlight-title {
+      color: #fff;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.25;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .highlight-text {
+      color: rgba(255,255,255,.78);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .highlight-box {
+      border-radius: 24px;
+      padding: 30px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+    }
+
+    .highlight-box-icon {
+      font-size: 4rem;
+      margin-bottom: 15px;
+    }
+
+    .highlight-box p {
+      color: rgba(255,255,255,.78);
+      line-height: 1.7;
+    }
+
+    .blog-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 45px;
+    }
+
+    .category-pill {
+      padding: 10px 18px;
+      border-radius: 999px;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      color: inherit;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn-yt:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.16);
+      color: rgba(255,255,255,.78);
+      font-weight: 600;
+      font-size: .92rem;
     }
 
-    /* Thumbnail da projeção em imagem */
-    .blog-thumb{
-      width: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      margin: 8px 0 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      cursor: zoom-in;
+    .category-pill.active {
+      color: #111;
+      background: #d4af37;
+      border-color: #d4af37;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 28px;
+    }
+
+    .blog-card {
       position: relative;
-    }
-    .blog-thumb img{
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      transition: transform .25s ease;
-    }
-    .blog-thumb:hover img{
-      transform: scale(1.01);
-    }
-    .blog-thumb::after{
-      content: "🔍 Clique para ampliar";
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      background: rgba(0,0,0,.55);
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(3px);
+      min-height: 100%;
+      padding: 28px 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(24,24,24,.96), rgba(12,12,12,.98));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 12px 34px rgba(0,0,0,.28);
+      overflow: hidden;
+      transition: .25s ease;
     }
 
-    /* Modal / Lightbox */
-    .img-lightbox{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.82);
-      display: none;
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,175,55,.25);
+      box-shadow: 0 18px 42px rgba(0,0,0,.38);
+    }
+
+    .blog-icon {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+    }
+
+    .blog-card-category {
+      color: #d4af37;
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      margin-bottom: 10px;
+    }
+
+    .blog-card-title {
+      color: #fff;
+      font-size: 1.28rem;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .blog-card-text {
+      color: rgba(255,255,255,.76);
+      line-height: 1.7;
+      font-size: .96rem;
+      margin-bottom: 22px;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: rgba(255,255,255,.48);
+      font-size: .85rem;
+      margin-bottom: 22px;
+    }
+
+    .read-button {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      z-index: 9999;
-      backdrop-filter: blur(4px);
-    }
-    .img-lightbox.open{
-      display: flex;
-    }
-    .img-lightbox-content{
-      position: relative;
-      max-width: min(1100px, 95vw);
-      max-height: 90vh;
-      width: auto;
-    }
-    .img-lightbox-content img{
-      display: block;
-      max-width: 100%;
-      max-height: 90vh;
-      width: auto;
-      height: auto;
+      width: 100%;
+      padding: 14px 18px;
       border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.5);
-      border: 1px solid rgba(255,255,255,.12);
-      background: #111;
-    }
-    .img-lightbox-close{
-      position: absolute;
-      top: -14px;
-      right: -14px;
-      width: 36px;
-      height: 36px;
-      border: none;
-      border-radius: 999px;
-      background: rgba(255,255,255,.95);
+      background: linear-gradient(135deg, #d4af37, #f2d675);
       color: #111;
-      font-size: 22px;
-      line-height: 1;
-      cursor: pointer;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .read-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .coming-soon-button {
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.72);
       font-weight: 700;
-      box-shadow: 0 8px 20px rgba(0,0,0,.35);
     }
-    .img-lightbox-close:hover{
-      transform: scale(1.05);
+
+    .blog-cta {
+      margin-top: 70px;
+      text-align: center;
+      padding: 46px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(212,175,55,.13), rgba(10,10,10,.98));
+      border: 1px solid rgba(212,175,55,.22);
     }
-    .img-lightbox-hint{
-      position: absolute;
-      bottom: -34px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.8);
-      font-size: 12px;
-      white-space: nowrap;
+
+    .blog-cta h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    .blog-cta p {
+      max-width: 700px;
+      margin: 0 auto 26px;
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+    }
+
+    .active-link {
+      color: var(--gold) !important;
+      font-weight: 700 !important;
+    }
+
+    @media (max-width: 850px) {
+      .blog-highlight {
+        grid-template-columns: 1fr;
+        padding: 26px;
+      }
     }
   </style>
 </head>
@@ -184,14 +265,18 @@
 
   <nav>
     <div class="nav-content">
-      <div class="logo">⚜️ CLUBE MULTI TRADER</div>
+      <a class="logo" href="/" style="text-decoration:none;">
+        ⚜️ CLUBE MULTI TRADER
+      </a>
 
       <ul class="nav-links">
-        <li><a data-nav="home" href="/clube-multi-trader-site/">Home</a></li>
-        <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a class="active-link" href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -201,231 +286,183 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul>
-        <li><a href="/clube-multi-trader-site/">Home</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a class="active-link" href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="clock-container">
-    <div class="clock-time" id="clock-time">00:00:00</div>
-    <div class="clock-date" id="clock-date">Carregando...</div>
+    <div class="clock-time" id="clock-time"></div>
+    <div class="clock-date" id="clock-date"></div>
   </div>
 
-  <section style="padding-top:140px;">
+  <section style="padding-top:140px; padding-bottom:80px;">
     <div class="container">
-      <h2 class="section-title">Blog Multi Trader</h2>
-      <p class="section-subtitle">Artigos, análises e projeções semanais do Ouro (XAUUSD)</p>
 
-      <div class="blog-grid" id="blogGrid">
+      <div class="blog-hero">
+        <div class="blog-badge">Blog Oficial • Clube Multi Trader</div>
 
-        <!-- =========================
-             VÍDEOS / IMAGENS (vitrine - primeiro)
-             ========================= -->
+        <h1 class="blog-title">
+          Conteúdo para evoluir no mercado com <span>clareza e disciplina</span>
+        </h1>
 
-        <!-- ✅ DESTAQUE -->
-        <article class="blog-card" data-type="video" data-featured="true" data-order="0">
-          <div class="featured-ribbon">Destaque da Semana</div>
+        <p class="blog-subtitle">
+          Artigos, estudos e reflexões sobre análise técnica, gestão de risco, psicologia operacional,
+          criptoativos, contratos futuros e construção de consistência no trade.
+        </p>
+      </div>
 
-          <div class="blog-date">Lendo o Mercado</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🎥</span>Lendo o mercado em 6 camadas</span>
-          </h3>
-          <p class="blog-excerpt">Aula em vídeo para você entender o mercado com clareza: contexto, estrutura, zonas, gatilhos e execução em camadas.</p>
+      <div class="blog-highlight">
+        <div>
+          <div class="highlight-tag">Artigo em destaque</div>
 
-          <div class="blog-meta-row">
-            <span class="badge">Leitura de Mercado</span>
-            <span class="badge">Estrutura</span>
-            <span class="badge type-video">▶ Vídeo</span>
-          </div>
+          <h2 class="highlight-title">
+            Antes de buscar lucro, aprenda a proteger seu capital
+          </h2>
 
-          <div class="actions-row">
-            <a class="read-more" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">Ver no YouTube →</a>
-            <a class="btn-yt" href="https://youtu.be/PMwcTjGjFds" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">▶</span> Assistir no YouTube →
-            </a>
-          </div>
-        </article>
-
-        <!-- ✅ NOVA PROJEÇÃO 23–27 FEV (imagem + vídeo) -->
-        <article class="blog-card" data-type="imagem" data-order="1">
-          <div class="blog-date">Semana 23–27 de Fevereiro</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🖼️</span>Ouro (XAUUSD): Projeção Semanal (23–27 Fev)</span>
-          </h3>
-
-          <p class="blog-excerpt">
-            Projeção semanal do ouro com cenário, níveis importantes e direção provável. A imagem está disponível no card (clique para ampliar) e o vídeo completo já pode ser assistido no YouTube.
+          <p class="highlight-text">
+            O trader iniciante geralmente procura entradas perfeitas. O trader profissional procura controle,
+            risco calculado e repetição de boas decisões. Neste artigo, entenda por que a gestão de risco vem
+            antes da análise gráfica.
           </p>
 
-          <!-- Imagem visível no card (clique para expandir) -->
-          <div class="blog-thumb open-lightbox"
-               role="button"
-               tabindex="0"
-               aria-label="Expandir imagem da projeção semanal"
-               data-full="https://drive.google.com/uc?export=view&id=12h-G7ibPJhFztqjqkvzrHIRHQKilJ2Vq">
-            <img
-              src="https://drive.google.com/thumbnail?id=12h-G7ibPJhFztqjqkvzrHIRHQKilJ2Vq&sz=w1600"
-              alt="Projeção semanal do Ouro XAUUSD de 23 a 27 de fevereiro"
-              loading="lazy"
-            />
-          </div>
+          <a href="/blog/gestao-de-risco/" class="read-button">
+            Ler artigo completo
+          </a>
+        </div>
 
-          <div class="blog-meta-row">
-            <span class="badge">XAUUSD</span>
-            <span class="badge">Projeção</span>
-            <span class="badge type-imagem">🖼️ Imagem</span>
-            <span class="badge type-video">▶ Vídeo</span>
-          </div>
+        <div class="highlight-box">
+          <div class="highlight-box-icon">🛡️</div>
+          <p>
+            Consistência não nasce de uma operação perfeita.
+            Ela nasce da capacidade de sobreviver aos dias difíceis sem destruir a conta.
+          </p>
+        </div>
+      </div>
 
-          <div class="actions-row">
-            <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-23-27-fev/">Ver Projeção →</a>
-            <a class="btn-yt" href="https://youtu.be/KYikXB3iD3A" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">▶</span> Assistir no YouTube →
-            </a>
+      <div class="blog-categories">
+        <div class="category-pill active">Todos</div>
+        <div class="category-pill">Gestão de Risco</div>
+        <div class="category-pill">Análise Técnica</div>
+        <div class="category-pill">Psicologia</div>
+        <div class="category-pill">Cripto</div>
+        <div class="category-pill">SMC / ICT</div>
+      </div>
+
+      <div class="blog-grid">
+
+        <article class="blog-card">
+          <div class="blog-icon">🛡️</div>
+          <div class="blog-card-category">Gestão de Risco</div>
+          <h3 class="blog-card-title">Por que proteger a conta vem antes de buscar lucro?</h3>
+          <p class="blog-card-text">
+            Entenda como o controle de risco muda completamente a forma de operar e evita decisões emocionais.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 5 min</span>
+            <span>Trader Base</span>
           </div>
+          <a href="/blog/gestao-de-risco/" class="read-button">Ler artigo</a>
         </article>
 
-        <!-- Projeção semanal (mantida) -->
-        <article class="blog-card" data-type="video" data-order="2">
-          <div class="blog-date">Semana 09–13 de Fevereiro</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (09–13 Fev)</span>
-          </h3>
-          <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">XAUUSD</span>
-            <span class="badge">Projeção</span>
-            <span class="badge type-video">▶ Vídeo</span>
+        <article class="blog-card">
+          <div class="blog-icon">📈</div>
+          <div class="blog-card-category">Análise Técnica</div>
+          <h3 class="blog-card-title">Suporte e resistência: o básico que muitos ignoram</h3>
+          <p class="blog-card-text">
+            Aprenda a enxergar regiões importantes do gráfico sem complicar a leitura do mercado.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 4 min</span>
+            <span>Iniciante</span>
           </div>
-
-          <div class="actions-row">
-            <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-09-13-fev/">Ver Projeção →</a>
-            <a class="btn-yt" href="https://youtu.be/46nz09zVjU8" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">▶</span> Assistir no YouTube →
-            </a>
-          </div>
+          <div class="coming-soon-button">Em breve</div>
         </article>
 
-        <!-- Projeção anterior -->
-        <article class="blog-card" data-type="video" data-order="3">
-          <div class="blog-date">Semana 02–06 de Fevereiro</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (02–06 Fev)</span>
-          </h3>
-          <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">XAUUSD</span>
-            <span class="badge">Projeção</span>
-            <span class="badge type-video">▶ Vídeo</span>
+        <article class="blog-card">
+          <div class="blog-icon">🧠</div>
+          <div class="blog-card-category">Psicologia</div>
+          <h3 class="blog-card-title">O maior inimigo do trader nem sempre está no gráfico</h3>
+          <p class="blog-card-text">
+            Medo, ansiedade, pressa e vingança operacional podem transformar uma boa análise em prejuízo.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 6 min</span>
+            <span>Mentalidade</span>
           </div>
-
-          <div class="actions-row">
-            <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-02-06-fev/">Ver Projeção →</a>
-            <a class="btn-yt" href="https://youtu.be/JOX2Ci88k4Y" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">▶</span> Assistir no YouTube →
-            </a>
-          </div>
+          <div class="coming-soon-button">Em breve</div>
         </article>
 
-        <!-- Projeção anterior -->
-        <article class="blog-card" data-type="video" data-order="4">
-          <div class="blog-date">Semana 26–30 de Janeiro</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (26–30 Jan)</span>
-          </h3>
-          <p class="blog-excerpt">Análise em vídeo com contexto, níveis-chave e cenários prováveis para operar com clareza e gestão de risco.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">XAUUSD</span>
-            <span class="badge">Projeção</span>
-            <span class="badge type-video">▶ Vídeo</span>
+        <article class="blog-card">
+          <div class="blog-icon">💎</div>
+          <div class="blog-card-category">Criptoativos</div>
+          <h3 class="blog-card-title">XRP: o que observar antes de tomar decisão no mercado?</h3>
+          <p class="blog-card-text">
+            Um olhar simples sobre contexto, volatilidade, tendência e pontos de atenção no mercado cripto.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 5 min</span>
+            <span>Cripto</span>
           </div>
-
-          <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-26-30-jan/">Ver Projeção →</a>
+          <div class="coming-soon-button">Em breve</div>
         </article>
 
-        <!-- Projeção anterior (mais antiga) -->
-        <article class="blog-card" data-type="video" data-order="5">
-          <div class="blog-date">Semana 19–23 de Janeiro</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">🎥</span>Ouro (XAUUSD): Revisão + Projeção Semanal (19–23 Jan)</span>
-          </h3>
-          <p class="blog-excerpt">Revisão da semana e projeção com cenários, pontos importantes e direcionamento do ouro.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">XAUUSD</span>
-            <span class="badge">Projeção</span>
-            <span class="badge type-video">▶ Vídeo</span>
+        <article class="blog-card">
+          <div class="blog-icon">🏦</div>
+          <div class="blog-card-category">SMC / ICT</div>
+          <h3 class="blog-card-title">Liquidez: por que o preço busca regiões óbvias?</h3>
+          <p class="blog-card-text">
+            Entenda o conceito de liquidez e por que fundos e topos evidentes costumam ser pontos importantes.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 7 min</span>
+            <span>ICT</span>
           </div>
-
-          <a class="read-more" href="/clube-multi-trader-site/blog/projecao-semanal-19-23-jan/">Ver Projeção →</a>
+          <div class="coming-soon-button">Em breve</div>
         </article>
 
-        <!-- =========================
-             ARTIGOS (depois)
-             ========================= -->
-
-        <article class="blog-card" data-type="leitura" data-order="10">
-          <div class="blog-date">15 de Dezembro, 2023</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">📄</span>Gestão de Risco: A Base do Trading Sustentável</span>
-          </h3>
-          <p class="blog-excerpt">Princípios fundamentais de gestão de risco para proteger capital e ganhar consistência no longo prazo.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">Gestão de Risco</span>
-            <span class="badge">Fundamentos</span>
-            <span class="badge type-leitura">📄 Leitura</span>
+        <article class="blog-card">
+          <div class="blog-icon">⏱️</div>
+          <div class="blog-card-category">Rotina Operacional</div>
+          <h3 class="blog-card-title">Como criar uma rotina antes de operar?</h3>
+          <p class="blog-card-text">
+            Checklist, horários, notícias, ativos e preparação emocional antes de abrir uma operação.
+          </p>
+          <div class="blog-meta">
+            <span>Leitura: 4 min</span>
+            <span>Disciplina</span>
           </div>
-
-          <a class="read-more" href="/clube-multi-trader-site/blog/gestao-risco/">Ler Artigo →</a>
-        </article>
-
-        <article class="blog-card" data-type="leitura" data-order="11">
-          <div class="blog-date">10 de Janeiro, 2024</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">📄</span>Psicologia do Trading: Como Controlar Suas Emoções</span>
-          </h3>
-          <p class="blog-excerpt">Como manter disciplina e evitar decisões impulsivas quando o mercado coloca pressão.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">Psicologia</span>
-            <span class="badge">Disciplina</span>
-            <span class="badge type-leitura">📄 Leitura</span>
-          </div>
-
-          <a class="read-more" href="/clube-multi-trader-site/blog/psicologia-trading/">Ler Artigo →</a>
-        </article>
-
-        <article class="blog-card" data-type="leitura" data-order="12">
-          <div class="blog-date">15 de Janeiro, 2024</div>
-          <h3 class="blog-title">
-            <span class="title-ico"><span class="ico">📄</span>5 Erros Comuns que Destroem Contas de Trading</span>
-          </h3>
-          <p class="blog-excerpt">Os erros mais comuns de iniciantes e como evitar para sobreviver e evoluir no jogo.</p>
-
-          <div class="blog-meta-row">
-            <span class="badge">Gestão de Risco</span>
-            <span class="badge">Iniciantes</span>
-            <span class="badge type-leitura">📄 Leitura</span>
-          </div>
-
-          <a class="read-more" href="/clube-multi-trader-site/blog/erros-comuns/">Ler Artigo →</a>
+          <div class="coming-soon-button">Em breve</div>
         </article>
 
       </div>
+
+      <div class="blog-cta">
+        <h2>Quer estudar com um caminho mais organizado?</h2>
+
+        <p>
+          O blog é o ponto de partida. Nos cursos do Clube Multi Trader, você encontra uma formação mais completa,
+          com método, gestão, leitura de mercado e acompanhamento.
+        </p>
+
+        <a href="/cursos/" class="read-button" style="max-width:320px;">
+          Conhecer os Cursos
+        </a>
+      </div>
+
     </div>
   </section>
 
   <footer>
     <div class="footer-content">
       <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
+
       <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
          target="_blank" rel="noopener noreferrer" class="footer-link">
         🔗 Acesse LiteFinance
@@ -433,101 +470,7 @@
     </div>
   </footer>
 
-  <!-- Lightbox / Modal da imagem -->
-  <div class="img-lightbox" id="imgLightbox" aria-hidden="true">
-    <div class="img-lightbox-content" role="dialog" aria-modal="true" aria-label="Imagem ampliada da projeção">
-      <button class="img-lightbox-close" id="imgLightboxClose" aria-label="Fechar imagem">×</button>
-      <img id="imgLightboxImage" src="" alt="Imagem ampliada" />
-      <div class="img-lightbox-hint">Clique fora da imagem ou pressione ESC para fechar</div>
-    </div>
-  </div>
-
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
-
-  <script>
-    // Ordenação automática: Destaque primeiro, depois Vídeos/Imagens, depois Artigos
-    (function sortBlogCards(){
-      const grid = document.getElementById('blogGrid');
-      if(!grid) return;
-
-      const cards = Array.from(grid.querySelectorAll('.blog-card'));
-
-      cards.sort((a,b)=>{
-        const fa = (a.dataset.featured === 'true') ? 0 : 1;
-        const fb = (b.dataset.featured === 'true') ? 0 : 1;
-        if (fa !== fb) return fa - fb;
-
-        const ta = (a.dataset.type || '').toLowerCase();
-        const tb = (b.dataset.type || '').toLowerCase();
-
-        const pa = (ta === 'video' || ta === 'imagem') ? 0 : 1;
-        const pb = (tb === 'video' || tb === 'imagem') ? 0 : 1;
-        if (pa !== pb) return pa - pb;
-
-        const oa = parseInt(a.dataset.order || '999', 10);
-        const ob = parseInt(b.dataset.order || '999', 10);
-        return oa - ob;
-      });
-
-      cards.forEach(c => grid.appendChild(c));
-    })();
-
-    // Lightbox / Expandir imagem ao clicar
-    (function imageLightbox(){
-      const lightbox = document.getElementById('imgLightbox');
-      const lightboxImg = document.getElementById('imgLightboxImage');
-      const closeBtn = document.getElementById('imgLightboxClose');
-      const triggers = document.querySelectorAll('.open-lightbox');
-
-      if(!lightbox || !lightboxImg || !closeBtn || !triggers.length) return;
-
-      function openLightbox(src, alt){
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || 'Imagem ampliada';
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeLightbox(){
-        lightbox.classList.remove('open');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
-
-      triggers.forEach(el => {
-        el.addEventListener('click', () => {
-          const src = el.getAttribute('data-full');
-          const img = el.querySelector('img');
-          const alt = img ? img.alt : 'Imagem ampliada';
-          if(src) openLightbox(src, alt);
-        });
-
-        el.addEventListener('keydown', (e) => {
-          if(e.key === 'Enter' || e.key === ' '){
-            e.preventDefault();
-            const src = el.getAttribute('data-full');
-            const img = el.querySelector('img');
-            const alt = img ? img.alt : 'Imagem ampliada';
-            if(src) openLightbox(src, alt);
-          }
-        });
-      });
-
-      closeBtn.addEventListener('click', closeLightbox);
-
-      lightbox.addEventListener('click', (e) => {
-        if(e.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && lightbox.classList.contains('open')){
-          closeLightbox();
-        }
-      });
-    })();
-  </script>
+  <script src="/assets/main.js?v=13"></script>
 
 </body>
 </html>
