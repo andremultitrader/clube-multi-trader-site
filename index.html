@@ -1,22 +1,31 @@
+```html
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Clube Multi Trader</title>
 
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- FONTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS PRINCIPAL -->
+  <link rel="stylesheet" href="/assets/style.css?v=10" />
 
   <style>
-    /* ====== TICKER (corrige desktop escondido + mobile cortando) ====== */
-    :root{
-      --nav-safe: 120px;    /* DESKTOP: altura segura do menu */
-      --nav-safe-m: 140px;  /* MOBILE: altura segura do menu */
+    /* ====== TICKER ====== */
+    :root {
+      --nav-safe: 120px;
+      --nav-safe-m: 140px;
     }
 
-    .ticker-top{
+    .ticker-top {
       width: 100%;
       margin-top: var(--nav-safe);
       border-top: 1px solid rgba(255,255,255,.10);
@@ -26,7 +35,7 @@
       box-shadow: 0 14px 40px rgba(0,0,0,.35);
     }
 
-    .ticker-top .tradingview-widget-container{
+    .ticker-top .tradingview-widget-container {
       margin: 0 auto;
       max-width: 1200px;
       padding: 14px 14px;
@@ -35,23 +44,26 @@
       align-items: center;
     }
 
-    .ticker-top .tradingview-widget-container__widget{ width: 100%; }
+    .ticker-top .tradingview-widget-container__widget {
+      width: 100%;
+    }
 
-    /* Força o widget ocupar toda a largura */
     .tradingview-widget-container,
-    .tradingview-widget-container__widget{
+    .tradingview-widget-container__widget {
       width: 100% !important;
     }
 
-    @media (max-width: 680px){
-      .ticker-top{ margin-top: var(--nav-safe-m); }
-      .ticker-top .tradingview-widget-container{
+    @media (max-width: 680px) {
+      .ticker-top {
+        margin-top: var(--nav-safe-m);
+      }
+
+      .ticker-top .tradingview-widget-container {
         padding: 16px 10px;
         min-height: 70px;
       }
 
-      /* Ajuste do logo no mobile */
-      nav .logo{
+      nav .logo {
         padding-left: 12px;
         padding-right: 8px;
         max-width: calc(100% - 64px);
@@ -61,17 +73,18 @@
       }
     }
 
-    /* Clock: some quando vazio */
     .clock-time:empty,
-    .clock-date:empty{ display:none; }
+    .clock-date:empty {
+      display: none;
+    }
 
-    /* ====== AJUSTE DO HERO (subir um pouco) ====== */
-    .hero{
+    .hero {
       padding-top: 32px !important;
       padding-bottom: 60px !important;
     }
-    @media (max-width: 680px){
-      .hero{
+
+    @media (max-width: 680px) {
+      .hero {
         padding-top: 18px !important;
         padding-bottom: 46px !important;
       }
@@ -87,12 +100,12 @@
       <div class="logo">⚜️ CLUBE MULTI TRADER</div>
 
       <ul class="nav-links">
-        <li><a data-nav="home" href="/clube-multi-trader-site/">Início</a></li>
-        <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a data-nav="calendario" href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a data-nav="home" href="/">Início</a></li>
+        <li><a data-nav="cursos" href="/cursos/">Cursos</a></li>
+        <li><a data-nav="materiais" href="/materiais/">Materiais</a></li>
+        <li><a data-nav="blog" href="/blog/">Blog</a></li>
+        <li><a data-nav="calendario" href="/calendario/">Calendário</a></li>
+        <li><a data-nav="contato" href="/contato/">Contato</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -102,17 +115,17 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul>
-        <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- TICKER (TradingView) -->
+  <!-- TICKER TRADINGVIEW -->
   <div class="ticker-top">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
@@ -145,9 +158,14 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">⚜️</div>
+
       <h1 class="hero-title">Disciplina • Estrutura • Consistência</h1>
-      <p class="hero-subtitle">Transforme sua relação com o mercado através de métodos comprovados e mentalidade vencedora</p>
-      <a href="/clube-multi-trader-site/materiais/" class="cta-button">Acesse Materiais Gratuitos</a>
+
+      <p class="hero-subtitle">
+        Transforme sua relação com o mercado através de métodos comprovados e mentalidade vencedora
+      </p>
+
+      <a href="/materiais/" class="cta-button">Acesse Materiais Gratuitos</a>
     </div>
   </section>
 
@@ -155,6 +173,7 @@
   <section>
     <div class="container">
       <h2 class="section-title">Sobre o Clube Multi Trader</h2>
+
       <p class="section-subtitle">
         O Clube Multi Trader é uma comunidade dedicada a formar traders profissionais através de educação de qualidade,
         suporte contínuo e estratégias testadas no mercado real. Nosso foco é construir bases sólidas para resultados
@@ -165,24 +184,32 @@
         <div class="card">
           <div class="card-icon">🎯</div>
           <h3 class="card-title">Método</h3>
-          <p class="card-description">Processo claro, rotina e repetição do que funciona: menos achismo, mais execução.</p>
+          <p class="card-description">
+            Processo claro, rotina e repetição do que funciona: menos achismo, mais execução.
+          </p>
         </div>
+
         <div class="card">
           <div class="card-icon">🧠</div>
           <h3 class="card-title">Mentalidade</h3>
-          <p class="card-description">Disciplina, controle emocional e consistência para sobreviver e evoluir no mercado.</p>
+          <p class="card-description">
+            Disciplina, controle emocional e consistência para sobreviver e evoluir no mercado.
+          </p>
         </div>
+
         <div class="card">
           <div class="card-icon">📊</div>
           <h3 class="card-title">Prática</h3>
-          <p class="card-description">Conteúdos e materiais para você aplicar, registrar e ajustar com base em dados reais.</p>
+          <p class="card-description">
+            Conteúdos e materiais para você aplicar, registrar e ajustar com base em dados reais.
+          </p>
         </div>
       </div>
 
       <div style="text-align:center; margin-top:40px;">
-        <a href="/clube-multi-trader-site/cursos/" class="cta-button">Ver Cursos</a>
+        <a href="/cursos/" class="cta-button">Ver Cursos</a>
         <span style="display:inline-block;width:12px;"></span>
-        <a href="/clube-multi-trader-site/blog/" class="cta-button">Ver Blog</a>
+        <a href="/blog/" class="cta-button">Ver Blog</a>
       </div>
     </div>
   </section>
@@ -191,13 +218,19 @@
   <footer>
     <div class="footer-content">
       <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
+
       <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
-         target="_blank" rel="noopener noreferrer" class="footer-link">
+         target="_blank"
+         rel="noopener noreferrer"
+         class="footer-link">
         🔗 Acesse LiteFinance
       </a>
     </div>
   </footer>
 
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
+  <!-- JS PRINCIPAL -->
+  <script src="/assets/main.js?v=10"></script>
+
 </body>
 </html>
+```
