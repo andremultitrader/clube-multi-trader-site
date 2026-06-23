@@ -1,183 +1,803 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analisador de Performance • Clube Multi Trader</title>
-
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <title>Analisador de Performance - Clube Multi Trader</title>
 
   <style>
-    .analise-container{
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    :root {
+      --bg: #090909;
+      --card: #151515;
+      --card2: #1d1d1d;
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
+      --gold: #d4af37;
+      --gold2: #f0c94a;
+      --border: #2c2c2c;
+      --green: #4ade80;
+      --red: #fb7185;
+      --yellow: #facc15;
+      --blue: #60a5fa;
     }
 
-    .analise-form label{
-      display: block;
-      margin-top: 18px;
-      font-weight: 600;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .analise-form input{
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #181818 0%, #080808 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
       width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
-      color: #fff;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      background: rgba(0, 0, 0, 0.75);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
     }
 
-    .analise-btn{
-      margin-top: 28px;
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.88;
+    }
+
+    .menu a:hover {
+      color: var(--gold2);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 42px 22px 70px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .badge {
       display: inline-block;
-      padding: 12px 22px;
-      background: #d4af37;
-      color: #000;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: .2s;
+      padding: 8px 15px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 999px;
+      color: var(--gold2);
+      background: rgba(212, 175, 55, 0.08);
+      font-size: 13px;
+      margin-bottom: 18px;
     }
 
-    .analise-btn:hover{
-      background: #f5d76e;
+    h1 {
+      font-family: Georgia, serif;
+      color: var(--gold);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.05;
+      margin-bottom: 14px;
     }
 
-    .resultado-card{
-      margin-top: 40px;
-      padding: 24px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+    .subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      margin: auto;
+      font-size: 17px;
       line-height: 1.6;
     }
 
-    .resultado-card p{
-      margin-bottom: 10px;
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .card h2 {
+      font-size: 21px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card p.helper {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #f1f1f1;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #111;
+      color: #fff;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.13);
+    }
+
+    .small-text {
+      color: #8d8d8d;
+      font-size: 12px;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #171717;
+    }
+
+    .secondary {
+      background: #242424;
+      color: #fff;
+      border: 1px solid #383838;
+    }
+
+    .result-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .metric strong {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .metric.gold strong {
+      color: var(--gold2);
+    }
+
+    .metric.green strong {
+      color: var(--green);
+    }
+
+    .metric.red strong {
+      color: var(--red);
+    }
+
+    .progress-box {
+      margin: 20px 0;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .progress {
+      height: 14px;
+      background: #101010;
+      border: 1px solid #2b2b2b;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--green));
+      transition: width 0.4s ease;
+    }
+
+    .diagnosis {
+      margin-top: 18px;
+      padding: 18px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+    }
+
+    .diagnosis h3 {
+      margin-bottom: 12px;
+      color: var(--gold2);
+      font-size: 18px;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    li {
+      color: #e8e8e8;
+      line-height: 1.45;
+      font-size: 15px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .pill.good {
+      color: #052e16;
+      background: var(--green);
+    }
+
+    .pill.alert {
+      color: #422006;
+      background: var(--yellow);
+    }
+
+    .pill.bad {
+      color: #450a0a;
+      background: var(--red);
+    }
+
+    .report {
+      white-space: pre-wrap;
+      background: #0d0d0d;
+      border: 1px solid #292929;
+      border-radius: 14px;
+      padding: 16px;
+      color: #ddd;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 16px;
+      display: none;
+    }
+
+    .notice {
+      margin-top: 24px;
+      color: #9d9d9d;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid,
+      .result-top {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+      }
+
+      .menu {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="nav">
+      <div class="logo">♣ CLUBE MULTI TRADER</div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-content">
-      <div class="logo">⚜️ CLUBE MULTI TRADER</div>
-
-      <ul class="nav-links">
-        <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
-      </ul>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
-        <span></span>
-      </button>
+      <nav class="menu">
+        <a href="../">Início</a>
+        <a href="../cursos/">Cursos</a>
+        <a href="../materiais/">Materiais</a>
+        <a href="../blog/">Blog</a>
+        <a href="../calendario/">Calendário</a>
+        <a href="../contato/">Contato</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="nav-mobile" id="navMobile">
-      <ul>
-        <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
+  <main>
+    <section class="hero">
+      <div class="badge">Ferramenta gratuita para traders em evolução</div>
+      <h1>Analisador de Performance</h1>
+      <p class="subtitle">
+        Preencha seus resultados e receba uma leitura simples sobre lucro, taxa de acerto,
+        média por trade, progresso até a meta e pontos de melhoria na sua gestão.
+      </p>
+    </section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">📊</div>
-      <h1 class="hero-title">Analisador de Performance do Trader</h1>
-      <p class="hero-subtitle">Preencha seus dados e receba uma análise automática baseada em métricas profissionais</p>
-    </div>
-  </section>
+    <section class="grid">
+      <div class="card">
+        <h2>1. Dados da conta</h2>
+        <p class="helper">
+          Use os números do seu painel da corretora ou prop firm. Quanto mais real for o preenchimento,
+          melhor será o diagnóstico.
+        </p>
 
-  <!-- FORMULÁRIO -->
-  <section>
-    <div class="analise-container">
+        <div class="form-grid">
+          <div>
+            <label>Capital inicial ($)</label>
+            <input id="capitalInicial" type="number" placeholder="Ex: 25000">
+            <div class="small-text">Valor que a conta começou.</div>
+          </div>
 
-      <h2 class="section-title">Preencha seus resultados</h2>
+          <div>
+            <label>Capital atual ($)</label>
+            <input id="capitalAtual" type="number" placeholder="Ex: 25800">
+            <div class="small-text">Valor atual da conta.</div>
+          </div>
 
-      <form class="analise-form">
+          <div>
+            <label>Meta da conta ($)</label>
+            <input id="metaConta" type="number" placeholder="Ex: 26500">
+            <div class="small-text">Valor necessário para passar.</div>
+          </div>
 
-        <label>Lucro líquido total ($):</label>
-        <input type="number" id="lucro" step="0.01">
+          <div>
+            <label>Dias operados</label>
+            <input id="dias" type="number" placeholder="Ex: 5">
+            <div class="small-text">Quantidade de dias com operações.</div>
+          </div>
+        </div>
 
-        <label>Número total de trades:</label>
-        <input type="number" id="trades">
+        <br>
 
-        <label>Taxa de acerto (%):</label>
-        <input type="number" id="acerto" step="0.01">
+        <h2>2. Dados dos trades</h2>
+        <p class="helper">
+          Aqui entram os números da sua performance. Caso não saiba algum campo, preencha o máximo que conseguir.
+        </p>
 
-        <label>Maior ganho ($):</label>
-        <input type="number" id="maiorGanho" step="0.01">
+        <div class="form-grid">
+          <div>
+            <label>Lucro líquido total ($)</label>
+            <input id="lucroLiquido" type="number" placeholder="Ex: 800">
+            <div class="small-text">Se deixar vazio, calculo pelo capital atual menos inicial.</div>
+          </div>
 
-        <label>Maior perda ($):</label>
-        <input type="number" id="maiorPerda" step="0.01">
+          <div>
+            <label>Total de trades</label>
+            <input id="totalTrades" type="number" placeholder="Ex: 20">
+            <div class="small-text">Quantidade total de entradas.</div>
+          </div>
 
-        <div class="analise-btn" onclick="analisar()">Gerar Análise</div>
-      </form>
+          <div>
+            <label>Taxa de acerto (%)</label>
+            <input id="taxaAcerto" type="number" placeholder="Ex: 60">
+            <div class="small-text">Percentual de trades vencedores.</div>
+          </div>
 
-      <div id="resultado" class="resultado-card" style="display:none;"></div>
+          <div>
+            <label>Meta diária ($)</label>
+            <input id="metaDiaria" type="number" placeholder="Ex: 100">
+            <div class="small-text">Quanto você busca por dia.</div>
+          </div>
 
-    </div>
-  </section>
+          <div>
+            <label>Maior ganho ($)</label>
+            <input id="maiorGanho" type="number" placeholder="Ex: 250">
+            <div class="small-text">Maior trade positivo.</div>
+          </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
-      <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
-         target="_blank" rel="noopener noreferrer" class="footer-link">
-        🔗 Acesse LiteFinance
-      </a>
-    </div>
-  </footer>
+          <div>
+            <label>Maior perda ($)</label>
+            <input id="maiorPerda" type="number" placeholder="Ex: 100">
+            <div class="small-text">Maior trade negativo.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" onclick="gerarAnalise()">Gerar análise</button>
+          <button class="secondary" onclick="limparCampos()">Limpar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Resultado da análise</h2>
+        <p class="helper">
+          O diagnóstico aparece aqui depois que você clicar em gerar análise.
+        </p>
+
+        <div id="statusPill" class="pill alert">Aguardando dados</div>
+
+        <div class="result-top">
+          <div class="metric gold">
+            <span>Lucro líquido</span>
+            <strong id="rLucro">$0.00</strong>
+          </div>
+
+          <div class="metric">
+            <span>Progresso até a meta</span>
+            <strong id="rProgresso">0%</strong>
+          </div>
+
+          <div class="metric">
+            <span>Média por trade</span>
+            <strong id="rMediaTrade">$0.00</strong>
+          </div>
+
+          <div class="metric">
+            <span>Nota da performance</span>
+            <strong id="rNota">--</strong>
+          </div>
+        </div>
+
+        <div class="progress-box">
+          <div class="progress-info">
+            <span>Progresso da conta</span>
+            <span id="progressText">0%</span>
+          </div>
+          <div class="progress">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="diagnosis">
+          <h3>Diagnóstico</h3>
+          <ul id="diagnostico">
+            <li>📌 Preencha os dados ao lado para receber a leitura da performance.</li>
+          </ul>
+        </div>
+
+        <div class="diagnosis">
+          <h3>Plano de ação</h3>
+          <ul id="plano">
+            <li>✅ Depois da análise, você verá os pontos mais importantes para melhorar.</li>
+          </ul>
+        </div>
+
+        <div class="actions">
+          <button class="secondary" onclick="copiarRelatorio()">Copiar relatório</button>
+        </div>
+
+        <div id="relatorio" class="report"></div>
+      </div>
+    </section>
+
+    <p class="notice">
+      Aviso: esta ferramenta é educativa e não representa recomendação de investimento.
+      O objetivo é ajudar o trader a analisar disciplina, gestão e consistência.
+    </p>
+  </main>
 
   <script>
-    function analisar() {
-      const lucro = parseFloat(document.getElementById('lucro').value || 0);
-      const trades = parseInt(document.getElementById('trades').value || 0);
-      const acerto = parseFloat(document.getElementById('acerto').value || 0);
-      const maiorGanho = parseFloat(document.getElementById('maiorGanho').value || 0);
-      const maiorPerda = parseFloat(document.getElementById('maiorPerda').value || 0);
+    function numero(id) {
+      const valor = document.getElementById(id).value;
+      if (!valor) return 0;
+      return parseFloat(valor.replace(",", ".")) || 0;
+    }
 
-      let analise = "<h3 style='margin-bottom:12px;'>📈 Resultado da Análise</h3>";
+    function dinheiro(valor) {
+      return "$" + valor.toFixed(2);
+    }
 
-      if (lucro > 0) analise += "<p>✅ Você está lucrativo no período analisado.</p>";
-      else analise += "<p>⚠ Você está negativo no período analisado.</p>";
+    function porcentagem(valor) {
+      return valor.toFixed(1) + "%";
+    }
 
-      if (acerto >= 70) analise += "<p>✅ Sua taxa de acerto é boa.</p>";
-      else analise += "<p>⚠ Sua taxa de acerto está baixa. Reveja seus filtros de entrada.</p>";
+    function gerarAnalise() {
+      const capitalInicial = numero("capitalInicial");
+      const capitalAtual = numero("capitalAtual");
+      const metaConta = numero("metaConta");
+      const dias = numero("dias");
+      const lucroDigitado = numero("lucroLiquido");
+      const totalTrades = numero("totalTrades");
+      const taxaAcerto = numero("taxaAcerto");
+      const metaDiaria = numero("metaDiaria");
+      const maiorGanho = numero("maiorGanho");
+      const maiorPerda = numero("maiorPerda");
 
-      if (Math.abs(maiorPerda) > maiorGanho)
-        analise += "<p>⚠ Sua maior perda é maior que seu maior ganho. Risco assimétrico contra você.</p>";
-      else
-        analise += "<p>✅ Seu maior ganho é maior que sua maior perda. Boa assimetria.</p>";
+      let lucroLiquido = lucroDigitado;
 
-      if (trades > 20)
-        analise += "<p>⚠ Volume alto de trades. Cuidado com overtrading.</p>";
-      else if (trades > 0)
-        analise += "<p>✅ Quantidade de trades saudável.</p>";
+      if (lucroLiquido === 0 && capitalInicial > 0 && capitalAtual > 0) {
+        lucroLiquido = capitalAtual - capitalInicial;
+      }
 
-      document.getElementById('resultado').style.display = "block";
-      document.getElementById('resultado').innerHTML = analise;
+      const mediaTrade = totalTrades > 0 ? lucroLiquido / totalTrades : 0;
+      const mediaDia = dias > 0 ? lucroLiquido / dias : 0;
+      const tradesPorDia = dias > 0 ? totalTrades / dias : 0;
+      const rr = maiorPerda > 0 ? maiorGanho / maiorPerda : 0;
+
+      let progresso = 0;
+      if (capitalInicial > 0 && capitalAtual > 0 && metaConta > capitalInicial) {
+        progresso = ((capitalAtual - capitalInicial) / (metaConta - capitalInicial)) * 100;
+      }
+
+      progresso = Math.max(0, Math.min(progresso, 100));
+
+      let pontos = 0;
+
+      if (lucroLiquido > 0) pontos += 20;
+      if (taxaAcerto >= 60) pontos += 20;
+      else if (taxaAcerto >= 55) pontos += 17;
+      else if (taxaAcerto >= 50) pontos += 13;
+      else if (taxaAcerto >= 45) pontos += 8;
+
+      if (rr >= 2) pontos += 20;
+      else if (rr >= 1.5) pontos += 16;
+      else if (rr >= 1) pontos += 10;
+
+      if (mediaTrade > 0) pontos += 15;
+
+      if (metaDiaria > 0 && mediaDia >= metaDiaria) pontos += 15;
+      else if (mediaDia > 0) pontos += 8;
+
+      if (tradesPorDia > 0 && tradesPorDia <= 8) pontos += 10;
+      else if (tradesPorDia <= 15) pontos += 6;
+      else if (tradesPorDia > 15) pontos += 2;
+
+      let nota = "C";
+      let status = "Performance em atenção";
+      let classe = "alert";
+
+      if (pontos >= 80) {
+        nota = "A";
+        status = "Performance forte";
+        classe = "good";
+      } else if (pontos >= 60) {
+        nota = "B";
+        status = "Performance boa";
+        classe = "good";
+      } else if (pontos >= 40) {
+        nota = "C";
+        status = "Performance em construção";
+        classe = "alert";
+      } else {
+        nota = "D";
+        status = "Risco elevado";
+        classe = "bad";
+      }
+
+      document.getElementById("rLucro").textContent = dinheiro(lucroLiquido);
+      document.getElementById("rProgresso").textContent = porcentagem(progresso);
+      document.getElementById("rMediaTrade").textContent = dinheiro(mediaTrade);
+      document.getElementById("rNota").textContent = nota;
+
+      document.getElementById("progressText").textContent = porcentagem(progresso);
+      document.getElementById("progressFill").style.width = progresso + "%";
+
+      const pill = document.getElementById("statusPill");
+      pill.textContent = status;
+      pill.className = "pill " + classe;
+
+      const diagnostico = [];
+
+      if (lucroLiquido > 0) {
+        diagnostico.push("✅ Você está lucrativo no período analisado.");
+      } else if (lucroLiquido < 0) {
+        diagnostico.push("❌ Você está negativo no período. Antes de aumentar lote, ajuste gestão e entradas.");
+      } else {
+        diagnostico.push("⚠️ Resultado zerado ou não informado. Preencha o lucro líquido ou capital inicial/atual.");
+      }
+
+      if (taxaAcerto >= 60) {
+        diagnostico.push("✅ Taxa de acerto forte. O foco agora é manter disciplina e não devolver lucro.");
+      } else if (taxaAcerto >= 50) {
+        diagnostico.push("⚠️ Taxa de acerto aceitável, mas ainda dá para filtrar melhor as entradas.");
+      } else if (taxaAcerto > 0) {
+        diagnostico.push("❌ Taxa de acerto baixa. Revise seus critérios de entrada e evite operar por ansiedade.");
+      }
+
+      if (rr >= 1.5) {
+        diagnostico.push("✅ Seu maior ganho está bem acima da maior perda. Boa assimetria.");
+      } else if (rr >= 1) {
+        diagnostico.push("⚠️ Ganho e perda estão muito próximos. Busque operações com melhor risco/retorno.");
+      } else if (maiorGanho > 0 && maiorPerda > 0) {
+        diagnostico.push("❌ Sua maior perda é maior que seu maior ganho. Isso pode destruir a consistência.");
+      }
+
+      if (tradesPorDia > 15) {
+        diagnostico.push("⚠️ Volume alto de trades por dia. Cuidado com overtrading.");
+      } else if (tradesPorDia > 0) {
+        diagnostico.push("✅ Quantidade de trades por dia está controlada.");
+      }
+
+      if (metaDiaria > 0 && mediaDia >= metaDiaria) {
+        diagnostico.push("✅ Sua média diária está acima ou igual à meta planejada.");
+      } else if (metaDiaria > 0 && mediaDia > 0) {
+        diagnostico.push("⚠️ Você está lucrativo, mas abaixo da meta diária. Melhor crescer com segurança do que forçar.");
+      }
+
+      if (capitalAtual > 0 && metaConta > 0) {
+        const falta = metaConta - capitalAtual;
+        if (falta > 0) {
+          diagnostico.push("📍 Ainda faltam " + dinheiro(falta) + " para chegar na meta da conta.");
+        } else {
+          diagnostico.push("🏆 Você já atingiu ou passou a meta da conta.");
+        }
+      }
+
+      const plano = [];
+
+      if (taxaAcerto < 55 && taxaAcerto > 0) {
+        plano.push("📌 Reduza entradas fracas. Só opere quando houver confluência clara.");
+      }
+
+      if (rr < 1.5 && maiorGanho > 0 && maiorPerda > 0) {
+        plano.push("📌 Busque alvos maiores que o stop. Evite operações onde o risco é quase igual ao ganho.");
+      }
+
+      if (tradesPorDia > 15) {
+        plano.push("📌 Defina limite de trades por dia. Exemplo: 3 a 5 boas entradas.");
+      }
+
+      if (lucroLiquido > 0) {
+        plano.push("📌 Se bateu a meta do dia, considere parar. Proteger lucro também é estratégia.");
+      }
+
+      if (mediaTrade < 0) {
+        plano.push("📌 Sua média por trade está negativa. Revise stop, entrada e horário das operações.");
+      } else if (mediaTrade > 0) {
+        plano.push("📌 Sua média por trade está positiva. Continue registrando e repetindo o que funciona.");
+      }
+
+      if (plano.length === 0) {
+        plano.push("✅ Preencha mais dados para gerar um plano de ação mais preciso.");
+      }
+
+      document.getElementById("diagnostico").innerHTML = diagnostico.map(item => "<li>" + item + "</li>").join("");
+      document.getElementById("plano").innerHTML = plano.map(item => "<li>" + item + "</li>").join("");
+
+      const relatorio =
+`RELATÓRIO DE PERFORMANCE - CLUBE MULTI TRADER
+
+Lucro líquido: ${dinheiro(lucroLiquido)}
+Total de trades: ${totalTrades}
+Taxa de acerto: ${taxaAcerto}%
+Média por trade: ${dinheiro(mediaTrade)}
+Média por dia: ${dinheiro(mediaDia)}
+Trades por dia: ${tradesPorDia.toFixed(1)}
+Maior ganho: ${dinheiro(maiorGanho)}
+Maior perda: ${dinheiro(maiorPerda)}
+Progresso até a meta: ${porcentagem(progresso)}
+Nota da performance: ${nota}
+Status: ${status}
+
+Diagnóstico:
+${diagnostico.map(i => "- " + i.replace(/[✅❌⚠️📍🏆]/g, "").trim()).join("\n")}
+
+Plano de ação:
+${plano.map(i => "- " + i.replace(/[📌✅]/g, "").trim()).join("\n")}`;
+
+      document.getElementById("relatorio").textContent = relatorio;
+      document.getElementById("relatorio").style.display = "block";
+    }
+
+    function limparCampos() {
+      const campos = [
+        "capitalInicial",
+        "capitalAtual",
+        "metaConta",
+        "dias",
+        "lucroLiquido",
+        "totalTrades",
+        "taxaAcerto",
+        "metaDiaria",
+        "maiorGanho",
+        "maiorPerda"
+      ];
+
+      campos.forEach(id => document.getElementById(id).value = "");
+
+      document.getElementById("rLucro").textContent = "$0.00";
+      document.getElementById("rProgresso").textContent = "0%";
+      document.getElementById("rMediaTrade").textContent = "$0.00";
+      document.getElementById("rNota").textContent = "--";
+      document.getElementById("progressText").textContent = "0%";
+      document.getElementById("progressFill").style.width = "0%";
+
+      const pill = document.getElementById("statusPill");
+      pill.textContent = "Aguardando dados";
+      pill.className = "pill alert";
+
+      document.getElementById("diagnostico").innerHTML =
+        "<li>📌 Preencha os dados ao lado para receber a leitura da performance.</li>";
+
+      document.getElementById("plano").innerHTML =
+        "<li>✅ Depois da análise, você verá os pontos mais importantes para melhorar.</li>";
+
+      document.getElementById("relatorio").style.display = "none";
+      document.getElementById("relatorio").textContent = "";
+    }
+
+    function copiarRelatorio() {
+      const texto = document.getElementById("relatorio").textContent;
+
+      if (!texto.trim()) {
+        alert("Gere a análise primeiro.");
+        return;
+      }
+
+      navigator.clipboard.writeText(texto);
+      alert("Relatório copiado!");
     }
   </script>
-
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
 </body>
 </html>
