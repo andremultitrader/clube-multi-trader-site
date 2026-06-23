@@ -1,5 +1,5 @@
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -12,15 +12,19 @@
     content="Cursos do Clube Multi Trader: aprenda a operar com método, gestão de risco, leitura de gráfico, disciplina e controle emocional."
   />
 
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <!-- CSS PRINCIPAL -->
+  <link rel="stylesheet" href="/assets/style.css?v=12" />
 
   <style>
     .page-hero {
@@ -115,6 +119,7 @@
     .feature-list {
       list-style: none;
       margin-top: 22px;
+      padding: 0;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 12px;
@@ -173,17 +178,18 @@
   <!-- NAV -->
   <nav>
     <div class="nav-content">
-      <a class="logo" href="/clube-multi-trader-site/" style="text-decoration:none;">
+      <a class="logo" href="/" style="text-decoration:none;">
         ⚜️ CLUBE MULTI TRADER
       </a>
 
       <ul class="nav-links">
-        <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a class="active-link" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a data-nav="home" href="/">Início</a></li>
+        <li><a data-nav="cursos" class="active-link" href="/cursos/">Cursos</a></li>
+        <li><a data-nav="materiais" href="/materiais/">Materiais</a></li>
+        <li><a data-nav="analise" href="/analise/">Análise</a></li>
+        <li><a data-nav="blog" href="/blog/">Blog</a></li>
+        <li><a data-nav="calendario" href="/calendario/">Calendário</a></li>
+        <li><a data-nav="contato" href="/contato/">Contato</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -193,20 +199,21 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul>
-        <li><a href="/clube-multi-trader-site/">Início</a></li>
-        <li><a class="active-link" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a class="active-link" href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- CLOCK -->
   <div class="clock-container">
-    <div class="clock-time" id="clockTime">00:00:00</div>
-    <div class="clock-date" id="clockDate">Carregando...</div>
+    <div class="clock-time" id="clock-time"></div>
+    <div class="clock-date" id="clock-date"></div>
   </div>
 
   <!-- HERO -->
@@ -230,7 +237,7 @@
           Quero saber mais sobre o curso
         </a>
 
-        <a class="read-more" href="/clube-multi-trader-site/materiais/">
+        <a class="read-more" href="/materiais/">
           Ver materiais gratuitos →
         </a>
       </div>
@@ -290,7 +297,6 @@
 
         <div class="cards-grid">
 
-          <!-- Módulo 1 -->
           <div class="card">
             <div class="card-icon">📌</div>
             <h3 class="card-title">Base do Mercado</h3>
@@ -301,7 +307,6 @@
             <div class="blog-date" style="margin-top:18px;">Fundamento essencial</div>
           </div>
 
-          <!-- Módulo 2 -->
           <div class="card">
             <div class="card-icon">📊</div>
             <h3 class="card-title">Leitura de Gráfico</h3>
@@ -312,7 +317,6 @@
             <div class="blog-date" style="margin-top:18px;">Análise simples e objetiva</div>
           </div>
 
-          <!-- Módulo 3 -->
           <div class="card">
             <div class="card-icon">🕯️</div>
             <h3 class="card-title">Candles e Médias</h3>
@@ -323,7 +327,6 @@
             <div class="blog-date" style="margin-top:18px;">Clareza na decisão</div>
           </div>
 
-          <!-- Módulo 4 -->
           <div class="card">
             <div class="card-icon">🎯</div>
             <h3 class="card-title">Entradas e Saídas</h3>
@@ -334,7 +337,6 @@
             <div class="blog-date" style="margin-top:18px;">Execução com método</div>
           </div>
 
-          <!-- Módulo 5 -->
           <div class="card">
             <div class="card-icon">🛡️</div>
             <h3 class="card-title">Gestão de Risco</h3>
@@ -345,7 +347,6 @@
             <div class="blog-date" style="margin-top:18px;">Proteção da conta</div>
           </div>
 
-          <!-- Módulo 6 -->
           <div class="card">
             <div class="card-icon">🧠</div>
             <h3 class="card-title">Psicologia e Rotina</h3>
@@ -356,6 +357,32 @@
             <div class="blog-date" style="margin-top:18px;">Consistência no longo prazo</div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREA DE ANÁLISE -->
+    <section style="padding-top:40px;">
+      <div class="container">
+        <div class="highlight-box">
+          <p class="lead-text">
+            Antes de clicar, aprenda a analisar.
+          </p>
+
+          <p style="color:rgba(255,255,255,.78); line-height:1.8; margin-bottom:24px;">
+            A área de análise do Clube Multi Trader foi criada para ajudar o trader a olhar
+            estrutura, tendência, VIX, DXY, sessões e probabilidade antes da operação.
+          </p>
+
+          <div class="actions-row">
+            <a class="cta-button" href="/analise/">
+              Abrir Área de Análise
+            </a>
+
+            <a class="read-more" href="/materiais/">
+              Baixar materiais gratuitos →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -382,13 +409,16 @@
               Enviar e-mail para o Clube
             </a>
 
-            <a class="read-more" href="/clube-multi-trader-site/blog/">
+            <a class="read-more" href="/blog/">
               ✍️ Ler artigos do Blog →
             </a>
           </div>
 
           <p style="margin-top:18px; color:rgba(255,255,255,.72); font-size:14px;">
-            E-mail: <a href="mailto:clubemultitrader@gmail.com" style="color:var(--gold); text-decoration:none;">clubemultitrader@gmail.com</a>
+            E-mail:
+            <a href="mailto:clubemultitrader@gmail.com" style="color:var(--gold); text-decoration:none;">
+              clubemultitrader@gmail.com
+            </a>
           </p>
         </div>
       </div>
@@ -398,56 +428,24 @@
 
   <!-- FOOTER -->
   <footer>
-    <p class="footer-text">
-      © 2021 Clube Multi Trader. Todos os direitos reservados.
-    </p>
+    <div class="footer-content">
+      <p class="footer-text">
+        © 2021 Clube Multi Trader. Todos os direitos reservados.
+      </p>
 
-    <a
-      class="footer-link"
-      href="https://www.litefinance.org/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Acesse LiteFinance
-    </a>
+      <a
+        class="footer-link"
+        href="https://www.litefinance.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🔗 Acesse LiteFinance
+      </a>
+    </div>
   </footer>
 
-  <script>
-    const navToggle = document.getElementById("navToggle");
-    const navMobile = document.getElementById("navMobile");
-
-    if (navToggle && navMobile) {
-      navToggle.addEventListener("click", () => {
-        navMobile.classList.toggle("open");
-      });
-    }
-
-    function updateClock() {
-      const now = new Date();
-
-      const time = now.toLocaleTimeString("pt-BR", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-      });
-
-      const date = now.toLocaleDateString("pt-BR", {
-        weekday: "short",
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-      });
-
-      const clockTime = document.getElementById("clockTime");
-      const clockDate = document.getElementById("clockDate");
-
-      if (clockTime) clockTime.textContent = time;
-      if (clockDate) clockDate.textContent = date;
-    }
-
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
+  <!-- JS PRINCIPAL -->
+  <script src="/assets/main.js?v=12"></script>
 
 </body>
 </html>
