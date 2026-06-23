@@ -3,148 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Calendário Econômico • Clube Multi Trader</title>
 
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <meta name="description" content="Calendário econômico do Clube Multi Trader para acompanhar notícias de alto impacto, eventos dos Estados Unidos, volatilidade no ouro, dólar, índices e criptoativos." />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/style.css?v=13" />
 
   <style>
-    .hero.cal-hero-fix { padding-top: 56px; }
-    .hero.cal-hero-fix .hero-title { font-size: 40px; }
-    .hero.cal-hero-fix .hero-subtitle { max-width: 980px; margin-left:auto; margin-right:auto; }
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-    @media (max-width: 680px){
-      .hero.cal-hero-fix { padding-top: 66px; }
-      .hero.cal-hero-fix .hero-title { font-size: 26px; }
+    .calendar-hero {
+      text-align: center;
+      margin-bottom: 55px;
     }
 
-    .cal-chips{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-    }
-    .cal-chip{
-      font-family: Poppins, system-ui;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 8px 12px;
+    .calendar-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(212,175,55,0.35);
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      white-space: nowrap;
+      color: #d4af37;
+      background: rgba(212,175,55,0.08);
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: 18px;
     }
 
-    .cal-card{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
+    .calendar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .calendar-title span {
+      color: #d4af37;
+    }
+
+    .calendar-subtitle {
+      max-width: 850px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.78);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .calendar-chips {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .calendar-chip {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.85);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .calendar-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px auto 0;
+      max-width: 900px;
+    }
+
+    .stat-box {
+      padding: 22px 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(24,24,24,.96), rgba(12,12,12,.98));
+      border: 1px solid rgba(212,175,55,.16);
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    .stat-box strong {
+      display: block;
+      color: #d4af37;
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .stat-box span {
+      color: rgba(255,255,255,.74);
+      font-size: .92rem;
+    }
+
+    .calendar-guide {
+      margin-bottom: 46px;
+      text-align: center;
+    }
+
+    .calendar-guide h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 15px;
+    }
+
+    .calendar-guide p {
+      max-width: 780px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,.74);
+      line-height: 1.8;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .guide-card {
+      padding: 24px 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(24,24,24,.96), rgba(12,12,12,.98));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      transition: .25s ease;
+      text-align: left;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,175,55,.24);
+    }
+
+    .guide-card h3 {
+      color: #d4af37;
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+    }
+
+    .guide-card p {
+      margin: 0;
+      color: rgba(255,255,255,.74);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .calendar-card {
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(24,24,24,.96), rgba(10,10,10,.99));
+      border: 1px solid rgba(212,175,55,.18);
       box-shadow: 0 18px 45px rgba(0,0,0,.35);
       overflow: hidden;
       position: relative;
     }
-    .cal-card::before{
-      content:"";
-      position:absolute;
-      inset:-120px -80px auto -80px;
-      height: 220px;
-      background: radial-gradient(closest-side, rgba(255,255,255,.12), rgba(255,255,255,0));
-      pointer-events:none;
+
+    .calendar-card::before {
+      content: "";
+      position: absolute;
+      inset: -120px -80px auto -80px;
+      height: 230px;
+      background: radial-gradient(closest-side, rgba(212,175,55,.14), rgba(212,175,55,0));
+      pointer-events: none;
     }
 
-    .cal-card-head{
-      padding: 16px 16px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
+    .calendar-card-head {
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
       position: relative;
       z-index: 2;
     }
-    .cal-card-title{
-      margin: 0 0 6px;
-      font-family: Poppins, system-ui;
-      font-size: 15px;
-      letter-spacing: .2px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .cal-card-desc{
-      margin: 0;
-      font-family: Montserrat, system-ui;
-      font-size: 13px;
-      opacity: .88;
-      line-height: 1.55;
+
+    .calendar-card-title {
+      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      font-weight: 800;
     }
 
-    .cal-embed-wrap{
+    .calendar-card-desc {
+      color: rgba(255,255,255,.74);
+      line-height: 1.7;
+      font-size: .96rem;
+      margin: 0;
+    }
+
+    .gold-alert {
+      margin: 22px 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(212,175,55,.10);
+      border: 1px solid rgba(212,175,55,.25);
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .calendar-embed-wrap {
       height: 950px;
-      background: rgba(0,0,0,.22);
+      background: rgba(0,0,0,.25);
       border-top: 1px solid rgba(255,255,255,.06);
       position: relative;
+      z-index: 2;
     }
-    .cal-iframe{
+
+    .calendar-iframe {
       width: 100%;
       height: 100%;
       border: 0;
-      display:block;
+      display: block;
       background: transparent;
     }
 
-    .cal-footnote{
-      padding: 12px 16px 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+    .calendar-footnote {
+      padding: 16px 24px 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       justify-content: space-between;
       align-items: center;
-      font-family: Montserrat, system-ui;
-      font-size: 12px;
-      opacity: .88;
+      color: rgba(255,255,255,.74);
+      font-size: .88rem;
       position: relative;
       z-index: 2;
     }
-    .mini-btn{
-      display:inline-block;
-      padding:10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      color: inherit;
-      font-family: Poppins, system-ui;
-      font-weight: 600;
-      font-size: 12px;
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,.24);
+      background: rgba(212,175,55,.10);
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .86rem;
     }
 
-    @media (max-width: 680px){
-      .cal-embed-wrap{ height: 1150px; }
-      .cal-footnote{ justify-content: center; text-align:center; }
+    .calendar-cta {
+      margin-top: 70px;
+      text-align: center;
+      padding: 46px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(212,175,55,.13), rgba(10,10,10,.98));
+      border: 1px solid rgba(212,175,55,.22);
+    }
+
+    .calendar-cta h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    .calendar-cta p {
+      max-width: 720px;
+      margin: 0 auto 26px;
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+    }
+
+    .calendar-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #d4af37, #f2d675);
+      color: #111;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .25s ease;
+      min-width: 220px;
+    }
+
+    .calendar-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .active-link {
+      color: var(--gold) !important;
+      font-weight: 700 !important;
+    }
+
+    @media (max-width: 768px) {
+      .calendar-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-embed-wrap {
+        height: 1150px;
+      }
+
+      .calendar-footnote {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .guide-card {
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="nav-content">
-      <div class="logo">⚜️ CLUBE MULTI TRADER</div>
+      <a class="logo" href="/" style="text-decoration:none;">
+        ⚜️ CLUBE MULTI TRADER
+      </a>
 
       <ul class="nav-links">
-        <li><a data-nav="home" href="/clube-multi-trader-site/">Home</a></li>
-        <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a data-nav="calendario" href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a class="active-link" href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -154,84 +342,146 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul>
-        <li><a href="/clube-multi-trader-site/">Home</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/calendario/">Calendário</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a class="active-link" href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- CLOCK -->
   <div class="clock-container">
-    <div class="clock-time" id="clock-time">00:00:00</div>
-    <div class="clock-date" id="clock-date">Carregando...</div>
+    <div class="clock-time" id="clock-time"></div>
+    <div class="clock-date" id="clock-date"></div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero cal-hero-fix">
-    <div class="hero-content">
-      <div class="hero-badge">📅</div>
-      <h1 class="hero-title">Calendário Econômico (USD)</h1>
-      <p class="hero-subtitle">
-        Use este calendário para evitar operar em horários críticos do <strong>XAUUSD</strong>.
-        O horário é ajustado automaticamente pelo seu dispositivo (PC ou celular).
-      </p>
-
-      <div class="cal-chips">
-        <span class="cal-chip">💵 Filtro: USD</span>
-        <span class="cal-chip">🔥 Foque: High Impact</span>
-        <span class="cal-chip">⏱️ Evite 5–10 min antes</span>
-      </div>
-
-      <div class="hero-actions">
-        <a href="/clube-multi-trader-site/materiais/" class="cta-button">Ver Materiais</a>
-        <a href="/clube-multi-trader-site/blog/" class="cta-button">Ir para o Blog</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTEÚDO -->
-  <section>
+  <section style="padding-top:140px; padding-bottom:80px;">
     <div class="container">
-      <div class="cards-grid" style="grid-template-columns: 1fr;">
-        <div class="cal-card">
-          <div class="cal-card-head">
-            <h3 class="cal-card-title">📌 Calendário Econômico • Investing</h3>
-            <p class="cal-card-desc">
-              Configure dentro do calendário: <strong>Currency = USD</strong> e <strong>Impact = High</strong>.
-              Assim você enxerga o que realmente mexe no ouro (CPI, NFP, FOMC, etc.).
-            </p>
+
+      <div class="calendar-hero">
+        <div class="calendar-badge">📅 Calendário Econômico • Clube Multi Trader</div>
+
+        <h1 class="calendar-title">
+          Notícias que movem o mercado com <span>força e volatilidade</span>
+        </h1>
+
+        <p class="calendar-subtitle">
+          Acompanhe os principais eventos econômicos que podem impactar o ouro, dólar, índices,
+          criptomoedas e contratos futuros. Use o calendário para planejar suas operações com mais segurança.
+        </p>
+
+        <div class="calendar-chips">
+          <span class="calendar-chip">💵 Filtro: USD</span>
+          <span class="calendar-chip">🔥 Impacto Alto</span>
+          <span class="calendar-chip">🥇 Atenção ao XAUUSD</span>
+          <span class="calendar-chip">⏱️ Evite operar antes da notícia</span>
+        </div>
+
+        <div class="calendar-stats">
+          <div class="stat-box">
+            <strong>USD</strong>
+            <span>Moeda Principal</span>
           </div>
 
-          <div class="cal-embed-wrap">
-            <!-- Observação: o Investing pode bloquear iframe em alguns navegadores/locais -->
-            <iframe
-              class="cal-iframe"
-              title="Calendário Econômico - Investing"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.investing.com/economic-calendar/">
-            </iframe>
+          <div class="stat-box">
+            <strong>High</strong>
+            <span>Impacto Prioritário</span>
           </div>
 
-          <div class="cal-footnote">
-            <span>Se não carregar dentro do site (bloqueio de iframe), abra direto no Investing.</span>
-            <a class="mini-btn" href="https://www.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer">
-              Abrir no Investing ↗
-            </a>
+          <div class="stat-box">
+            <strong>XAUUSD</strong>
+            <span>Alta Sensibilidade</span>
           </div>
         </div>
       </div>
+
+      <div class="calendar-guide">
+        <h2>Como usar o calendário no seu operacional</h2>
+
+        <p>
+          Antes de abrir uma operação, verifique se existem notícias de alto impacto próximas.
+          Eventos econômicos podem gerar movimentos rápidos, spreads maiores e candles agressivos.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>📌 CPI</h3>
+            <p>Inflação dos Estados Unidos. Pode gerar forte movimento no dólar, ouro e índices.</p>
+          </div>
+
+          <div class="guide-card">
+            <h3>📌 NFP</h3>
+            <p>Payroll americano. Um dos eventos mais importantes do mês para volatilidade.</p>
+          </div>
+
+          <div class="guide-card">
+            <h3>📌 FOMC</h3>
+            <p>Decisão de juros e comunicado do Banco Central dos Estados Unidos.</p>
+          </div>
+
+          <div class="guide-card">
+            <h3>📌 Powell</h3>
+            <p>Discursos do presidente do FED podem mudar o sentimento do mercado rapidamente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-card">
+        <div class="calendar-card-head">
+          <h3 class="calendar-card-title">📌 Calendário Econômico • Investing</h3>
+
+          <p class="calendar-card-desc">
+            Configure dentro do calendário: <strong>Currency = USD</strong> e <strong>Impact = High</strong>.
+            Assim você acompanha os eventos com maior potencial de mexer no ouro, dólar, índices e criptomoedas.
+          </p>
+        </div>
+
+        <div class="gold-alert">
+          ⚠️ Se você opera XAUUSD, evite abrir posições entre 5 e 10 minutos antes de notícias classificadas como High Impact.
+        </div>
+
+        <div class="calendar-embed-wrap">
+          <iframe
+            class="calendar-iframe"
+            title="Calendário Econômico - Investing"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.investing.com/economic-calendar/">
+          </iframe>
+        </div>
+
+        <div class="calendar-footnote">
+          <span>Se o calendário não carregar dentro do site por bloqueio de iframe, abra direto no Investing.</span>
+
+          <a class="mini-btn" href="https://www.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer">
+            Abrir no Investing ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="calendar-cta">
+        <h2>Quer aprender a interpretar o mercado com mais confiança?</h2>
+
+        <p>
+          Conheça os cursos e materiais do Clube Multi Trader e desenvolva uma leitura mais profissional
+          do mercado com método, gestão de risco, disciplina e controle emocional.
+        </p>
+
+        <a href="/cursos/" class="calendar-button">
+          Conhecer os Cursos
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
+
       <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
          target="_blank" rel="noopener noreferrer" class="footer-link">
         🔗 Acesse LiteFinance
@@ -239,6 +489,7 @@
     </div>
   </footer>
 
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
+  <script src="/assets/main.js?v=13"></script>
+
 </body>
 </html>
