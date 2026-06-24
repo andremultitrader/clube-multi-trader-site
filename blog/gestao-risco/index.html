@@ -3,71 +3,371 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestão de Risco • Clube Multi Trader</title>
 
-  <link rel="icon" href="/clube-multi-trader-site/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/clube-multi-trader-site/assets/style.css" />
+  <title>Antes de buscar lucro, aprenda a proteger seu capital • Clube Multi Trader</title>
+
+  <meta name="description" content="Entenda por que a gestão de risco vem antes do lucro no trade. Um artigo do Clube Multi Trader sobre proteção de capital, disciplina e consistência." />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/style.css?v=13" />
 
   <style>
-    /* Botões do PDF (clean + padrão dourado) */
-    .pdf-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin: 10px 0 18px;
+    .article-page {
+      padding-top: 145px;
+      padding-bottom: 90px;
+      background:
+        radial-gradient(circle at top right, rgba(212,175,55,.16), transparent 32%),
+        radial-gradient(circle at top left, rgba(212,175,55,.08), transparent 28%),
+        #080808;
     }
-    .pdf-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      text-decoration:none;
-      font-weight:800;
-      font-family:'Poppins',sans-serif;
-      font-size: 14px;
-      transition:.25s;
-      border: 1px solid transparent;
-      min-width: 170px;
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 44px;
+      align-items: center;
+      margin-bottom: 55px;
     }
-    .pdf-btn.view{
+
+    .article-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(212,175,55,.35);
+      border-radius: 999px;
+      color: #d4af37;
+      background: rgba(212,175,55,.08);
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+
+    .article-title span {
+      color: #d4af37;
+    }
+
+    .article-intro {
+      color: rgba(255,255,255,.78);
+      line-height: 1.85;
+      font-size: 1.08rem;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: rgba(255,255,255,.65);
+      font-size: .92rem;
+      margin-bottom: 28px;
+    }
+
+    .article-meta span {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-shield {
+      min-height: 420px;
+      border-radius: 32px;
+      border: 1px solid rgba(212,175,55,.22);
+      background:
+        linear-gradient(135deg, rgba(212,175,55,.14), rgba(0,0,0,.65)),
+        radial-gradient(circle at center, rgba(212,175,55,.24), transparent 45%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 70px rgba(0,0,0,.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-shield::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,175,55,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: .28;
+    }
+
+    .shield-icon {
+      position: relative;
+      font-size: 8rem;
+      filter: drop-shadow(0 0 35px rgba(212,175,55,.65));
+    }
+
+    .quote-box {
+      margin: 0 0 55px;
+      padding: 38px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(212,175,55,.16), rgba(12,12,12,.98));
+      border: 1px solid rgba(212,175,55,.24);
+      box-shadow: 0 20px 55px rgba(0,0,0,.35);
+    }
+
+    .quote-box p {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .quote-box span {
+      color: #d4af37;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .article-sidebar {
+      position: sticky;
+      top: 110px;
+      padding: 26px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(24,24,24,.96), rgba(10,10,10,.98));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .article-sidebar h3 {
+      color: #d4af37;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+    }
+
+    .article-sidebar a {
+      display: block;
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      line-height: 1.45;
+    }
+
+    .article-sidebar a:hover {
+      color: #d4af37;
+    }
+
+    .article-content {
+      padding: 38px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(20,20,20,.97), rgba(8,8,8,.98));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .article-section {
+      margin-bottom: 42px;
+    }
+
+    .article-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-section h2 {
+      color: #fff;
+      font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .article-section h2 span {
+      color: #d4af37;
+    }
+
+    .article-section p {
+      color: rgba(255,255,255,.78);
+      line-height: 1.9;
+      font-size: 1.02rem;
+      margin-bottom: 16px;
+    }
+
+    .gold-note {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(212,175,55,.09);
+      border: 1px solid rgba(212,175,55,.22);
+      color: rgba(255,255,255,.86);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    .lesson-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .lesson-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+    }
+
+    .lesson-card div {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card strong {
+      color: #d4af37;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .lesson-card p {
+      font-size: .92rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .final-cta {
+      margin-top: 60px;
+      padding: 42px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(212,175,55,.16), rgba(10,10,10,.98));
+      border: 1px solid rgba(212,175,55,.24);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      margin-bottom: 14px;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold,
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 240px;
+      padding: 15px 22px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #f2d675);
+      color: #111;
+    }
+
+    .btn-dark {
       background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.12);
-      color:#fff;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
     }
-    .pdf-btn.view:hover{
-      transform: translateY(-2px);
-      border-color: rgba(205,164,52,.38);
-      box-shadow: 0 12px 26px rgba(205,164,52,.12);
+
+    .btn-gold:hover,
+    .btn-dark:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.08);
     }
-    .pdf-btn.download{
-      background:#CDA434;
-      color:#0D0D0D;
-      box-shadow: 0 10px 26px rgba(205,164,52,.18);
+
+    .back-blog {
+      display: inline-flex;
+      margin-top: 28px;
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 700;
     }
-    .pdf-btn.download:hover{
-      transform: translateY(-2px);
-      background:#E5BC3C;
+
+    .active-link {
+      color: var(--gold) !important;
+      font-weight: 700 !important;
     }
-    @media (max-width: 768px){
-      .pdf-btn{ width:100%; min-width:auto; }
+
+    @media (max-width: 950px) {
+      .article-hero,
+      .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-sidebar {
+        position: relative;
+        top: auto;
+      }
+
+      .lesson-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shield {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .article-content,
+      .quote-box,
+      .final-cta {
+        padding: 26px;
+      }
+
+      .btn-gold,
+      .btn-dark {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
     <div class="nav-content">
-      <div class="logo">⚜️ CLUBE MULTI TRADER</div>
+      <a class="logo" href="/" style="text-decoration:none;">
+        ⚜️ CLUBE MULTI TRADER
+      </a>
 
       <ul class="nav-links">
-        <li><a data-nav="home" href="/clube-multi-trader-site/">Home</a></li>
-        <li><a data-nav="cursos" href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a data-nav="materiais" href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a data-nav="blog" href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a data-nav="contato" href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a class="active-link" href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -77,83 +377,206 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul>
-        <li><a href="/clube-multi-trader-site/">Home</a></li>
-        <li><a href="/clube-multi-trader-site/cursos/">Cursos</a></li>
-        <li><a href="/clube-multi-trader-site/materiais/">Materiais</a></li>
-        <li><a href="/clube-multi-trader-site/blog/">Blog</a></li>
-        <li><a href="/clube-multi-trader-site/contato/">Contato</a></li>
+        <li><a href="/">Início</a></li>
+        <li><a href="/cursos/">Cursos</a></li>
+        <li><a href="/materiais/">Materiais</a></li>
+        <li><a href="/analise/">Análise</a></li>
+        <li><a class="active-link" href="/blog/">Blog</a></li>
+        <li><a href="/calendario/">Calendário</a></li>
+        <li><a href="/contato/">Contato</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="clock-container">
-    <div class="clock-time" id="clock-time">00:00:00</div>
-    <div class="clock-date" id="clock-date">Carregando...</div>
+    <div class="clock-time" id="clock-time"></div>
+    <div class="clock-date" id="clock-date"></div>
   </div>
 
-  <section style="padding-top:140px;">
-    <div class="container article-wrap">
-      <a class="back-link" href="/clube-multi-trader-site/blog/">← Voltar para o Blog</a>
+  <main class="article-page">
+    <div class="container">
 
-      <article class="article">
-        <div class="blog-date">15 de Dezembro, 2023</div>
-        <h1>Gestão de Risco: A Base do Trading Sustentável</h1>
+      <section class="article-hero">
+        <div>
+          <div class="article-badge">Gestão de Risco • Clube Multi Trader</div>
 
-        <div class="blog-tags" style="margin-bottom:12px;">
-          <span class="tag">Gestão de Risco</span>
-          <span class="tag">Fundamentos</span>
+          <h1 class="article-title">
+            Antes de buscar lucro, <span>aprenda a proteger seu capital</span>
+          </h1>
+
+          <p class="article-intro">
+            O trader iniciante geralmente procura entradas perfeitas. O trader profissional procura controle,
+            risco calculado e repetição de boas decisões. Neste artigo, entenda por que proteger a conta vem antes de buscar lucro.
+          </p>
+
+          <div class="article-meta">
+            <span>📅 24 de junho de 2026</span>
+            <span>⏱️ 10 min de leitura</span>
+            <span>🛡️ Gestão de Risco</span>
+          </div>
+
+          <a href="/blog/" class="back-blog">← Voltar para o Blog</a>
         </div>
 
-        <!-- PDF Buttons -->
-        <div class="pdf-actions">
-          <a class="pdf-btn view" target="_blank" rel="noopener noreferrer"
-             href="https://drive.google.com/file/d/1ZHe_bvxWQ8SzwQerqZhe0XHEeE8Rx8zI/view?usp=drive_link">
-            📄 Ver PDF
-          </a>
-
-          <a class="pdf-btn download" target="_blank" rel="noopener noreferrer"
-             href="https://drive.google.com/uc?export=download&id=1ZHe_bvxWQ8SzwQerqZhe0XHEeE8Rx8zI">
-            ⬇️ Baixar PDF
-          </a>
+        <div class="hero-shield">
+          <div class="shield-icon">🛡️</div>
         </div>
+      </section>
 
-        <div class="article-content">
-          <p>Se existe um conceito que separa traders amadores de profissionais, é a <strong>gestão de risco</strong>. Você pode ter a melhor estratégia do mundo, mas sem gestão de risco adequada, eventualmente você perderá tudo. É apenas questão de tempo.</p>
+      <section class="quote-box">
+        <p>
+          “O objetivo número 1 do trader não é ganhar dinheiro.
+          É permanecer no jogo tempo suficiente para que a <span>consistência</span> apareça.”
+        </p>
+      </section>
 
-          <h3>Por que gestão de risco é mais importante que estratégia</h3>
-          <p>No trading, não importa quantas vezes você está certo — importa quanto você ganha quando está certo e quanto você perde quando está errado.</p>
+      <section class="article-grid">
 
-          <h3>A regra de ouro: 1% de risco por operação</h3>
-          <p>A regra mais fundamental: <strong>nunca arrisque mais de 1–2% do seu capital em uma única operação</strong>.</p>
+        <aside class="article-sidebar">
+          <h3>Neste artigo</h3>
+          <a href="#erro">O erro que destrói contas</a>
+          <a href="#amanha">O mercado abre amanhã</a>
+          <a href="#empresa">Pense como uma empresa</a>
+          <a href="#stop">O poder do Stop Loss</a>
+          <a href="#consistencia">Consistência acima de ganhos grandes</a>
+          <a href="#segredo">O segredo dos traders consistentes</a>
+          <a href="#conclusao">Conclusão</a>
+        </aside>
 
-          <h4>Exemplo prático</h4>
-          <p>Capital: R$ 10.000 • Risco máximo: 1% = R$ 100 por operação.</p>
-          <p>Se sua perda por unidade (ação/contrato) for de R$ 0,40, então: <strong>100 / 0,40 = 250 unidades</strong>.</p>
+        <article class="article-content">
 
-          <h3>Proporção risco/retorno (Risk/Reward)</h3>
-          <p>Não basta limitar o risco — você precisa garantir que as operações vencedoras paguem as perdedoras.</p>
+          <section class="article-section" id="erro">
+            <h2><span>01.</span> O erro que destrói a maioria das contas</h2>
+            <p>
+              Quando uma pessoa entra no mercado financeiro, normalmente ela procura o melhor indicador,
+              a entrada perfeita, o setup secreto ou o ativo que mais se movimenta.
+            </p>
+            <p>
+              Mas existe um detalhe que poucos percebem: você não quebra uma conta porque deixou de ganhar.
+              Você quebra uma conta porque perdeu demais.
+            </p>
+            <div class="gold-note">
+              A maioria dos traders não fracassa por falta de estratégia. Fracassa por falta de gestão de risco.
+            </div>
+          </section>
 
-          <h4>Regra mínima: 1:2</h4>
-          <p>Para cada R$ 1,00 que você arrisca, busque ganhar no mínimo R$ 2,00.</p>
+          <section class="article-section" id="amanha">
+            <h2><span>02.</span> O mercado sempre estará aberto amanhã</h2>
+            <p>
+              Uma operação ruim não destrói uma carreira. Mas uma sequência de operações sem controle pode destruir
+              meses de trabalho em poucos minutos.
+            </p>
+            <p>
+              O mercado oferece oportunidades todos os dias. Por isso, o objetivo principal não deve ser ganhar o máximo possível hoje,
+              mas continuar vivo para operar amanhã.
+            </p>
+          </section>
 
-          <h3>Stop Loss: não negociável</h3>
-          <ol>
-            <li><strong>Defina antes de entrar.</strong></li>
-            <li><strong>Nunca mova contra você.</strong></li>
-            <li><strong>Não use stop mental.</strong></li>
-            <li><strong>Se bateu, saiu.</strong></li>
-          </ol>
+          <section class="article-section" id="empresa">
+            <h2><span>03.</span> Pense como uma empresa</h2>
+            <p>
+              Os grandes players não entram no mercado pensando apenas em quanto podem ganhar.
+              Eles pensam primeiro em quanto podem perder se estiverem errados.
+            </p>
+            <p>
+              Essa simples mudança de mentalidade transforma completamente seus resultados.
+              Todo trader profissional sabe que nem toda operação será vencedora, nem toda análise estará correta
+              e nem todo dia será positivo.
+            </p>
+          </section>
 
-          <h3>Conclusão</h3>
-          <p>Gestão de risco não é glamourosa — mas é o que mantém você no jogo. Com capital preservado, sempre haverá novas oportunidades. Sem capital, o jogo acabou.</p>
+          <section class="article-section" id="stop">
+            <h2><span>04.</span> O poder do Stop Loss</h2>
+            <p>
+              Muitos iniciantes enxergam o stop como um inimigo. Mas a verdade é exatamente o contrário:
+              o stop é o seguro da sua conta.
+            </p>
+            <p>
+              Ele existe para impedir que uma operação pequena se transforme em uma catástrofe financeira.
+              Um trader disciplinado aceita pequenas perdas. Um trader emocional tenta recuperar imediatamente
+              e normalmente amplia os prejuízos.
+            </p>
+          </section>
+
+          <section class="article-section" id="consistencia">
+            <h2><span>05.</span> Consistência vale mais que grandes ganhos</h2>
+            <p>
+              Imagine dois traders. Um ganha muito em um dia, mas devolve tudo no outro.
+              O outro busca ganhos menores, porém mantém o risco controlado.
+            </p>
+            <p>
+              No longo prazo, quase sempre o trader que protege o capital sobrevive mais tempo.
+              E no mercado, sobreviver é fundamental.
+            </p>
+
+            <div class="lesson-cards">
+              <div class="lesson-card">
+                <div>🛡️</div>
+                <strong>Proteja</strong>
+                <p>Seu capital vem antes da vontade de lucrar.</p>
+              </div>
+
+              <div class="lesson-card">
+                <div>🎯</div>
+                <strong>Espere</strong>
+                <p>Nem todo movimento merece uma entrada.</p>
+              </div>
+
+              <div class="lesson-card">
+                <div>📈</div>
+                <strong>Repita</strong>
+                <p>A consistência nasce da repetição de boas decisões.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section" id="segredo">
+            <h2><span>06.</span> O segredo dos traders consistentes</h2>
+            <p>
+              Os traders que permanecem anos no mercado possuem características em comum:
+              protegem o capital, respeitam o stop, operam apenas quando existe oportunidade clara
+              e não tentam recuperar prejuízo na força.
+            </p>
+            <p>
+              Eles pensam em meses e anos, não em minutos. A consistência nasce da disciplina,
+              e a disciplina nasce da gestão de risco.
+            </p>
+          </section>
+
+          <section class="article-section" id="conclusao">
+            <h2><span>Conclusão.</span> Primeiro sobreviva, depois cresça</h2>
+            <p>
+              Antes de buscar lucros extraordinários, aprenda a proteger seu capital.
+              O dinheiro que você preserva hoje será o combustível das oportunidades futuras.
+            </p>
+            <div class="gold-note">
+              O trader vencedor não é aquele que ganha mais. É aquele que perde menos quando está errado.
+            </div>
+          </section>
+
+        </article>
+      </section>
+
+      <section class="final-cta">
+        <h2>Quer aprender a operar com método?</h2>
+        <p>
+          No Clube Multi Trader você aprende análise, gestão de risco, disciplina operacional
+          e construção de consistência no mercado.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="/cursos/" class="btn-gold">Conhecer os Cursos</a>
+          <a href="/contato/" class="btn-dark">Entrar em Contato</a>
         </div>
-      </article>
+      </section>
+
     </div>
-  </section>
+  </main>
 
   <footer>
     <div class="footer-content">
       <p class="footer-text">© 2021 Clube Multi Trader. Todos os direitos reservados.</p>
+
       <a href="https://www.litefinance.org/?uid=929590812&_ptid=%7Bkpdx%7DH4sIAAAAAAAAAytJzEvMzSlWSKnMS8zLTC0qqSxIVSjJV0jOTU0uyczPU0jNS07MSU0BAHdJ-80qAAAA"
          target="_blank" rel="noopener noreferrer" class="footer-link">
         🔗 Acesse LiteFinance
@@ -161,6 +584,7 @@
     </div>
   </footer>
 
-  <script src="/clube-multi-trader-site/assets/main.js"></script>
+  <script src="/assets/main.js?v=13"></script>
+
 </body>
 </html>
