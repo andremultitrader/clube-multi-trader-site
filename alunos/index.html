@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Área do Aluno • Clube Multi Trader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #182848, #05070d 70%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      width: 90%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 0 40px rgba(0, 200, 255, 0.25);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #00d4ff;
+    }
+
+    p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00d4ff, #0077ff);
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .erro {
+      margin-top: 15px;
+      color: #ff6b6b;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h1>Clube Multi Trader</h1>
+    <p>Área exclusiva para alunos</p>
+
+    <input type="email" id="email" placeholder="E-mail do aluno">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="entrar()">Entrar na Área do Aluno</button>
+
+    <div class="erro" id="erro"></div>
+  </div>
+
+  <script type="module">
+    import { auth } from "./firebase-config.js";
+    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+    window.entrar = function () {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const erro = document.getElementById("erro");
+
+      signInWithEmailAndPassword(auth, email, senha)
+        .then(() => {
+          window.location.href = "dashboard.html";
+        })
+        .catch(() => {
+          erro.innerText = "E-mail ou senha incorretos.";
+        });
+    };
+  </script>
+
+</body>
+</html>
