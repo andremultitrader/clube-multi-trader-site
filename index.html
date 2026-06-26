@@ -21,7 +21,6 @@
   <style>
     :root {
       --bg: #050505;
-      --card: rgba(255,255,255,0.065);
       --line: rgba(255,255,255,0.12);
       --text: #ffffff;
       --muted: #b9b9b9;
@@ -64,8 +63,6 @@
       width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
     }
-
-    /* TOPO */
 
     .header {
       position: sticky;
@@ -213,8 +210,6 @@
       text-transform: uppercase;
     }
 
-    /* HERO */
-
     .hero {
       position: relative;
       padding: 82px 0 72px;
@@ -361,8 +356,6 @@
       border: 1px solid rgba(255,255,255,0.13);
     }
 
-    /* IMAGEM PRINCIPAL MENOR */
-
     .hero-visual {
       position: relative;
       width: 100%;
@@ -434,8 +427,6 @@
       font-size: 13px;
       line-height: 1.6;
     }
-
-    /* SEÇÕES */
 
     section {
       padding: 74px 0;
@@ -542,9 +533,48 @@
         rgba(255,255,255,0.018);
     }
 
-    .steps-grid {
+    .method-showcase {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .method-image-card {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(214,168,58,0.34);
+      background: #050505;
+      box-shadow:
+        0 28px 90px rgba(0,0,0,0.42),
+        0 0 40px rgba(214,168,58,0.08);
+    }
+
+    .method-image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: contrast(1.04) saturate(1.05);
+    }
+
+    .method-image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.24)),
+        radial-gradient(circle at top left, rgba(245,211,111,0.10), transparent 34%);
+      pointer-events: none;
+    }
+
+    .method-side {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
@@ -696,8 +726,6 @@
       background: rgba(255,255,255,0.035);
     }
 
-    /* RODAPÉ */
-
     .footer {
       background: #030303;
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -747,8 +775,6 @@
       display: none;
     }
 
-    /* RESPONSIVO */
-
     @media (max-width: 1050px) {
       .menu {
         gap: 15px;
@@ -759,7 +785,11 @@
         display: none;
       }
 
-      .steps-grid {
+      .method-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .method-side {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -852,7 +882,16 @@
         padding: 54px 0;
       }
 
-      .steps-grid {
+      .method-image-card {
+        min-height: 330px;
+        border-radius: 24px;
+      }
+
+      .method-image-card img {
+        min-height: 330px;
+      }
+
+      .method-side {
         grid-template-columns: 1fr;
       }
 
@@ -1016,39 +1055,47 @@
           </p>
         </div>
 
-        <div class="steps-grid">
+        <div class="method-showcase">
 
-          <article class="step-card">
-            <div class="step-number">1</div>
-            <h3>Contexto</h3>
-            <p>
-              Primeiro entendemos a direção do mercado, tendência, sessão, notícia e força macro.
-            </p>
-          </article>
+          <div class="method-image-card">
+            <img src="./assets/metodo-cmt-grafico.png" alt="Método CMT aplicado no gráfico com liquidez, BOS, CHoCH, FVG, entrada, stop e alvo">
+          </div>
 
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <h3>Liquidez</h3>
-            <p>
-              Identificamos regiões onde o mercado pode buscar stops, topos, fundos e zonas sensíveis.
-            </p>
-          </article>
+          <div class="method-side">
 
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <h3>Confirmação</h3>
-            <p>
-              Buscamos sinais técnicos como rompimento, mitigação, BOS, CHoCH, FVG e perda de força.
-            </p>
-          </article>
+            <article class="step-card">
+              <div class="step-number">1</div>
+              <h3>Contexto</h3>
+              <p>
+                Primeiro entendemos a direção do mercado, tendência, sessão, notícia e força macro.
+              </p>
+            </article>
 
-          <article class="step-card">
-            <div class="step-number">4</div>
-            <h3>Gestão</h3>
-            <p>
-              Definimos risco, stop, parcial, alvo e limite diário antes de deixar a emoção decidir.
-            </p>
-          </article>
+            <article class="step-card">
+              <div class="step-number">2</div>
+              <h3>Liquidez</h3>
+              <p>
+                Identificamos regiões onde o mercado pode buscar stops, topos, fundos e zonas sensíveis.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">3</div>
+              <h3>Confirmação</h3>
+              <p>
+                Buscamos sinais técnicos como rompimento, mitigação, BOS, CHoCH, FVG e perda de força.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">4</div>
+              <h3>Gestão</h3>
+              <p>
+                Definimos risco, stop, parcial, alvo e limite diário antes de deixar a emoção decidir.
+              </p>
+            </article>
+
+          </div>
 
         </div>
 
