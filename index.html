@@ -473,7 +473,103 @@
       font-size: 12px;
       font-weight: 600;
     }
+.hero-visual {
+  position: relative;
+  min-height: 540px;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(214,168,58,0.34);
+  box-shadow: var(--shadow);
+  background: #050505;
+}
 
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.05) saturate(1.08);
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.58)),
+    radial-gradient(circle at top left, rgba(245,211,111,0.12), transparent 36%);
+}
+
+.hero-visual-card {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2;
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(245,211,111,0.32);
+  background: rgba(0,0,0,0.68);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+}
+
+.hero-visual-card span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--gold2);
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero-visual-card h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  line-height: 1.12;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.hero-visual-card p {
+  color: #dddddd;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .hero-visual img {
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-visual {
+    min-height: 360px;
+    border-radius: 24px;
+  }
+
+  .hero-visual img {
+    min-height: 360px;
+  }
+
+  .hero-visual-card {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 18px;
+  }
+
+  .hero-visual-card h2 {
+    font-size: 22px;
+  }
+}
     section {
       padding: 74px 0;
     }
@@ -955,7 +1051,7 @@
           </div>
         </div>
 
-        <aside class="offer-card" id="curso">
+        <aside class="hero-visual" id="curso">   <img src="./assets/img/hero-curso-trader.png" alt="Mesa trader profissional do Clube Multi Trader">    <div class="hero-visual-card">     <span>Formação Clube Multi Trader</span>     <h2>Aprenda a operar com método.</h2>     <p>17 módulos • Discord • WhatsApp • Acesso por 1 ano</p>   </div> </aside>
           <div class="offer-badge">Formação Clube Multi Trader</div>
 
           <h2>O caminho para deixar de operar por emoção.</h2>
