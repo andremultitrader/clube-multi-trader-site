@@ -8,13 +8,13 @@
 
   <meta
     name="description"
-    content="Clube Multi Trader: método, gestão de risco, análise gráfica, leitura institucional, ouro, DXY, VIX, Nasdaq, petróleo e cripto."
+    content="Clube Multi Trader: método, gestão de risco, análise gráfica, leitura institucional, cripto, ouro, DXY, VIX, Nasdaq e petróleo."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -22,9 +22,8 @@
     :root {
       --bg: #050505;
       --bg2: #0b0b0d;
-      --card: rgba(255, 255, 255, 0.06);
-      --card2: rgba(255, 255, 255, 0.09);
-      --line: rgba(255, 255, 255, 0.13);
+      --card: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
       --text: #ffffff;
       --muted: #b8b8b8;
       --gold: #d6a83a;
@@ -33,7 +32,7 @@
       --red: #ff4d4d;
       --blue: #38bdf8;
       --radius: 22px;
-      --shadow: 0 25px 80px rgba(0, 0, 0, 0.55);
+      --shadow: 0 25px 80px rgba(0,0,0,0.55);
     }
 
     * {
@@ -47,24 +46,20 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(214, 168, 58, 0.16), transparent 32%),
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(214,168,58,0.16), transparent 32%),
+        radial-gradient(circle at top left, rgba(56,189,248,0.08), transparent 28%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
+      letter-spacing: -0.01em;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
+      text-decoration: none;
     }
 
     .container {
@@ -78,7 +73,7 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(5, 5, 5, 0.9);
+      background: rgba(5,5,5,0.88);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
@@ -94,13 +89,42 @@
     .brand {
       display: flex;
       align-items: center;
-      min-width: max-content;
+      justify-content: center;
+      min-width: 54px;
     }
 
-    .logo-img {
-      width: 185px;
-      height: auto;
-      display: block;
+    .brand-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: var(--gold2);
+      font-size: 32px;
+      background:
+        radial-gradient(circle at 35% 25%, rgba(245,211,111,0.42), transparent 30%),
+        linear-gradient(135deg, rgba(214,168,58,0.18), rgba(0,0,0,0.7));
+      border: 1px solid rgba(245,211,111,0.48);
+      box-shadow:
+        0 0 20px rgba(214,168,58,0.30),
+        inset 0 0 18px rgba(214,168,58,0.16);
+      animation: goldPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes goldPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          0 0 18px rgba(214,168,58,0.22),
+          inset 0 0 18px rgba(214,168,58,0.12);
+      }
+
+      50% {
+        transform: scale(1.045);
+        box-shadow:
+          0 0 34px rgba(245,211,111,0.42),
+          inset 0 0 24px rgba(245,211,111,0.18);
+      }
     }
 
     .menu {
@@ -108,14 +132,16 @@
       align-items: center;
       gap: 25px;
       list-style: none;
-      font-size: 13px;
-      font-weight: 800;
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: 0.2px;
     }
 
     .menu a {
       color: #f4f4f4;
-      opacity: 0.9;
+      opacity: 0.88;
       transition: 0.25s;
       position: relative;
     }
@@ -147,11 +173,12 @@
       align-items: center;
       justify-content: center;
       padding: 13px 20px;
-      border: 1px solid rgba(214, 168, 58, 0.65);
+      border: 1px solid rgba(214,168,58,0.65);
       border-radius: 13px;
       color: var(--gold2);
-      font-size: 13px;
-      font-weight: 900;
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
       transition: 0.25s;
       min-width: max-content;
@@ -166,8 +193,9 @@
     .mobile-label {
       display: none;
       color: var(--gold2);
-      font-weight: 800;
-      font-size: 13px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
       text-transform: uppercase;
     }
 
@@ -185,7 +213,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(5,5,5,0.98), rgba(5,5,5,0.82), rgba(5,5,5,0.72)),
+        linear-gradient(90deg, rgba(5,5,5,0.98), rgba(5,5,5,0.84), rgba(5,5,5,0.74)),
         radial-gradient(circle at 70% 20%, rgba(214,168,58,0.24), transparent 33%),
         radial-gradient(circle at 82% 70%, rgba(245,211,111,0.12), transparent 31%);
       z-index: -3;
@@ -200,15 +228,14 @@
       height: 650px;
       border-radius: 50%;
       background:
-        repeating-radial-gradient(circle, rgba(214,168,58,0.24) 0 2px, transparent 2px 13px);
-      opacity: 0.28;
-      filter: blur(0.5px);
+        repeating-radial-gradient(circle, rgba(214,168,58,0.22) 0 2px, transparent 2px 13px);
+      opacity: 0.25;
       z-index: -2;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 44px;
       align-items: center;
     }
@@ -218,12 +245,13 @@
       align-items: center;
       gap: 10px;
       padding: 8px 14px;
-      border: 1px solid rgba(214, 168, 58, 0.34);
-      background: rgba(214, 168, 58, 0.08);
+      border: 1px solid rgba(214,168,58,0.34);
+      background: rgba(214,168,58,0.08);
       color: var(--gold2);
       border-radius: 999px;
+      font-family: 'Sora', sans-serif;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 24px;
     }
@@ -237,9 +265,11 @@
     }
 
     .hero h1 {
-      font-size: clamp(42px, 6vw, 78px);
-      line-height: 0.94;
-      letter-spacing: -2.5px;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -3px;
       text-transform: uppercase;
       margin-bottom: 22px;
     }
@@ -251,8 +281,10 @@
 
     .hero p {
       max-width: 600px;
-      color: #e8e8e8;
-      font-size: 18px;
+      color: #e2e2e2;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.78;
       margin-bottom: 32px;
     }
 
@@ -269,8 +301,9 @@
       justify-content: center;
       padding: 15px 22px;
       border-radius: 14px;
-      font-size: 14px;
-      font-weight: 900;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
       border: 1px solid transparent;
       transition: 0.25s;
@@ -312,10 +345,10 @@
       border: 1px solid rgba(255,255,255,0.13);
       color: var(--muted);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 600;
     }
 
-    /* PAINEL RADAR */
+    /* RADAR */
 
     .market-panel {
       background:
@@ -331,18 +364,42 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       margin-bottom: 18px;
     }
 
     .panel-top strong {
+      font-family: 'Sora', sans-serif;
       font-size: 14px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.2px;
     }
 
-    .panel-top small {
+    .panel-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: var(--muted);
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .update-btn {
+      border: 1px solid rgba(214,168,58,0.35);
+      background: rgba(214,168,58,0.08);
+      color: var(--gold2);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .update-btn:hover {
+      background: rgba(214,168,58,0.18);
     }
 
     .ticker-grid {
@@ -353,11 +410,11 @@
 
     .ticker-card {
       position: relative;
-      min-height: 132px;
+      min-height: 142px;
       padding: 16px;
       border-radius: 19px;
       background:
-        radial-gradient(circle at top right, rgba(214,168,58,0.13), transparent 42%),
+        radial-gradient(circle at top right, rgba(214,168,58,0.12), transparent 42%),
         rgba(0,0,0,0.38);
       border: 1px solid rgba(255,255,255,0.11);
       overflow: hidden;
@@ -369,8 +426,8 @@
       left: 14px;
       right: 14px;
       bottom: 12px;
-      height: 34px;
-      opacity: 0.55;
+      height: 30px;
+      opacity: 0.45;
       background:
         linear-gradient(135deg, transparent 8%, rgba(46,230,107,0.8) 9%, transparent 11%),
         linear-gradient(45deg, transparent 24%, rgba(46,230,107,0.8) 25%, transparent 27%),
@@ -385,18 +442,29 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
     }
 
     .ticker-icon {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 13px;
       display: grid;
       place-items: center;
       background: rgba(214,168,58,0.18);
       border: 1px solid rgba(214,168,58,0.24);
-      font-size: 18px;
-      font-weight: 900;
+      overflow: hidden;
+      color: var(--gold2);
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .ticker-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .ticker-name {
@@ -406,26 +474,41 @@
     }
 
     .ticker-name b {
+      font-family: 'Sora', sans-serif;
       font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .ticker-name span {
       color: var(--muted);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 600;
     }
 
     .ticker-price {
       font-size: 21px;
-      font-weight: 900;
-      letter-spacing: -0.4px;
+      font-weight: 700;
+      letter-spacing: -0.7px;
+      position: relative;
+      z-index: 2;
     }
 
     .ticker-change {
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 700;
       margin-top: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ticker-cap {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 4px;
+      position: relative;
+      z-index: 2;
     }
 
     .up {
@@ -440,7 +523,19 @@
       color: var(--gold2);
     }
 
-    /* STRIP */
+    .coin-source {
+      margin-top: 16px;
+      color: #9f9f9f;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .coin-source a {
+      color: var(--gold2);
+      font-weight: 600;
+    }
+
+    /* STRIP MACRO */
 
     .market-strip {
       padding: 24px 0;
@@ -448,7 +543,7 @@
 
     .strip-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
     }
 
@@ -470,20 +565,22 @@
     }
 
     .strip-item strong {
+      font-family: 'Sora', sans-serif;
       font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 4px;
     }
 
     .strip-item span {
       font-size: 15px;
-      font-weight: 900;
+      font-weight: 700;
     }
 
     .strip-item small {
       margin-top: 4px;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 600;
     }
 
     /* SEÇÕES */
@@ -501,10 +598,12 @@
     }
 
     .section-title h2 {
-      font-size: clamp(26px, 3vw, 41px);
-      line-height: 1.08;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 700;
+      line-height: 1.12;
       text-transform: uppercase;
-      letter-spacing: -1px;
+      letter-spacing: -1.4px;
     }
 
     .section-title h2 span {
@@ -515,6 +614,8 @@
       max-width: 540px;
       color: var(--muted);
       font-size: 15px;
+      font-weight: 400;
+      line-height: 1.75;
     }
 
     .cards-3 {
@@ -569,31 +670,38 @@
 
     .feature-content small {
       color: var(--gold2);
+      font-family: 'Sora', sans-serif;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .feature-content h3 {
+      font-family: 'Sora', sans-serif;
       font-size: 22px;
-      line-height: 1.2;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.7px;
       margin: 8px 0 10px;
     }
 
     .feature-content p {
       color: var(--muted);
       font-size: 14px;
+      font-weight: 400;
+      line-height: 1.72;
       margin-bottom: 17px;
     }
 
     .simple-link {
       color: var(--gold2);
-      font-size: 14px;
-      font-weight: 900;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
-    /* BLOCO GRÁFICO */
+    /* RESUMO */
 
     .analysis-grid {
       display: grid;
@@ -623,7 +731,9 @@
 
     .chart-header strong,
     .summary-header strong {
+      font-family: 'Sora', sans-serif;
       font-size: 15px;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
@@ -632,7 +742,7 @@
       gap: 8px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 700;
     }
 
     .timeframes span {
@@ -672,10 +782,12 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       color: var(--muted);
       font-size: 14px;
+      font-weight: 400;
     }
 
     .summary-row b {
       color: #fff;
+      font-weight: 700;
       text-align: right;
     }
 
@@ -725,9 +837,12 @@
     }
 
     .cta-box h2 {
+      font-family: 'Sora', sans-serif;
       font-size: clamp(25px, 3vw, 38px);
-      line-height: 1.1;
+      font-weight: 700;
+      line-height: 1.14;
       text-transform: uppercase;
+      letter-spacing: -1px;
       margin-bottom: 8px;
     }
 
@@ -738,6 +853,8 @@
     .cta-box p {
       color: #e6e6e6;
       max-width: 700px;
+      font-size: 15px;
+      line-height: 1.75;
     }
 
     /* RODAPÉ */
@@ -755,13 +872,24 @@
       margin-bottom: 28px;
     }
 
-    .footer-logo {
-      width: 170px;
+    .footer-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--gold2);
+      font-size: 34px;
+      background: linear-gradient(135deg, rgba(214,168,58,0.18), rgba(0,0,0,0.7));
+      border: 1px solid rgba(245,211,111,0.48);
+      box-shadow: 0 0 24px rgba(214,168,58,0.24);
       margin-bottom: 14px;
     }
 
     .footer h4 {
+      font-family: 'Sora', sans-serif;
       font-size: 14px;
+      font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 12px;
     }
@@ -770,6 +898,7 @@
     .footer a {
       color: var(--muted);
       font-size: 14px;
+      line-height: 1.7;
     }
 
     .footer a {
@@ -794,11 +923,7 @@
     @media (max-width: 1050px) {
       .menu {
         gap: 16px;
-        font-size: 12px;
-      }
-
-      .logo-img {
-        width: 155px;
+        font-size: 11px;
       }
     }
 
@@ -818,7 +943,7 @@
       }
 
       .strip-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .cards-3 {
@@ -840,6 +965,12 @@
         display: none;
       }
 
+      .brand-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 30px;
+      }
+
       .hero {
         padding: 60px 0 30px;
       }
@@ -859,11 +990,7 @@
       }
 
       .hero h1 {
-        letter-spacing: -1.6px;
-      }
-
-      .logo-img {
-        width: 145px;
+        letter-spacing: -2px;
       }
     }
   </style>
@@ -875,7 +1002,7 @@
     <div class="container nav">
 
       <a href="./index.html" class="brand" aria-label="Clube Multi Trader">
-        <img src="./assets/img/logo-cmt.png" alt="Clube Multi Trader" class="logo-img">
+        <div class="brand-icon">⚜</div>
       </a>
 
       <nav>
@@ -928,91 +1055,106 @@
             <span>VIX</span>
             <span>Nasdaq</span>
             <span>Petróleo</span>
-            <span>Cripto</span>
+            <span>Cripto ao vivo</span>
           </div>
         </div>
 
         <aside class="market-panel" id="mercados">
           <div class="panel-top">
-            <strong>Radar do Trader</strong>
-            <small>Visão macro</small>
+            <strong>Radar Trader — Cripto ao vivo</strong>
+            <div class="panel-status">
+              <span class="live-dot"></span>
+              <span id="marketStatus">Carregando...</span>
+              <button class="update-btn" id="refreshMarket" type="button">Atualizar</button>
+            </div>
           </div>
 
           <div class="ticker-grid">
 
-            <div class="ticker-card">
+            <div class="ticker-card" data-coin="bitcoin">
               <div class="ticker-head">
-                <div class="ticker-icon">🥇</div>
-                <div class="ticker-name">
-                  <b>Ouro</b>
-                  <span>XAU/USD</span>
-                </div>
-              </div>
-              <div class="ticker-price">$2,338.54</div>
-              <div class="ticker-change down">Zona de atenção</div>
-            </div>
-
-            <div class="ticker-card">
-              <div class="ticker-head">
-                <div class="ticker-icon">💵</div>
-                <div class="ticker-name">
-                  <b>DXY</b>
-                  <span>Dollar Index</span>
-                </div>
-              </div>
-              <div class="ticker-price">104.37</div>
-              <div class="ticker-change up">Força do dólar</div>
-            </div>
-
-            <div class="ticker-card">
-              <div class="ticker-head">
-                <div class="ticker-icon">⚠️</div>
-                <div class="ticker-name">
-                  <b>VIX</b>
-                  <span>Volatilidade</span>
-                </div>
-              </div>
-              <div class="ticker-price">20.17</div>
-              <div class="ticker-change attention">Atenção no risco</div>
-            </div>
-
-            <div class="ticker-card">
-              <div class="ticker-head">
-                <div class="ticker-icon">📈</div>
-                <div class="ticker-name">
-                  <b>Nasdaq</b>
-                  <span>Tecnologia</span>
-                </div>
-              </div>
-              <div class="ticker-price">18,712</div>
-              <div class="ticker-change up">Mercado de risco</div>
-            </div>
-
-            <div class="ticker-card">
-              <div class="ticker-head">
-                <div class="ticker-icon">🛢️</div>
-                <div class="ticker-name">
-                  <b>Petróleo</b>
-                  <span>WTI / Brent</span>
-                </div>
-              </div>
-              <div class="ticker-price">$78.64</div>
-              <div class="ticker-change up">Macro global</div>
-            </div>
-
-            <div class="ticker-card">
-              <div class="ticker-head">
-                <div class="ticker-icon">₿</div>
+                <div class="ticker-icon">BTC</div>
                 <div class="ticker-name">
                   <b>Bitcoin</b>
-                  <span>BTC/USD</span>
+                  <span>BTC</span>
                 </div>
               </div>
-              <div class="ticker-price">$67,254</div>
-              <div class="ticker-change up">Fluxo de risco</div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
+            </div>
+
+            <div class="ticker-card" data-coin="ethereum">
+              <div class="ticker-head">
+                <div class="ticker-icon">ETH</div>
+                <div class="ticker-name">
+                  <b>Ethereum</b>
+                  <span>ETH</span>
+                </div>
+              </div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
+            </div>
+
+            <div class="ticker-card" data-coin="tether">
+              <div class="ticker-head">
+                <div class="ticker-icon">USDT</div>
+                <div class="ticker-name">
+                  <b>Tether</b>
+                  <span>USDT</span>
+                </div>
+              </div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
+            </div>
+
+            <div class="ticker-card" data-coin="binancecoin">
+              <div class="ticker-head">
+                <div class="ticker-icon">BNB</div>
+                <div class="ticker-name">
+                  <b>BNB</b>
+                  <span>BNB</span>
+                </div>
+              </div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
+            </div>
+
+            <div class="ticker-card" data-coin="solana">
+              <div class="ticker-head">
+                <div class="ticker-icon">SOL</div>
+                <div class="ticker-name">
+                  <b>Solana</b>
+                  <span>SOL</span>
+                </div>
+              </div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
+            </div>
+
+            <div class="ticker-card" data-coin="ripple">
+              <div class="ticker-head">
+                <div class="ticker-icon">XRP</div>
+                <div class="ticker-name">
+                  <b>XRP</b>
+                  <span>XRP</span>
+                </div>
+              </div>
+              <div class="ticker-price">Carregando...</div>
+              <div class="ticker-change attention">Aguardando CoinGecko</div>
+              <div class="ticker-cap">Market cap: --</div>
             </div>
 
           </div>
+
+          <p class="coin-source">
+            Dados de cripto via <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>.
+            DXY, VIX, Ouro, Nasdaq e Petróleo continuam como leitura macro do método.
+          </p>
         </aside>
 
       </div>
@@ -1024,13 +1166,13 @@
         <div class="strip-item">
           <strong>Ouro</strong>
           <span>XAU/USD</span>
-          <small class="down">Principal ativo</small>
+          <small class="attention">Ativo principal</small>
         </div>
 
         <div class="strip-item">
           <strong>DXY</strong>
           <span>Dollar Index</span>
-          <small class="up">Força do dólar</small>
+          <small class="attention">Força do dólar</small>
         </div>
 
         <div class="strip-item">
@@ -1042,19 +1184,13 @@
         <div class="strip-item">
           <strong>Nasdaq</strong>
           <span>Índice Tech</span>
-          <small class="up">Risco global</small>
+          <small class="attention">Risco global</small>
         </div>
 
         <div class="strip-item">
           <strong>Petróleo</strong>
           <span>WTI / Brent</span>
-          <small class="up">Macro global</small>
-        </div>
-
-        <div class="strip-item">
-          <strong>Bitcoin</strong>
-          <span>Cripto</span>
-          <small class="up">Fluxo especulativo</small>
+          <small class="attention">Macro global</small>
         </div>
 
       </div>
@@ -1165,35 +1301,35 @@
 
         <div class="summary-card">
           <div class="summary-header">
-            <strong>Resumo do Mercado</strong>
+            <strong>Resumo Cripto / Mercado</strong>
             <span class="live-dot"></span>
           </div>
 
           <div class="summary-list">
 
             <div class="summary-row">
-              <span>Direção macro</span>
-              <b>Observar DXY e VIX</b>
+              <span>Capitalização total cripto</span>
+              <b id="globalMarketCap">Carregando...</b>
             </div>
 
             <div class="summary-row">
-              <span>Ativo principal</span>
-              <b>Ouro / XAUUSD</b>
+              <span>Volume 24h cripto</span>
+              <b id="globalVolume">Carregando...</b>
             </div>
 
             <div class="summary-row">
-              <span>Risco do dia</span>
-              <b class="attention">Moderado</b>
+              <span>Dominância BTC</span>
+              <b id="btcDominance">Carregando...</b>
             </div>
 
             <div class="summary-row">
-              <span>Regra principal</span>
-              <b>Nunca operar sem checklist</b>
+              <span>Moedas ativas</span>
+              <b id="activeCoins">Carregando...</b>
             </div>
 
             <div class="summary-row">
-              <span>Gestão</span>
-              <b>Preservar capital primeiro</b>
+              <span>Última atualização</span>
+              <b id="lastUpdate">--</b>
             </div>
 
           </div>
@@ -1226,7 +1362,8 @@
     <div class="container footer-grid">
 
       <div>
-        <img src="./assets/img/logo-cmt.png" alt="Clube Multi Trader" class="footer-logo">
+        <div class="footer-icon">⚜</div>
+        <p>Clube Multi Trader</p>
         <p>Disciplina • Método • Gestão • Resultado</p>
       </div>
 
@@ -1259,6 +1396,186 @@
       © 2026 Clube Multi Trader. Todos os direitos reservados.
     </div>
   </footer>
+
+  <script>
+    const COINS = [
+      "bitcoin",
+      "ethereum",
+      "tether",
+      "binancecoin",
+      "solana",
+      "ripple"
+    ];
+
+    const API_BASE = "https://api.coingecko.com/api/v3";
+
+    const formatUSD = (value) => {
+      if (value === null || value === undefined || Number.isNaN(value)) return "--";
+
+      const digits = value < 1 ? 4 : value < 10 ? 3 : 2;
+
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: digits
+      }).format(value);
+    };
+
+    const formatCompactUSD = (value) => {
+      if (value === null || value === undefined || Number.isNaN(value)) return "--";
+
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        notation: "compact",
+        maximumFractionDigits: 2
+      }).format(value);
+    };
+
+    const formatNumber = (value) => {
+      if (value === null || value === undefined || Number.isNaN(value)) return "--";
+
+      return new Intl.NumberFormat("en-US", {
+        maximumFractionDigits: 0
+      }).format(value);
+    };
+
+    const formatPercent = (value) => {
+      if (value === null || value === undefined || Number.isNaN(value)) return "--";
+
+      const signal = value > 0 ? "+" : "";
+
+      return `${signal}${value.toFixed(2)}%`;
+    };
+
+    const setStatus = (text) => {
+      const status = document.getElementById("marketStatus");
+      if (status) status.textContent = text;
+    };
+
+    const updateCoinCard = (coin) => {
+      const card = document.querySelector(`[data-coin="${coin.id}"]`);
+      if (!card) return;
+
+      const icon = card.querySelector(".ticker-icon");
+      const name = card.querySelector(".ticker-name b");
+      const symbol = card.querySelector(".ticker-name span");
+      const price = card.querySelector(".ticker-price");
+      const change = card.querySelector(".ticker-change");
+      const cap = card.querySelector(".ticker-cap");
+
+      if (icon && coin.image) {
+        icon.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = coin.image;
+        img.alt = coin.name;
+        icon.appendChild(img);
+      }
+
+      if (name) name.textContent = coin.name;
+      if (symbol) symbol.textContent = coin.symbol.toUpperCase();
+      if (price) price.textContent = formatUSD(coin.current_price);
+
+      if (change) {
+        const pct = coin.price_change_percentage_24h;
+        change.textContent = `${formatPercent(pct)} em 24h`;
+        change.classList.remove("up", "down", "attention");
+
+        if (pct > 0) {
+          change.classList.add("up");
+        } else if (pct < 0) {
+          change.classList.add("down");
+        } else {
+          change.classList.add("attention");
+        }
+      }
+
+      if (cap) {
+        cap.textContent = `Market cap: ${formatCompactUSD(coin.market_cap)}`;
+      }
+    };
+
+    const updateGlobalData = (global) => {
+      const data = global.data || {};
+
+      const totalMarketCap = data.total_market_cap && data.total_market_cap.usd;
+      const totalVolume = data.total_volume && data.total_volume.usd;
+      const btcDominance = data.market_cap_percentage && data.market_cap_percentage.btc;
+      const activeCoins = data.active_cryptocurrencies;
+
+      const marketCapEl = document.getElementById("globalMarketCap");
+      const volumeEl = document.getElementById("globalVolume");
+      const btcEl = document.getElementById("btcDominance");
+      const activeEl = document.getElementById("activeCoins");
+      const lastUpdateEl = document.getElementById("lastUpdate");
+
+      if (marketCapEl) marketCapEl.textContent = formatCompactUSD(totalMarketCap);
+      if (volumeEl) volumeEl.textContent = formatCompactUSD(totalVolume);
+      if (btcEl) btcEl.textContent = btcDominance ? `${btcDominance.toFixed(2)}%` : "--";
+      if (activeEl) activeEl.textContent = formatNumber(activeCoins);
+
+      if (lastUpdateEl) {
+        lastUpdateEl.textContent = new Date().toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        });
+      }
+    };
+
+    async function loadMarketData() {
+      try {
+        setStatus("Atualizando...");
+
+        const coinsUrl =
+          `${API_BASE}/coins/markets` +
+          `?vs_currency=usd` +
+          `&ids=${COINS.join(",")}` +
+          `&order=market_cap_desc` +
+          `&per_page=6` +
+          `&page=1` +
+          `&sparkline=false` +
+          `&price_change_percentage=24h` +
+          `&locale=en`;
+
+        const globalUrl = `${API_BASE}/global`;
+
+        const [coinsResponse, globalResponse] = await Promise.all([
+          fetch(coinsUrl),
+          fetch(globalUrl)
+        ]);
+
+        if (!coinsResponse.ok || !globalResponse.ok) {
+          throw new Error("Falha ao buscar dados da CoinGecko");
+        }
+
+        const coinsData = await coinsResponse.json();
+        const globalData = await globalResponse.json();
+
+        coinsData.forEach(updateCoinCard);
+        updateGlobalData(globalData);
+
+        setStatus("Ao vivo");
+      } catch (error) {
+        console.error(error);
+        setStatus("Dados indisponíveis");
+
+        const lastUpdateEl = document.getElementById("lastUpdate");
+        if (lastUpdateEl) lastUpdateEl.textContent = "Erro ao atualizar";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadMarketData();
+
+      const refreshButton = document.getElementById("refreshMarket");
+      if (refreshButton) {
+        refreshButton.addEventListener("click", loadMarketData);
+      }
+
+      setInterval(loadMarketData, 90000);
+    });
+  </script>
 
 </body>
 </html>
