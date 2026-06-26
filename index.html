@@ -21,16 +21,14 @@
   <style>
     :root {
       --bg: #050505;
-      --bg2: #0c0c0d;
       --card: rgba(255,255,255,0.065);
       --line: rgba(255,255,255,0.12);
       --text: #ffffff;
       --muted: #b9b9b9;
-      --muted2: #898989;
+      --muted2: #8b8b8b;
       --gold: #d6a83a;
       --gold2: #f5d36f;
       --green: #2ee66b;
-      --red: #ff4d4d;
       --radius: 24px;
       --shadow: 0 28px 90px rgba(0,0,0,0.58);
     }
@@ -67,11 +65,13 @@
       margin: 0 auto;
     }
 
+    /* TOPO */
+
     .header {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(5,5,5,0.9);
+      background: rgba(5,5,5,0.92);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
@@ -135,6 +135,7 @@
         transform: scale(1);
         box-shadow: 0 0 18px rgba(214,168,58,0.22), inset 0 0 18px rgba(214,168,58,0.12);
       }
+
       50% {
         transform: scale(1.045);
         box-shadow: 0 0 36px rgba(245,211,111,0.44), inset 0 0 24px rgba(245,211,111,0.18);
@@ -212,9 +213,11 @@
       text-transform: uppercase;
     }
 
+    /* HERO */
+
     .hero {
       position: relative;
-      padding: 92px 0 70px;
+      padding: 82px 0 72px;
       overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -224,9 +227,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(5,5,5,0.99) 0%, rgba(5,5,5,0.88) 42%, rgba(5,5,5,0.68) 100%),
-        radial-gradient(circle at 80% 18%, rgba(214,168,58,0.23), transparent 32%),
-        radial-gradient(circle at 75% 80%, rgba(245,211,111,0.12), transparent 30%);
+        linear-gradient(90deg, rgba(5,5,5,0.99) 0%, rgba(5,5,5,0.88) 42%, rgba(5,5,5,0.70) 100%),
+        radial-gradient(circle at 82% 18%, rgba(214,168,58,0.23), transparent 32%),
+        radial-gradient(circle at 78% 82%, rgba(245,211,111,0.12), transparent 30%);
       z-index: -3;
     }
 
@@ -245,8 +248,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 44px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
       align-items: center;
     }
 
@@ -277,7 +280,7 @@
     .hero h1 {
       max-width: 760px;
       font-family: 'Sora', sans-serif;
-      font-size: clamp(42px, 6vw, 74px);
+      font-size: clamp(42px, 5.5vw, 68px);
       font-weight: 800;
       line-height: 1.02;
       letter-spacing: -3px;
@@ -358,218 +361,82 @@
       border: 1px solid rgba(255,255,255,0.13);
     }
 
-    .offer-card {
-      border: 1px solid rgba(214,168,58,0.35);
-      border-radius: 30px;
-      padding: 26px;
-      background:
-        radial-gradient(circle at top left, rgba(214,168,58,0.18), transparent 38%),
-        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035));
-      box-shadow: var(--shadow);
+    /* IMAGEM PRINCIPAL MENOR */
+
+    .hero-visual {
       position: relative;
+      width: 100%;
+      max-width: 490px;
+      min-height: 395px;
+      justify-self: end;
+      border-radius: 30px;
       overflow: hidden;
+      border: 1px solid rgba(214,168,58,0.36);
+      box-shadow:
+        0 28px 90px rgba(0,0,0,0.58),
+        0 0 38px rgba(214,168,58,0.08);
+      background: #050505;
     }
 
-    .offer-card::after {
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 395px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: contrast(1.05) saturate(1.08);
+    }
+
+    .hero-visual::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -90px;
-      top: -90px;
-      border-radius: 50%;
-      background: rgba(245,211,111,0.15);
-      filter: blur(8px);
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.62)),
+        radial-gradient(circle at top left, rgba(245,211,111,0.12), transparent 36%);
     }
 
-    .offer-badge {
+    .hero-visual-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(245,211,111,0.32);
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+    }
+
+    .hero-visual-card span {
       display: inline-flex;
-      color: #080808;
-      background: linear-gradient(135deg, var(--gold2), var(--gold));
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-family: 'Sora', sans-serif;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .offer-card h2 {
-      position: relative;
-      z-index: 2;
-      font-family: 'Sora', sans-serif;
-      font-size: 30px;
-      line-height: 1.14;
-      letter-spacing: -1.2px;
-      margin-bottom: 14px;
-    }
-
-    .offer-card p {
-      color: #dedede;
-      font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .offer-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      position: relative;
-      z-index: 2;
-      margin-bottom: 22px;
-    }
-
-    .offer-list li {
-      display: flex;
-      gap: 10px;
-      color: #f0f0f0;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .check {
-      width: 23px;
-      height: 23px;
-      border-radius: 50%;
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-      color: #060606;
-      background: var(--gold2);
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .mini-proof {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mini-proof div {
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.34);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .mini-proof strong {
-      display: block;
+      margin-bottom: 9px;
       color: var(--gold2);
       font-family: 'Sora', sans-serif;
-      font-size: 20px;
-      line-height: 1;
-      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .mini-proof span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
+    .hero-visual-card h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 24px;
+      line-height: 1.14;
+      letter-spacing: -1px;
+      margin-bottom: 7px;
     }
-.hero-visual {
-  position: relative;
-  min-height: 540px;
-  border-radius: 32px;
-  overflow: hidden;
-  border: 1px solid rgba(214,168,58,0.34);
-  box-shadow: var(--shadow);
-  background: #050505;
-}
 
-.hero-visual img {
-  width: 100%;
-  height: 100%;
-  min-height: 540px;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.05) saturate(1.08);
-}
+    .hero-visual-card p {
+      color: #dddddd;
+      font-size: 13px;
+      line-height: 1.6;
+    }
 
-.hero-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.58)),
-    radial-gradient(circle at top left, rgba(245,211,111,0.12), transparent 36%);
-}
+    /* SEÇÕES */
 
-.hero-visual-card {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 22px;
-  z-index: 2;
-  padding: 22px;
-  border-radius: 22px;
-  border: 1px solid rgba(245,211,111,0.32);
-  background: rgba(0,0,0,0.68);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-}
-
-.hero-visual-card span {
-  display: inline-flex;
-  margin-bottom: 10px;
-  color: var(--gold2);
-  font-family: 'Sora', sans-serif;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.hero-visual-card h2 {
-  font-family: 'Sora', sans-serif;
-  font-size: 28px;
-  line-height: 1.12;
-  letter-spacing: -1px;
-  margin-bottom: 8px;
-}
-
-.hero-visual-card p {
-  color: #dddddd;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-@media (max-width: 920px) {
-  .hero-visual {
-    min-height: 430px;
-  }
-
-  .hero-visual img {
-    min-height: 430px;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-visual {
-    min-height: 360px;
-    border-radius: 24px;
-  }
-
-  .hero-visual img {
-    min-height: 360px;
-  }
-
-  .hero-visual-card {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    padding: 18px;
-  }
-
-  .hero-visual-card h2 {
-    font-size: 22px;
-  }
-}
     section {
       padding: 74px 0;
     }
@@ -829,6 +696,8 @@
       background: rgba(255,255,255,0.035);
     }
 
+    /* RODAPÉ */
+
     .footer {
       background: #030303;
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -878,6 +747,8 @@
       display: none;
     }
 
+    /* RESPONSIVO */
+
     @media (max-width: 1050px) {
       .menu {
         gap: 15px;
@@ -908,6 +779,16 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-visual {
+        max-width: 100%;
+        min-height: 410px;
+        justify-self: stretch;
+      }
+
+      .hero-visual img {
+        min-height: 410px;
+      }
+
       .pain-grid,
       .content-grid {
         grid-template-columns: 1fr;
@@ -923,10 +804,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .mini-proof {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 640px) {
@@ -940,7 +817,7 @@
       }
 
       .hero {
-        padding: 62px 0 46px;
+        padding: 56px 0 46px;
       }
 
       .hero h1 {
@@ -949,6 +826,26 @@
 
       .hero-sub {
         font-size: 16px;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+        border-radius: 24px;
+      }
+
+      .hero-visual img {
+        min-height: 330px;
+      }
+
+      .hero-visual-card {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 16px;
+      }
+
+      .hero-visual-card h2 {
+        font-size: 21px;
       }
 
       section {
@@ -986,6 +883,7 @@
 
   <header class="header">
     <div class="container nav">
+
       <a href="./index.html" class="brand" aria-label="Clube Multi Trader">
         <div class="brand-icon">⚜</div>
         <div class="brand-text">
@@ -1011,6 +909,7 @@
       </a>
 
       <div class="mobile-label">Menu</div>
+
     </div>
   </header>
 
@@ -1038,6 +937,7 @@
             <a href="mailto:clubemultitrader@gmail.com?subject=Quero%20ser%20aluno%20do%20Clube%20Multi%20Trader" class="btn btn-primary">
               Quero entrar no Clube
             </a>
+
             <a href="#conteudo" class="btn btn-secondary">
               Ver o que vou aprender
             </a>
@@ -1051,38 +951,13 @@
           </div>
         </div>
 
-        <aside class="hero-visual" id="curso">   <img src="./assets/img/hero-curso-trader.png" alt="Mesa trader profissional do Clube Multi Trader">    <div class="hero-visual-card">     <span>Formação Clube Multi Trader</span>     <h2>Aprenda a operar com método.</h2>     <p>17 módulos • Discord • WhatsApp • Acesso por 1 ano</p>   </div> </aside>
-          <div class="offer-badge">Formação Clube Multi Trader</div>
+        <aside class="hero-visual" id="curso">
+          <img src="./assets/hero-curso-trader.png" alt="Mesa trader profissional do Clube Multi Trader">
 
-          <h2>O caminho para deixar de operar por emoção.</h2>
-
-          <p>
-            Um treinamento direto para quem quer entender o mercado, respeitar o risco
-            e criar um processo antes de clicar em comprar ou vender.
-          </p>
-
-          <ul class="offer-list">
-            <li><span class="check">✓</span> Análise gráfica e leitura de estrutura</li>
-            <li><span class="check">✓</span> Liquidez, BOS, CHoCH, FVG e regiões importantes</li>
-            <li><span class="check">✓</span> DXY, VIX, Ouro, Nasdaq e Petróleo dentro da análise</li>
-            <li><span class="check">✓</span> Gestão de risco para proteger o capital</li>
-            <li><span class="check">✓</span> Apoio na configuração do NinjaTrader</li>
-            <li><span class="check">✓</span> Comunidade de alunos para evolução durante 1 ano</li>
-          </ul>
-
-          <div class="mini-proof">
-            <div>
-              <strong>17</strong>
-              <span>Módulos completos</span>
-            </div>
-            <div>
-              <strong>1 ano</strong>
-              <span>De acesso ao clube</span>
-            </div>
-            <div>
-              <strong>Grupo</strong>
-              <span>WhatsApp + Discord</span>
-            </div>
+          <div class="hero-visual-card">
+            <span>Formação Clube Multi Trader</span>
+            <h2>Aprenda a operar com método.</h2>
+            <p>17 módulos • Discord • WhatsApp • Acesso por 1 ano</p>
           </div>
         </aside>
 
@@ -1101,6 +976,7 @@
         </div>
 
         <div class="pain-grid">
+
           <article class="pain-card">
             <div class="icon-box">⚠️</div>
             <h3>Você entra atrasado?</h3>
@@ -1124,6 +1000,7 @@
               Gestão vem antes de lucro. O objetivo é proteger capital e operar com consciência.
             </p>
           </article>
+
         </div>
 
       </div>
@@ -1140,6 +1017,7 @@
         </div>
 
         <div class="steps-grid">
+
           <article class="step-card">
             <div class="step-number">1</div>
             <h3>Contexto</h3>
@@ -1171,6 +1049,7 @@
               Definimos risco, stop, parcial, alvo e limite diário antes de deixar a emoção decidir.
             </p>
           </article>
+
         </div>
 
       </div>
@@ -1187,6 +1066,7 @@
         </div>
 
         <div class="content-grid">
+
           <article class="content-card">
             <div class="icon-box">📊</div>
             <h3>Análise gráfica</h3>
@@ -1270,6 +1150,7 @@
               <li>Encerrar o dia com disciplina</li>
             </ul>
           </article>
+
         </div>
 
       </div>
@@ -1291,6 +1172,7 @@
         </div>
 
         <div class="bonus-grid">
+
           <article class="bonus-card">
             <div class="icon-box">🎥</div>
             <div>
@@ -1322,6 +1204,7 @@
               <p>Auxílio para deixar a plataforma pronta e o operacional mais organizado.</p>
             </div>
           </article>
+
         </div>
 
       </div>
@@ -1329,6 +1212,7 @@
 
     <section class="cta-band" id="contato">
       <div class="container">
+
         <div class="cta-box">
           <div>
             <h2>Você não precisa operar sozinho. <span>Entre para o Clube.</span></h2>
@@ -1342,6 +1226,7 @@
             Quero ser aluno
           </a>
         </div>
+
       </div>
     </section>
 
@@ -1356,6 +1241,7 @@
         </div>
 
         <div class="faq-grid">
+
           <article class="faq-card">
             <h3>Preciso já saber operar?</h3>
             <p>
@@ -1383,6 +1269,7 @@
               O acesso ao Clube, aulas, grupo e materiais é organizado para o período de 1 ano.
             </p>
           </article>
+
         </div>
 
         <div class="disclaimer">
