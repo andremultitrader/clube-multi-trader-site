@@ -21,8 +21,6 @@
   <style>
     :root {
       --bg: #050505;
-      --bg2: #0b0b0d;
-      --card: rgba(255,255,255,0.06);
       --line: rgba(255,255,255,0.12);
       --text: #ffffff;
       --muted: #b8b8b8;
@@ -30,7 +28,6 @@
       --gold2: #f5d36f;
       --green: #2ee66b;
       --red: #ff4d4d;
-      --blue: #38bdf8;
       --radius: 22px;
       --shadow: 0 25px 80px rgba(0,0,0,0.55);
     }
@@ -66,8 +63,6 @@
       width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
     }
-
-    /* TOPO */
 
     .header {
       position: sticky;
@@ -198,8 +193,6 @@
       font-size: 12px;
       text-transform: uppercase;
     }
-
-    /* HERO */
 
     .hero {
       position: relative;
@@ -348,8 +341,6 @@
       font-size: 13px;
       font-weight: 600;
     }
-
-    /* RADAR CRIPTO */
 
     .market-panel {
       background:
@@ -538,51 +529,161 @@
       font-weight: 600;
     }
 
-    /* RADAR MACRO AO VIVO */
+    /* RADAR MACRO INVESTING */
 
     .macro-live-strip {
-      padding: 24px 0;
+      padding: 46px 0 56px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top left, rgba(214,168,58,0.12), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.025), rgba(0,0,0,0.15));
     }
 
     .macro-live-title {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 12px;
+      gap: 18px;
+      margin-bottom: 22px;
     }
 
     .macro-live-title strong {
       font-family: 'Sora', sans-serif;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--gold2);
       text-transform: uppercase;
-      letter-spacing: 0.2px;
+      letter-spacing: -0.3px;
     }
 
     .macro-live-title span {
-      color: var(--muted);
-      font-size: 13px;
+      color: #d7d7d7;
+      font-size: 14px;
       font-weight: 500;
     }
 
-    .tv-ticker-box {
-      border: 1px solid rgba(255,255,255,0.12);
+    .macro-board {
+      border: 1px solid rgba(214,168,58,0.26);
       background:
-        radial-gradient(circle at top left, rgba(214,168,58,0.12), transparent 34%),
-        rgba(255,255,255,0.045);
+        radial-gradient(circle at top left, rgba(214,168,58,0.16), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow:
+        0 22px 60px rgba(0,0,0,0.38),
+        0 0 34px rgba(214,168,58,0.08);
+    }
+
+    .macro-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .macro-card {
+      min-height: 142px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
       border-radius: 18px;
-      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background:
+        radial-gradient(circle at top right, rgba(214,168,58,0.14), transparent 38%),
+        rgba(0,0,0,0.34);
+      transition: 0.25s;
       overflow: hidden;
-      box-shadow: 0 16px 45px rgba(0,0,0,0.28);
+      position: relative;
     }
 
-    .tv-ticker-box iframe {
+    .macro-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214,168,58,0.42);
+    }
+
+    .macro-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .macro-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
       border-radius: 14px;
+      background: rgba(214,168,58,0.17);
+      border: 1px solid rgba(245,211,111,0.25);
+      color: var(--gold2);
+      font-size: 20px;
     }
 
-    /* SEÇÕES */
+    .macro-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .macro-name b {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .macro-name span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .macro-price {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.7px;
+      margin-top: 16px;
+    }
+
+    .macro-change {
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .macro-signal {
+      margin-top: 8px;
+      color: #dcdcdc;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .macro-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      color: #9f9f9f;
+      font-size: 12px;
+    }
+
+    .macro-footer a {
+      color: var(--gold2);
+      font-weight: 700;
+    }
+
+    .macro-warning {
+      margin-top: 14px;
+      color: #9f9f9f;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .macro-warning a {
+      color: var(--gold2);
+      font-weight: 700;
+    }
 
     section {
       padding: 38px 0;
@@ -700,8 +801,6 @@
       text-transform: uppercase;
     }
 
-    /* RESUMO */
-
     .analysis-grid {
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
@@ -815,8 +914,6 @@
       box-shadow: 0 0 12px rgba(255,255,255,0.7);
     }
 
-    /* CTA */
-
     .cta {
       padding: 30px 0 56px;
     }
@@ -855,8 +952,6 @@
       font-size: 15px;
       line-height: 1.75;
     }
-
-    /* RODAPÉ */
 
     .footer {
       background: #030303;
@@ -917,12 +1012,14 @@
       text-align: center;
     }
 
-    /* RESPONSIVO */
-
     @media (max-width: 1050px) {
       .menu {
         gap: 16px;
         font-size: 11px;
+      }
+
+      .macro-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -953,6 +1050,10 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .macro-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 620px) {
@@ -975,7 +1076,8 @@
         padding: 60px 0 30px;
       }
 
-      .ticker-grid {
+      .ticker-grid,
+      .macro-grid {
         grid-template-columns: 1fr;
       }
 
@@ -999,10 +1101,6 @@
 
       .panel-status {
         justify-content: flex-start;
-      }
-
-      .macro-live-title span {
-        font-size: 12px;
       }
     }
   </style>
@@ -1166,7 +1264,7 @@
 
           <p class="coin-source">
             Dados de cripto via <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>.
-            O radar macro abaixo acompanha Ouro, DXY, VIX, Nasdaq, Petróleo e Bitcoin em tempo real.
+            O radar macro abaixo acompanha ativos do Investing.
           </p>
         </aside>
 
@@ -1177,48 +1275,113 @@
       <div class="container">
 
         <div class="macro-live-title">
-          <strong>Radar Macro ao Vivo</strong>
-          <span>Ouro • DXY • VIX • Nasdaq • Petróleo • Bitcoin</span>
+          <strong>Radar Macro Investing</strong>
+          <span id="macroStatus">Carregando Ouro • DXY • VIX • Nasdaq • Petróleo</span>
         </div>
 
-        <div class="tradingview-widget-container tv-ticker-box">
-          <div class="tradingview-widget-container__widget"></div>
+        <div class="macro-board">
+          <div class="macro-grid">
 
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-          {
-            "symbols": [
-              {
-                "description": "Ouro",
-                "proName": "OANDA:XAUUSD"
-              },
-              {
-                "description": "DXY",
-                "proName": "TVC:DXY"
-              },
-              {
-                "description": "VIX",
-                "proName": "TVC:VIX"
-              },
-              {
-                "description": "Nasdaq",
-                "proName": "NASDAQ:NDX"
-              },
-              {
-                "description": "Petróleo",
-                "proName": "TVC:USOIL"
-              },
-              {
-                "description": "Bitcoin",
-                "proName": "BITSTAMP:BTCUSD"
-              }
-            ],
-            "showSymbolLogo": true,
-            "isTransparent": true,
-            "displayMode": "adaptive",
-            "colorTheme": "dark",
-            "locale": "br"
-          }
-          </script>
+            <article class="macro-card" data-macro="gold">
+              <div>
+                <div class="macro-head">
+                  <div class="macro-icon">🥇</div>
+                  <div class="macro-name">
+                    <b>Ouro</b>
+                    <span>Gold</span>
+                  </div>
+                </div>
+                <div class="macro-price">--</div>
+                <div class="macro-change attention">Aguardando Investing</div>
+                <div class="macro-signal">Sinal técnico: --</div>
+              </div>
+              <div class="macro-footer">
+                <span>Investing</span>
+                <a href="https://www.investing.com/commodities/gold" target="_blank" rel="noopener">Abrir</a>
+              </div>
+            </article>
+
+            <article class="macro-card" data-macro="dxy">
+              <div>
+                <div class="macro-head">
+                  <div class="macro-icon">💵</div>
+                  <div class="macro-name">
+                    <b>DXY</b>
+                    <span>Dollar Index</span>
+                  </div>
+                </div>
+                <div class="macro-price">--</div>
+                <div class="macro-change attention">Aguardando Investing</div>
+                <div class="macro-signal">Sinal técnico: --</div>
+              </div>
+              <div class="macro-footer">
+                <span>Investing</span>
+                <a href="https://www.investing.com/indices/usdollar" target="_blank" rel="noopener">Abrir</a>
+              </div>
+            </article>
+
+            <article class="macro-card" data-macro="vix">
+              <div>
+                <div class="macro-head">
+                  <div class="macro-icon">⚠️</div>
+                  <div class="macro-name">
+                    <b>VIX</b>
+                    <span>S&P 500 VIX</span>
+                  </div>
+                </div>
+                <div class="macro-price">--</div>
+                <div class="macro-change attention">Aguardando Investing</div>
+                <div class="macro-signal">Sinal técnico: --</div>
+              </div>
+              <div class="macro-footer">
+                <span>Investing</span>
+                <a href="https://www.investing.com/indices/volatility-s-p-500" target="_blank" rel="noopener">Abrir</a>
+              </div>
+            </article>
+
+            <article class="macro-card" data-macro="nasdaq">
+              <div>
+                <div class="macro-head">
+                  <div class="macro-icon">📈</div>
+                  <div class="macro-name">
+                    <b>Nasdaq</b>
+                    <span>Nasdaq</span>
+                  </div>
+                </div>
+                <div class="macro-price">--</div>
+                <div class="macro-change attention">Aguardando Investing</div>
+                <div class="macro-signal">Sinal técnico: --</div>
+              </div>
+              <div class="macro-footer">
+                <span>Investing</span>
+                <a href="https://www.investing.com/indices/nasdaq-composite" target="_blank" rel="noopener">Abrir</a>
+              </div>
+            </article>
+
+            <article class="macro-card" data-macro="oil">
+              <div>
+                <div class="macro-head">
+                  <div class="macro-icon">🛢️</div>
+                  <div class="macro-name">
+                    <b>Petróleo</b>
+                    <span>Crude Oil WTI</span>
+                  </div>
+                </div>
+                <div class="macro-price">--</div>
+                <div class="macro-change attention">Aguardando Investing</div>
+                <div class="macro-signal">Sinal técnico: --</div>
+              </div>
+              <div class="macro-footer">
+                <span>Investing</span>
+                <a href="https://www.investing.com/commodities/crude-oil" target="_blank" rel="noopener">Abrir</a>
+              </div>
+            </article>
+
+          </div>
+
+          <p class="macro-warning">
+            Fonte macro: Investing/ForexProTools. Se algum dado não carregar, clique em “Abrir” para ver direto no Investing.
+          </p>
         </div>
 
       </div>
@@ -1444,6 +1607,34 @@
 
     const API_BASE = "https://api.coingecko.com/api/v3";
 
+    const MACRO_ASSETS = [
+      {
+        key: "gold",
+        pair: "8830",
+        label: "Ouro"
+      },
+      {
+        key: "dxy",
+        pair: "8827",
+        label: "DXY"
+      },
+      {
+        key: "vix",
+        pair: "44336",
+        label: "VIX"
+      },
+      {
+        key: "nasdaq",
+        pair: "14958",
+        label: "Nasdaq"
+      },
+      {
+        key: "oil",
+        pair: "8849",
+        label: "Petróleo"
+      }
+    ];
+
     const formatUSD = (value) => {
       if (value === null || value === undefined || Number.isNaN(value)) return "--";
 
@@ -1485,6 +1676,11 @@
 
     const setStatus = (text) => {
       const status = document.getElementById("marketStatus");
+      if (status) status.textContent = text;
+    };
+
+    const setMacroStatus = (text) => {
+      const status = document.getElementById("macroStatus");
       if (status) status.textContent = text;
     };
 
@@ -1603,16 +1799,117 @@
       }
     }
 
+    async function fetchJsonWithFallback(url) {
+      try {
+        const directResponse = await fetch(url, {
+          cache: "no-store"
+        });
+
+        if (directResponse.ok) {
+          return await directResponse.json();
+        }
+
+        throw new Error("Investing direto bloqueado");
+      } catch (directError) {
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+
+        const proxyResponse = await fetch(proxyUrl, {
+          cache: "no-store"
+        });
+
+        if (!proxyResponse.ok) {
+          throw new Error("Falha no fallback do Investing");
+        }
+
+        return await proxyResponse.json();
+      }
+    }
+
+    const updateMacroCard = (asset, item) => {
+      const card = document.querySelector(`[data-macro="${asset.key}"]`);
+      if (!card || !item) return;
+
+      const price = card.querySelector(".macro-price");
+      const change = card.querySelector(".macro-change");
+      const signal = card.querySelector(".macro-signal");
+
+      const last = item.summaryLast || (item.row && item.row.last) || "--";
+      const changeText = item.summaryChange || "--";
+      const technical = item.technicalSummary || "--";
+      const changeClass = item.summaryChangeClass || "";
+
+      if (price) price.textContent = last;
+
+      if (change) {
+        change.textContent = changeText;
+        change.classList.remove("up", "down", "attention");
+
+        if (changeClass.includes("green")) {
+          change.classList.add("up");
+        } else if (changeClass.includes("red")) {
+          change.classList.add("down");
+        } else {
+          change.classList.add("attention");
+        }
+      }
+
+      if (signal) {
+        signal.textContent = `Sinal técnico: ${technical}`;
+      }
+    };
+
+    async function loadMacroData() {
+      try {
+        setMacroStatus("Atualizando dados do Investing...");
+
+        const pairs = MACRO_ASSETS.map(asset => asset.pair).join(",");
+        const url =
+          `https://ssltsw.forexprostools.com/api.php` +
+          `?action=refresher` +
+          `&lang=1` +
+          `&pairs=${encodeURIComponent(pairs)}` +
+          `&timeframe=60`;
+
+        const data = await fetchJsonWithFallback(url);
+
+        MACRO_ASSETS.forEach(asset => {
+          updateMacroCard(asset, data[asset.pair]);
+        });
+
+        const updateTime = new Date().toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        });
+
+        setMacroStatus(`Ao vivo via Investing • Atualizado ${updateTime}`);
+      } catch (error) {
+        console.error(error);
+        setMacroStatus("Investing indisponível no momento — use os botões Abrir");
+
+        document.querySelectorAll(".macro-change").forEach(change => {
+          if (change.textContent.includes("Aguardando")) {
+            change.textContent = "Clique em Abrir para ver no Investing";
+          }
+        });
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       loadMarketData();
+      loadMacroData();
 
       const refreshButton = document.getElementById("refreshMarket");
 
       if (refreshButton) {
-        refreshButton.addEventListener("click", loadMarketData);
+        refreshButton.addEventListener("click", () => {
+          loadMarketData();
+          loadMacroData();
+        });
       }
 
       setInterval(loadMarketData, 90000);
+      setInterval(loadMacroData, 90000);
     });
   </script>
 
