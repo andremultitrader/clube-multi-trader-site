@@ -262,6 +262,7 @@
       background: var(--green);
       border-radius: 50%;
       box-shadow: 0 0 18px var(--green);
+      flex: 0 0 auto;
     }
 
     .hero h1 {
@@ -348,7 +349,7 @@
       font-weight: 600;
     }
 
-    /* RADAR */
+    /* RADAR CRIPTO */
 
     .market-panel {
       background:
@@ -383,6 +384,8 @@
       color: var(--muted);
       font-size: 12px;
       font-weight: 600;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .update-btn {
@@ -535,52 +538,48 @@
       font-weight: 600;
     }
 
-    /* STRIP MACRO */
+    /* RADAR MACRO AO VIVO */
 
-    .market-strip {
+    .macro-live-strip {
       padding: 24px 0;
     }
 
-    .strip-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .strip-item {
-      min-height: 88px;
+    .macro-live-title {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 15px;
-      border-radius: 17px;
-      background: rgba(255,255,255,0.055);
-      border: 1px solid rgba(255,255,255,0.11);
-      transition: 0.25s;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
-    .strip-item:hover {
-      transform: translateY(-3px);
-      border-color: rgba(214,168,58,0.38);
-    }
-
-    .strip-item strong {
+    .macro-live-title strong {
       font-family: 'Sora', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
+      color: var(--gold2);
       text-transform: uppercase;
-      margin-bottom: 4px;
+      letter-spacing: 0.2px;
     }
 
-    .strip-item span {
-      font-size: 15px;
-      font-weight: 700;
+    .macro-live-title span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
     }
 
-    .strip-item small {
-      margin-top: 4px;
-      font-size: 12px;
-      font-weight: 600;
+    .tv-ticker-box {
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(circle at top left, rgba(214,168,58,0.12), transparent 34%),
+        rgba(255,255,255,0.045);
+      border-radius: 18px;
+      padding: 10px 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 45px rgba(0,0,0,0.28);
+    }
+
+    .tv-ticker-box iframe {
+      border-radius: 14px;
     }
 
     /* SEÇÕES */
@@ -942,16 +941,17 @@
         grid-template-columns: 1fr;
       }
 
-      .strip-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .cards-3 {
         grid-template-columns: 1fr;
       }
 
       .footer-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .macro-live-title {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
@@ -975,8 +975,7 @@
         padding: 60px 0 30px;
       }
 
-      .ticker-grid,
-      .strip-grid {
+      .ticker-grid {
         grid-template-columns: 1fr;
       }
 
@@ -991,6 +990,19 @@
 
       .hero h1 {
         letter-spacing: -2px;
+      }
+
+      .panel-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .panel-status {
+        justify-content: flex-start;
+      }
+
+      .macro-live-title span {
+        font-size: 12px;
       }
     }
   </style>
@@ -1062,6 +1074,7 @@
         <aside class="market-panel" id="mercados">
           <div class="panel-top">
             <strong>Radar Trader — Cripto ao vivo</strong>
+
             <div class="panel-status">
               <span class="live-dot"></span>
               <span id="marketStatus">Carregando...</span>
@@ -1153,44 +1166,59 @@
 
           <p class="coin-source">
             Dados de cripto via <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>.
-            DXY, VIX, Ouro, Nasdaq e Petróleo continuam como leitura macro do método.
+            O radar macro abaixo acompanha Ouro, DXY, VIX, Nasdaq, Petróleo e Bitcoin em tempo real.
           </p>
         </aside>
 
       </div>
     </section>
 
-    <div class="market-strip">
-      <div class="container strip-grid">
+    <div class="macro-live-strip">
+      <div class="container">
 
-        <div class="strip-item">
-          <strong>Ouro</strong>
-          <span>XAU/USD</span>
-          <small class="attention">Ativo principal</small>
+        <div class="macro-live-title">
+          <strong>Radar Macro ao Vivo</strong>
+          <span>Ouro • DXY • VIX • Nasdaq • Petróleo • Bitcoin</span>
         </div>
 
-        <div class="strip-item">
-          <strong>DXY</strong>
-          <span>Dollar Index</span>
-          <small class="attention">Força do dólar</small>
-        </div>
+        <div class="tradingview-widget-container tv-ticker-box">
+          <div class="tradingview-widget-container__widget"></div>
 
-        <div class="strip-item">
-          <strong>VIX</strong>
-          <span>Volatilidade</span>
-          <small class="attention">Controle de risco</small>
-        </div>
-
-        <div class="strip-item">
-          <strong>Nasdaq</strong>
-          <span>Índice Tech</span>
-          <small class="attention">Risco global</small>
-        </div>
-
-        <div class="strip-item">
-          <strong>Petróleo</strong>
-          <span>WTI / Brent</span>
-          <small class="attention">Macro global</small>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+          {
+            "symbols": [
+              {
+                "description": "Ouro",
+                "proName": "OANDA:XAUUSD"
+              },
+              {
+                "description": "DXY",
+                "proName": "TVC:DXY"
+              },
+              {
+                "description": "VIX",
+                "proName": "TVC:VIX"
+              },
+              {
+                "description": "Nasdaq",
+                "proName": "NASDAQ:NDX"
+              },
+              {
+                "description": "Petróleo",
+                "proName": "TVC:USOIL"
+              },
+              {
+                "description": "Bitcoin",
+                "proName": "BITSTAMP:BTCUSD"
+              }
+            ],
+            "showSymbolLogo": true,
+            "isTransparent": true,
+            "displayMode": "adaptive",
+            "colorTheme": "dark",
+            "locale": "br"
+          }
+          </script>
         </div>
 
       </div>
@@ -1203,6 +1231,7 @@
           <div>
             <h2>Uma plataforma para operar com <span>método</span></h2>
           </div>
+
           <p>
             O Clube Multi Trader foi criado para ajudar o aluno a entender o mercado,
             controlar o risco e operar com mais consciência, sem depender de achismo.
@@ -1215,6 +1244,7 @@
             <div class="feature-top">
               <div class="feature-symbol">📚</div>
             </div>
+
             <div class="feature-content">
               <small>Cursos</small>
               <h3>Aprenda do zero ao operacional</h3>
@@ -1230,6 +1260,7 @@
             <div class="feature-top">
               <div class="feature-symbol">📊</div>
             </div>
+
             <div class="feature-content">
               <small>Análises</small>
               <h3>Leitura diária do mercado</h3>
@@ -1245,6 +1276,7 @@
             <div class="feature-top">
               <div class="feature-symbol">✅</div>
             </div>
+
             <div class="feature-content">
               <small>Ferramentas</small>
               <h3>Checklist e gestão para o trader</h3>
@@ -1267,6 +1299,7 @@
         <div class="chart-card">
           <div class="chart-header">
             <strong>Gráfico de exemplo — Ouro</strong>
+
             <div class="timeframes">
               <span>1M</span>
               <span>5M</span>
@@ -1342,6 +1375,7 @@
 
     <section class="cta" id="contato">
       <div class="container">
+
         <div class="cta-box">
           <div>
             <h2>Entre para o <span>Clube Multi Trader</span></h2>
@@ -1353,6 +1387,7 @@
 
           <a href="./alunos/" class="btn btn-primary">Acessar Área do Aluno</a>
         </div>
+
       </div>
     </section>
 
@@ -1466,9 +1501,11 @@
 
       if (icon && coin.image) {
         icon.innerHTML = "";
+
         const img = document.createElement("img");
         img.src = coin.image;
         img.alt = coin.name;
+
         icon.appendChild(img);
       }
 
@@ -1478,6 +1515,7 @@
 
       if (change) {
         const pct = coin.price_change_percentage_24h;
+
         change.textContent = `${formatPercent(pct)} em 24h`;
         change.classList.remove("up", "down", "attention");
 
@@ -1569,6 +1607,7 @@
       loadMarketData();
 
       const refreshButton = document.getElementById("refreshMarket");
+
       if (refreshButton) {
         refreshButton.addEventListener("click", loadMarketData);
       }
